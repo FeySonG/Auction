@@ -1,0 +1,10 @@
+﻿global using Auction.Domain.Models.AuctionLots.ProductAuctions;
+global using Auction.Domain.Models.AuctionLots.ServiceAuctions;
+global using Auction.Domain.Models.PaymentCards;
+global using Auction.Domain.Models.Products;
+global using Auction.Domain.Models.PurchaseActs;
+global using Auction.Domain.Models.Services;
+global using Auction.Domain.Models.UserContacts;
+global using Auction.Domain.Models.Users;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
