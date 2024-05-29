@@ -1,36 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Auction.DAL.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auction.DAL.Modules.Users
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository(AppDbContext dbContext) : Repository<User>(dbContext), IUserRepository
     {
-        public void Add(User entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<User?> GetUserById(long Id) => await DbContext.Users.FirstOrDefaultAsync(u => u.Id == Id);
 
-        public Task<List<User>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User?> GetByIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(User entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

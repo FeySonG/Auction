@@ -9,5 +9,6 @@ namespace Auction.Domain.Models.Users
 {
     public interface IUserRepository : IRepository<User>
     {
+        Task<User?> GetUserById(long id);
     }
 }
