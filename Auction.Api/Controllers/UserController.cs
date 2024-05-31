@@ -4,6 +4,7 @@ using Auction.Application.Features.Users.GetById;
 using Auction.Application.Features.Users.UpdateRole;
 using Auction.Domain.Enums.UserEnums;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auction.Api.Controllers
@@ -12,6 +13,7 @@ namespace Auction.Api.Controllers
     [Route("api/users")]
     public class UserController(ISender sender) : ControllerBase
     {
+        [Authorize(Roles = "User, Admin")]
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -20,6 +22,7 @@ namespace Auction.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetUserById")]
         public async Task<IActionResult> GetUserById(long id)
         {
@@ -28,12 +31,14 @@ namespace Auction.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateUser")]
         public Task<IActionResult> UpdateUser()
         {
             return null;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteUser(long id)
         {
@@ -43,6 +48,7 @@ namespace Auction.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("ChangeUserRole")]
         public async Task<IActionResult> ChangeUserRole(long id, UserRole role)
         {

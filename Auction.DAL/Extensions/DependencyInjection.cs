@@ -43,6 +43,8 @@ namespace Auction.DAL.Extensions
             services.AddScoped<IProductAuctionRepository, ProductAuctionRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IPasswordService, PasswordService>();
+
 
         }
     }

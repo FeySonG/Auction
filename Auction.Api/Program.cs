@@ -8,6 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAuthentication().AddCookie("cookie");
 
 builder.Services.AddDataAccessLayer(builder.Configuration);
 builder.Services.AddApplication();
@@ -19,6 +22,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
