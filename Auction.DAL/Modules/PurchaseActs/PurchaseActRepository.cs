@@ -18,7 +18,7 @@ namespace Auction.DAL.Modules.PurchaseActs
             throw new NotImplementedException();
         }
 
-        public Task<PurchaseAct?> GetByIdAsync(long id)
+        public Task<PurchaseAct?> GetByUserIdAsync(long id)
         {
             throw new NotImplementedException();
         }

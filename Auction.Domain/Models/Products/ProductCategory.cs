@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auction.Domain.Enums.UserEnums
+namespace Auction.Domain.Models.Products
 {
-    public enum UserRole
+    public enum ProductCategory
     {
-        User = 0,
-        Admin = 1,
+        Unknown = 0,
+
     }
 }

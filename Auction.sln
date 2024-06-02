@@ -17,7 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auction.DAL", "Auction.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auction.Domain", "Auction.Domain\Auction.Domain.csproj", "{96FF2352-1E7B-4620-818B-CE7AC283DBFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Application", "Auction.Application\Auction.Application.csproj", "{D7768A18-C509-4284-991E-DB422C1D3ECA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auction.Application", "Auction.Application\Auction.Application.csproj", "{D7768A18-C509-4284-991E-DB422C1D3ECA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51DCFADE-4552-46D1-9389-826D1BE7C66C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

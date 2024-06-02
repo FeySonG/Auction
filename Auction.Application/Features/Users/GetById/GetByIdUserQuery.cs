@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Auction.Application.Features.Users.GetById
 {
-    public record GetByIdUserQuery(long id) : IQuery<UserResponseDto>;
+    public record GetByIdUserQuery(long Id) : IQuery<UserResponseDto>;
 
 }

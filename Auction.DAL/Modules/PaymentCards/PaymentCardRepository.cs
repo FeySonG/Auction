@@ -18,7 +18,7 @@ namespace Auction.DAL.Modules.PaymentCards
             throw new NotImplementedException();
         }
 
-        public Task<PaymentCard?> GetByIdAsync(long id)
+        public Task<PaymentCard?> GetByUserIdAsync(long id)
         {
             throw new NotImplementedException();
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auction.Domain.Enums.PurchaseEnums
+namespace Auction.Domain.Models.PurchaseActs
 {
     public enum PurchaseStatus
     {

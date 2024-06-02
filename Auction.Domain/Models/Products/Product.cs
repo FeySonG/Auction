@@ -1,5 +1,4 @@
 ﻿using Auction.Domain.Abstractions;
-using Auction.Domain.Enums.ProductEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

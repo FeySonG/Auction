@@ -14,7 +14,7 @@ namespace Auction.DAL.Services
             .AsNoTracking()
             .ToListAsync();
 
-        public Task<TEntity?> GetByIdAsync(long id) => DbContext
+        public Task<TEntity?> GetByUserIdAsync(long id) => DbContext
             .Set<TEntity>()
             .AsNoTracking()
             .FirstOrDefaultAsync(entity => entity.Id == id);

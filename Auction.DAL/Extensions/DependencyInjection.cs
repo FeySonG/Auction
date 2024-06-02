@@ -8,15 +8,8 @@ using Auction.DAL.Modules.Services;
 using Auction.DAL.Modules.UserContacts;
 using Auction.DAL.Modules.Users;
 using Auction.DAL.Services;
-using Auction.Domain.Enums.UserEnums;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Auction.DAL.Extensions
 {

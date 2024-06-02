@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auction.Domain.Enums.ProductEnums
+namespace Auction.Domain.Models.Services
 {
-    public enum ProductCategory
+    public enum ServiceCategory
     {
-        Unknown = 0,
-
+        Cleaning = 0,
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Auction.Domain.Abstractions;
-using Auction.Domain.Enums.UserEnums;
 using Auction.Domain.Models.PaymentCards;
 using Auction.Domain.Models.Products;
 using Auction.Domain.Models.UserContacts;

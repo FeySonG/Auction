@@ -13,7 +13,7 @@ namespace Auction.Application.Features.Users.UpdateRole
     {
         public async Task<bool> Handle(UpdateUserRoleCommand request, CancellationToken cancellationToken)
         {
-            var user = await userRepository.GetByIdAsync(request.userId);
+            var user = await userRepository.GetByUserIdAsync(request.userId);
             if (user == null) return false;
 
             user.Role = request.role;

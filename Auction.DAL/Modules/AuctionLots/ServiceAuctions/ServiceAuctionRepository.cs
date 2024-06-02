@@ -18,7 +18,7 @@ namespace Auction.DAL.Modules.AuctionLots.ServiceAuctions
             throw new NotImplementedException();
         }
 
-        public Task<ServiceAuction?> GetByIdAsync(long id)
+        public Task<ServiceAuction?> GetByUserIdAsync(long id)
         {
             throw new NotImplementedException();
         }

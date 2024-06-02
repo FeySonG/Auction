@@ -1,5 +1,4 @@
 ﻿using Auction.Domain.Abstractions;
-using Auction.Domain.Enums.ServiceEnums;
 using Auction.Domain.Models.UserContacts;
 using Auction.Domain.Models.Users;
 using System;

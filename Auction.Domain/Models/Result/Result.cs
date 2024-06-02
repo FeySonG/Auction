@@ -1,4 +1,5 @@
-﻿namespace Auction.Domain.Models.Result
+﻿
+namespace Auction.Domain.Models.Result
 {
     /// <summary>
     /// Base class for result objects.

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auction.Domain.Enums.ServiceEnums
+namespace Auction.Domain.Models.Users
 {
-    public enum ServiceCategory
+    public enum UserRole
     {
-        Cleaning = 0,
+        User = 0,
+        Admin = 1,
     }
 }

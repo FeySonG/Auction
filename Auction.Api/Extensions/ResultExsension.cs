@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Auction.Api.Extensions
 {
-    /// <summary>
-    /// Provides extension methods for handling Result objects in ASP.NET Core.
-    /// </summary>
-    public static class ResultExtensions
+    public static class ResultExsension
     {
         public static IActionResult Match<TValue>(
             this Result<TValue> result,
@@ -18,6 +15,6 @@ namespace Auction.Api.Extensions
 
             return onFailure(result.Error!);
         }
-
     }
 }
+

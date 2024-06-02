@@ -1,8 +1,4 @@
-﻿using Auction.Domain.Enums.UserEnums;
-using Auction.Domain.Models.PaymentCards;
-using Auction.Domain.Models.UserContacts;
-
-namespace Auction.Application.Contracts.Users
+﻿namespace Auction.Application.Contracts.Users
 {
     public class UserCreateDto
     {

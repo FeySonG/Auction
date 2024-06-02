@@ -8,7 +8,7 @@ namespace Auction.Application.Features.Users.Delete
     {
         public async Task<bool> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await userRepository.GetByIdAsync(request.id);
+            var user = await userRepository.GetByUserIdAsync(request.id);
             if (user == null) return false;
             userRepository.Remove(user);
             await unitOfWork.SaveChangesAsync();
