@@ -48,7 +48,7 @@ namespace Auction.Api.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         [HttpPut("ChangeUserRole")]
         public async Task<IActionResult> ChangeUserRole(long id, UserRole role)
         {

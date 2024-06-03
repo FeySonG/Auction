@@ -1,4 +1,4 @@
-﻿namespace Auction.Domain.Models.Result
+﻿namespace Auction.Domain.Result
 {
     /// <summary>
     /// Represents a result that can hold a value or an error.

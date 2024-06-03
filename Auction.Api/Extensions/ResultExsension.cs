@@ -1,4 +1,4 @@
-﻿using Auction.Domain.Models.Result;
+﻿using Auction.Domain.Result;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auction.Api.Extensions

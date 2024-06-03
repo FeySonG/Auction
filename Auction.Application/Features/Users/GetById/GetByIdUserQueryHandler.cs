@@ -1,6 +1,5 @@
 ﻿using Auction.Application.Abstractions;
 using Auction.Application.Contracts.Users;
-using Auction.Domain.Models.Result;
 using Auction.Domain.Models.Users;
 using AutoMapper;
 using MediatR;

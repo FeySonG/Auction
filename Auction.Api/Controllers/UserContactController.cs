@@ -2,8 +2,9 @@
 using Auction.Application.Features.UserContacts.Update;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Auction.Domain.Models.Result;
 using Auction.Api.Extensions;
+using Auction.Domain.Result;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Auction.Api.Controllers
 {
@@ -11,11 +12,11 @@ namespace Auction.Api.Controllers
     [Route("api/user-contacts")]
     public class UserContactController(ISender sender) : ControllerBase
     {
-
-        [HttpPut]
+        [Authorize("Admin")]
+        [HttpPost]
         public async Task<IActionResult> Update(UserContactUpdateDTO contactDTO)
         {
-            Result<bool>? result = (Result<bool>?)await sender.Send(new UpdateUserContactCommand(contactDTO));
+            var result = (Result<bool>?)await sender.Send(new UpdateUserContactCommand(contactDTO));
             if (result == null) return NoContent();
 
             return result.Match(
