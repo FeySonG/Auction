@@ -21,7 +21,7 @@ namespace Auction.DAL.Modules.Users
 
         public Task<User?> GetUserByEmailAsync(string email) => DbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-        public async Task<User?> GetUserById(long Id) => await DbContext.Users.FirstOrDefaultAsync(u => u.Id == Id);
+        public async Task<User?> GetUserById(long Id) => await DbContext.Users.Include(u => u.Contact).FirstOrDefaultAsync(u => u.Id == Id);
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Auction.Domain.Models.PaymentCards;
+﻿using Auction.Application.Contracts.UserContacts;
+using Auction.Domain.Models.PaymentCards;
 using Auction.Domain.Models.UserContacts;
 using Auction.Domain.Models.Users;
 using System;

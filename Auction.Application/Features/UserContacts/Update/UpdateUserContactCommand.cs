@@ -4,6 +4,6 @@ using Auction.Domain.Result;
 
 namespace Auction.Application.Features.UserContacts.Update
 {
-    public record UpdateUserContactCommand(UserContactUpdateDTO ContactDTO): ICommand<Result<UserContactUpdateDTO>>;
+    public record UpdateUserContactCommand(UserContactUpdateDTO ContactDTO, int UserId): ICommand<Result<UserContactUpdateDTO>>;
     
 }

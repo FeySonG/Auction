@@ -1,22 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Auction.Application.Contracts.UserContacts
 {
-    public class UserContactUpdateDTO
+    public class UserContactGetDTO
     {
-        [StringLength(100)]
-        public required string PhoneNumber { get; set; } = "string";
+        public  string PhoneNumber { get; set; } = "string";
 
-        [StringLength(100)]
         public string? Telegram { get; set; } = "string";
 
-        [StringLength(100)]
         public string? Instagram { get; set; } = "string";
 
-        [StringLength(100)]
         public string? City { get; set; } = "string";
 
-        [StringLength(100)]
         public string? Country { get; set; } = "string";
     }
 }

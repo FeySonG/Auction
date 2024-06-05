@@ -12,9 +12,6 @@ namespace Auction.Domain.Models.UserContacts
     {
         public long UserId { get; set; }
 
-        [StringLength(150)]
-        public string? Email { get; set; }
-
         [StringLength(100)]
         public required string PhoneNumber { get; set; }
         

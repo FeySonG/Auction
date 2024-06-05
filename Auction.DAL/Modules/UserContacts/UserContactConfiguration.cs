@@ -7,9 +7,6 @@
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.HasIndex(c => c.Email)
-                  .IsUnique(true)
-                  .IsClustered(false);
         }
     }
 }

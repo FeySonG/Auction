@@ -1,44 +1,25 @@
-﻿using Auction.DAL.Services;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.DAL.Modules.UserContacts
+﻿namespace Auction.DAL.Modules.UserContacts
 {
     public class UserContactRepository(AppDbContext dbContext) : IUserContactRepository 
     {
-        public async Task<UserContact?> GetByUserIdAsync(long id)
+        public async Task<UserContact?> GetByUserIdAsync(long id) => await dbContext.UserContacts.FirstOrDefaultAsync(c => c.UserId == id);
+
+        public bool CheckExistToCreate(int userId)
         {
-            var contact = await dbContext.UserContacts.FirstOrDefaultAsync(c => c.UserId == id);
-            return contact;
+            if (dbContext.UserContacts.Any(c => c.UserId == userId))
+                return true;
+            return false;
         }
 
-        public void Add(UserContact entity)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(UserContact contact) => dbContext.UserContacts.Add(contact);
 
-        public Task<List<UserContact>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<UserContact>> GetAllAsync() => await dbContext.UserContacts.ToListAsync();
 
-        public Task<UserContact?> GetByIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(UserContact entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(UserContact entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<UserContact?> GetByIdAsync(long id) => await dbContext.UserContacts.FirstAsync(c => c.Id == id);
+     
+        public  void Remove(UserContact contact) => dbContext.Remove(contact);
+  
+        public void Update(UserContact contact) => dbContext.Update(contact);
+   
     }
 }
