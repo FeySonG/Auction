@@ -4,12 +4,13 @@ using AutoMapper;
 
 namespace Auction.Application.Features.Users
 {
-    public class UserMappings : Profile
+    public class PaymentCardMappings : Profile
     {
-        public UserMappings()
+        public PaymentCardMappings()
         {
-            CreateMap<User, UserResponseDto>().ReverseMap();
-            CreateMap<User, UserCreateDto>().ReverseMap();
+            CreateMap<User, UserResponseDTO>().ReverseMap();
+            CreateMap<User, UserCreateDTO>().ReverseMap();
+            CreateMap<User, UserUpdateDTO>().ReverseMap();
         }
     }
 }

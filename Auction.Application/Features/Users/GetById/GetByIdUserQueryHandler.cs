@@ -1,19 +1,22 @@
 ﻿using Auction.Application.Abstractions;
 using Auction.Application.Contracts.Users;
 using Auction.Domain.Models.Users;
+using Auction.Domain.Result;
 using AutoMapper;
 using MediatR;
 
 namespace Auction.Application.Features.Users.GetById
 {
     public class GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper)
-        : IQueryHandler<GetByIdUserQuery, UserResponseDto>
+        : IQueryHandler<GetByIdUserQuery, Result<UserResponseDTO>>
     {
-        public async Task<UserResponseDto> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
+        public async Task<Result<UserResponseDTO>> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
         {
             var user = await userRepository.GetUserById(request.Id);
-            if (user == null) return null!;
-            return mapper.Map<UserResponseDto>(user);
+            if (user == null)
+                return new Error("IsNull", "SOSI HUI");
+
+            return mapper.Map<UserResponseDTO>(user);
         }
     }
 }

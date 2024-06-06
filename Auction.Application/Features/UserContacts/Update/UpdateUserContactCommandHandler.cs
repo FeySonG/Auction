@@ -3,33 +3,27 @@ using Auction.Application.Contracts.UserContacts;
 using Auction.Application.Services;
 using Auction.Domain.Models.UserContacts;
 using Auction.Domain.Result;
-using Mapster;
+using AutoMapper;
 
 namespace Auction.Application.Features.UserContacts.Update;
 
 internal class UpdateUserContactCommandHandler(
     IUserContactRepository userContactRepository,
-    IUnitOfWork unitOfWork)
+    IUnitOfWork unitOfWork,
+    IMapper mapper)
     : ICommandHandler<UpdateUserContactCommand, Result<UserContactUpdateDTO>>
 {
     public async Task<Result<UserContactUpdateDTO>> Handle(UpdateUserContactCommand request, CancellationToken cancellationToken)
     {
-        UserContact? Usercontact = await userContactRepository.GetByUserIdAsync(request.UserId);
+        UserContact? usercontact = await userContactRepository.GetByUserIdAsync(request.UserId);
 
-        if (Usercontact == null)
+        if (usercontact == null)
             return new Error(ContactErrorCodes.IdNotFound, ContactErrorMessages.NonExistent);
 
-        //Usercontact = request.ContactDTO.Adapt<UserContact>();
-
-        Usercontact.Country = request.ContactDTO.Country;
-        Usercontact.City = request.ContactDTO.City;
-        Usercontact.PhoneNumber = request.ContactDTO.PhoneNumber;      // ne rabotaet mapping
-        Usercontact.Telegram = request.ContactDTO.Telegram;
-        Usercontact.Instagram = request.ContactDTO.Instagram;
+            mapper.Map(request.ContactDTO, usercontact);
 
 
-        userContactRepository.Update(Usercontact);
-
+        userContactRepository.Update(usercontact);
         await unitOfWork.SaveChangesAsync();
 
         return request.ContactDTO;

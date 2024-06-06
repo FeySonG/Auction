@@ -1,6 +1,6 @@
 ﻿namespace Auction.Application.Contracts.Users
 {
-    public class UserCreateDto
+    public class UserCreateDTO
     {
         public required string NickName { get; set; }
         public required string Email { get; set; }

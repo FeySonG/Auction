@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Auction.Application.Features.Users.Auth.Registration
 {
-    public record RegistrUserCommand(UserCreateDto dto) : ICommand<bool>;
+    public record RegistrUserCommand(UserCreateDTO dto) : ICommand<bool>;
 
 }

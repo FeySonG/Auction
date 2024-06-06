@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.DAL.Modules.PaymentCards
+﻿namespace Auction.DAL.Modules.PaymentCards
 {
-    public class PaymentCardRepository : IPaymentCardRepository
+    public class PaymentCardRepository(AppDbContext dbContext) : IPaymentCardRepository
     {
-        public void Add(PaymentCard entity)
+        public void Add(PaymentCard card) => dbContext.Add(card);
+
+        public bool CheckExistToCreate(int userId)
         {
-            throw new NotImplementedException();
+            if (dbContext.PaymentCards.Any(c => c.UserId == userId))
+                return true;
+            return false;
         }
 
-        public Task<List<PaymentCard>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<PaymentCard>> GetAllAsync() => await dbContext.PaymentCards.ToListAsync();
 
-        public Task<PaymentCard?> GetByUserIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<PaymentCard?> GetByUserIdAsync(long userId) => await dbContext.PaymentCards.FirstOrDefaultAsync(c => c.UserId == userId);
 
-        public void Remove(PaymentCard entity)
-        {
-            throw new NotImplementedException();
-        }
+        public void Remove(PaymentCard card) => dbContext.PaymentCards.Remove(card);
 
-        public void Update(PaymentCard entity)
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(PaymentCard card) => dbContext.PaymentCards.Update(card);
     }
 }

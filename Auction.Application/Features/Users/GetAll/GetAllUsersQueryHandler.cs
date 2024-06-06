@@ -1,19 +1,22 @@
 ﻿using Auction.Application.Abstractions;
 using Auction.Application.Contracts.Users;
 using Auction.Domain.Models.Users;
+using Auction.Domain.Result;
 using AutoMapper;
 using MediatR;
 
 namespace Auction.Application.Features.Users.GetAll
 {
     public class GetAllUsersQueryHandler(IUserRepository userRepository, IMapper mapper) 
-        : IQueryHandler<GetAllUsersQuery, List<UserResponseDto>>
+        : IQueryHandler<GetAllUsersQuery, Result<List<UserResponseDTO>>>
     {
-        public async Task<List<UserResponseDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<UserResponseDTO>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             var users = await userRepository.GetAllAsync();
+            if (users.Count == 0)
+                return new Error("NoContent", "No content blya");
 
-            return mapper.Map<List<UserResponseDto>>(users);
+            return mapper.Map<List<UserResponseDTO>>(users);
         }
     }
 }

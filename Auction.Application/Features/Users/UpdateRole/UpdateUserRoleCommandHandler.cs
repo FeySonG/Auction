@@ -1,24 +1,24 @@
 ﻿using Auction.Application.Abstractions;
 using Auction.Application.Services;
 using Auction.Domain.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Auction.Domain.Result;
 
 namespace Auction.Application.Features.Users.UpdateRole
 {
-    public class UpdateUserRoleCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateUserRoleCommand, bool>
+    public class UpdateUserRoleCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateUserRoleCommand, Result<bool>>
     {
-        public async Task<bool> Handle(UpdateUserRoleCommand request, CancellationToken cancellationToken)
+        public async Task<Result<bool>> Handle(UpdateUserRoleCommand request, CancellationToken cancellationToken)
         {
             var user = await userRepository.GetByUserIdAsync(request.userId);
-            if (user == null) return false;
+
+            if (user == null)
+                return new Error("UserNotFound", "Netu bllya usera");
 
             user.Role = request.role;
+
             userRepository.Update(user);
             await unitOfWork.SaveChangesAsync();
+
             return true;
         }
     }
