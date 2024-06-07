@@ -12,7 +12,7 @@ namespace Auction.Application.Features.Users.UpdateRole
             var user = await userRepository.GetByUserIdAsync(request.userId);
 
             if (user == null)
-                return new Error("UserNotFound", "Netu bllya usera");
+                return new Error(UserErrorCodes.IdNotFound, UserErrorMessages.IdNotFound);
 
             user.Role = request.role;
 

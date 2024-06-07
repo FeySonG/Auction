@@ -3,7 +3,6 @@ using Auction.Application.Contracts.Users;
 using Auction.Domain.Models.Users;
 using Auction.Domain.Result;
 using AutoMapper;
-using MediatR;
 
 namespace Auction.Application.Features.Users.GetAll
 {
@@ -14,7 +13,7 @@ namespace Auction.Application.Features.Users.GetAll
         {
             var users = await userRepository.GetAllAsync();
             if (users.Count == 0)
-                return new Error("NoContent", "No content blya");
+                return new Error(UserErrorCodes.NoContent, "");
 
             return mapper.Map<List<UserResponseDTO>>(users);
         }

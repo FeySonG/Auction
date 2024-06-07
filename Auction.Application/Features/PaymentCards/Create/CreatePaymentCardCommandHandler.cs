@@ -12,7 +12,7 @@ namespace Auction.Application.Features.PaymentCards.Create
         public async Task<Result<bool>> Handle(CreatePaymentCardCommand request, CancellationToken cancellationToken)
         {
             if (repository.CheckExistToCreate(request.UserId))
-                return new Error(PaymentCardErrorCodes.AlreadyExist,PaymentCardErrorMessages.Existent);
+                return new Error(PaymentCardErrorCodes.AlreadyExist,PaymentCardErrorMessages.AlreadyExistToCreate);
             
             PaymentCard card = request.CardDTO.Adapt<PaymentCard>();
             card.UserId = request.UserId;

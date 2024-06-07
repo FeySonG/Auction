@@ -11,9 +11,10 @@ namespace Auction.Application.Contracts.PaymentCards
         public string CardNumber { get; set; } = string.Empty;
 
         [Required]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ExpiryDate { get; set; }
+        [StringLength(5)]
+        [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{2}$", ErrorMessage = "Введите дату в формате MM/YY")]
+        [DisplayFormat(DataFormatString = "{0:MM/yy}", ApplyFormatInEditMode = true)]
+        public string ExpiryDate { get; set; } = string.Empty;
 
         [Required]
         [StringLength(3)]

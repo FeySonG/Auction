@@ -2,6 +2,7 @@
 using Auction.Application.Contracts.PaymentCards;
 using Auction.Application.Features.PaymentCards;
 using Auction.Application.Features.PaymentCards.Create;
+using Auction.Application.Features.PaymentCards.Delete;
 using Auction.Application.Features.PaymentCards.Update;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +27,7 @@ namespace Auction.Api.Controllers
                 onFailure: error =>
                 {
                     if (error.Code == PaymentCardErrorCodes.AlreadyExist)
-                        return BadRequest(error.Code);
+                        return BadRequest(error.Message);
 
                     return BadRequest();
                 });
@@ -42,8 +43,26 @@ namespace Auction.Api.Controllers
                 onSuccess: value => Ok(),
                 onFailure: error =>
                 {
-                    if(error.Code == "IdNotFound")
-                        return BadRequest(error.Code);
+                    if(error.Code == PaymentCardErrorCodes.UserIdNotFound)
+                        return BadRequest(error.Message);
+
+                    return BadRequest();
+                }
+            );
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete()
+        {
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var result = await sender.Send(new DeletePaymentCardCommand(userId));
+
+            return result.Match(
+                onSuccess: value => NoContent(),
+                onFailure: error =>
+                {
+                    if (error.Code == PaymentCardErrorCodes.IsNotExist)
+                        return BadRequest(error.Message);
 
                     return BadRequest();
                 }

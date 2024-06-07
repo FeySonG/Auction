@@ -22,15 +22,16 @@ namespace Auction.Api.Controllers
             var result = await sender.Send(new CreateUserContactCommand(contactDTO, userId));
 
             return result.Match
-                (
+            (
                 onSuccess: value => Ok(),
                 onFailure: error =>
                 {
                     if (error.Code == ContactErrorCodes.AlreadyExist)
-                        return BadRequest(error.Code);
+                        return BadRequest(error.Message);
 
                     return BadRequest();
-                });
+                }
+            );
         }
 
 
@@ -50,7 +51,7 @@ namespace Auction.Api.Controllers
                 else if (result == null)
                     return NoContent();
 
-                return BadRequest(error);
+                return BadRequest();
             });
         }
 

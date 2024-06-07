@@ -11,7 +11,7 @@ namespace Auction.Application.Features.Users.Delete
         {
             var user = await userRepository.GetByUserIdAsync(request.id);
             if (user == null)
-                return new Error("NotFound", "netu blya");
+                return new Error(UserErrorCodes.IdNotFound, UserErrorMessages.IdNotFound);
 
             userRepository.Remove(user);
             await unitOfWork.SaveChangesAsync();

@@ -17,7 +17,7 @@ namespace Auction.Application.Features.PaymentCards.Update
             var card = await repository.GetByUserIdAsync(request.UserId);
 
             if (card == null)
-                return new Error("UserIdNotFound", "hz gde blya");
+                return new Error(PaymentCardErrorCodes.UserIdNotFound, PaymentCardErrorMessages.UserIdNotFound);
 
             mapper.Map(request.PaymentCardDTO, card);
 

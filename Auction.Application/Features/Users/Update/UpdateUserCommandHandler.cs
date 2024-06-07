@@ -22,7 +22,17 @@ namespace Auction.Application.Features.Users.Update
         {
             var user = await  repository.GetUserById(request.UserID);
             if (user == null)
-                return new Error("User.IdNotFound", "NullBlya");
+                return new Error(UserErrorCodes.IdNotFound, UserErrorMessages.IdNotFound);
+
+            var emailCheck = await repository.CheckUniqueEmailAsync(request.UserDTO.Email);
+            var nickNameCheck = await repository.CheckUniqueNickNameAsync(request.UserDTO.NickName);
+
+            if (emailCheck == null)
+                return new Error(UserErrorCodes.EmailIsNotUnique, UserErrorMessages.EmailIsNotUnique);
+            
+            if (nickNameCheck == null)
+                return new Error(UserErrorCodes.NickNameIsNotUnique, UserErrorMessages.NickNameIsNotUnique);
+
 
             mapper.Map(request.UserDTO, user);
 

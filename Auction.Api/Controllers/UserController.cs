@@ -1,5 +1,6 @@
 ﻿using Auction.Api.Extensions;
 using Auction.Application.Contracts.Users;
+using Auction.Application.Features.Users;
 using Auction.Application.Features.Users.Delete;
 using Auction.Application.Features.Users.GetAll;
 using Auction.Application.Features.Users.GetById;
@@ -28,7 +29,7 @@ namespace Auction.Api.Controllers
                 onSuccess: value => Ok(result.Value),
                 onFailure: error =>
                 {
-                    if(error.Code == "NoContent")
+                    if(error.Code == UserErrorCodes.NoContent)
                         return NoContent();
 
                     return BadRequest();
@@ -46,7 +47,7 @@ namespace Auction.Api.Controllers
                 onSuccess: value => Ok(result.Value),
                 onFailure: error =>
                 {
-                    if (error.Code == "IsNull")
+                    if (error.Code == UserErrorCodes.IdNotFound)
                         return BadRequest(error.Message);
 
                     else return BadRequest();
@@ -65,10 +66,17 @@ namespace Auction.Api.Controllers
                 onSuccess: value => Ok(),
                 onFailure: error =>
                 {
-                    if (error.Code == "User.IdNotFound")
+                    if (error.Code == UserErrorCodes.IdNotFound)
                         return NotFound(error.Message);
 
+                    if (error.Code == UserErrorCodes.EmailIsNotUnique)
+                        return BadRequest(error.Message);
+
+                    if (error.Code == UserErrorMessages.NickNameIsNotUnique)
+                        return BadRequest(error.Message);
+
                     return BadRequest();
+
                 }
             );
 
@@ -84,7 +92,7 @@ namespace Auction.Api.Controllers
                 onSuccess: value => NoContent(),
                 onFailure: error =>
                 {
-                    if (error.Code == "NotFound")
+                    if (error.Code == UserErrorCodes.IdNotFound)
                         return BadRequest(error.Message);
 
                      return BadRequest();
@@ -102,7 +110,7 @@ namespace Auction.Api.Controllers
                 onSuccess: value => Ok(),
                 onFailure: error =>
                 {
-                    if (error.Code == "UserNotFound")
+                    if (error.Code == UserErrorCodes.IdNotFound)
                         return BadRequest(error.Message);
 
                     return BadRequest();

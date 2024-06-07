@@ -10,7 +10,9 @@ namespace Auction.Domain.Models.PaymentCards
         [StringLength(16)]
         public required string CardNumber { get; set; }
 
-        public required DateTime ExpiryDate { get; set; }
+        [StringLength(5)]
+      
+        public required string ExpiryDate { get; set; }
 
         [StringLength(3)]
         public required string CVV { get; set; }

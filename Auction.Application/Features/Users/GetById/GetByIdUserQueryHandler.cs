@@ -7,14 +7,14 @@ using MediatR;
 
 namespace Auction.Application.Features.Users.GetById
 {
-    public class GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper)
+    internal class GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper)
         : IQueryHandler<GetByIdUserQuery, Result<UserResponseDTO>>
     {
         public async Task<Result<UserResponseDTO>> Handle(GetByIdUserQuery request, CancellationToken cancellationToken)
         {
             var user = await userRepository.GetUserById(request.Id);
             if (user == null)
-                return new Error("IsNull", "SOSI HUI");
+                return new Error(UserErrorCodes.IdNotFound, UserErrorMessages.IdNotFound);
 
             return mapper.Map<UserResponseDTO>(user);
         }
