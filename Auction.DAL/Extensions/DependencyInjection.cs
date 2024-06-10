@@ -28,7 +28,7 @@ namespace Auction.DAL.Extensions
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserContactRepository, UserContactRepository>();
-            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServiceLayerRepository, ServiceLayerRepository>();
             services.AddScoped<IPurchaseActRepository, PurchaseActRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IPaymentCardRepository, PaymentCardRepository>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Auction.Domain.Models.Services
 {
-    public enum ServiceCategory
+    public enum ServiceLayerCategory
     {
         Cleaning = 0,
     }
