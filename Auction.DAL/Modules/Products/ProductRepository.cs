@@ -8,31 +8,14 @@ using System.Threading.Tasks;
 
 namespace Auction.DAL.Modules.Products
 {
-    public class ProductRepository(AppDbContext dbContext) : Repository<User>(dbContext), IProductRepository
+    public class ProductRepository(AppDbContext dbContext) : Repository<Product>(dbContext), IProductRepository
     {
-        public void Add(Product entity)
-        {
-            throw new NotImplementedException();
-        }
+        public Task<Product?> GetByName(string ProductName) => DbContext.Products.FirstOrDefaultAsync(u => u.ProductName == ProductName);
 
-        public void Remove(Product entity)
+        public async Task<List<Product?>> GetUserProducts(long userId)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Product entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<List<Product>> IReadRepository<Product>.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Product?> IReadRepository<Product>.GetByUserIdAsync(long id)
-        {
-            throw new NotImplementedException();
+            var products = await DbContext.Products.Where(p => p.UserId == userId).ToListAsync();
+            return products.Cast<Product?>().Where(p => p != null).ToList();
         }
     }
 }

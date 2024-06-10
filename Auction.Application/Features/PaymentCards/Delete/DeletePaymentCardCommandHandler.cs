@@ -5,7 +5,7 @@ using Auction.Domain.Result;
 
 namespace Auction.Application.Features.PaymentCards.Delete
 {
-    internal class DeletePaymentCardCommandHandler 
+    public class DeletePaymentCardCommandHandler 
         (IPaymentCardRepository repository,
         IUnitOfWork uow)
         : ICommandHandler<DeletePaymentCardCommand, Result<bool>>

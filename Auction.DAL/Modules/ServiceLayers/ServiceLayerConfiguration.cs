@@ -1,8 +1,8 @@
 ﻿namespace Auction.DAL.Modules.Services
 {
-    public class ServiceConfiguration : IEntityTypeConfiguration<Service>
+    public class ServiceLayerConfiguration : IEntityTypeConfiguration<ServiceLayer>
     {
-        public void Configure(EntityTypeBuilder<Service> builder)
+        public void Configure(EntityTypeBuilder<ServiceLayer> builder)
         {
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();

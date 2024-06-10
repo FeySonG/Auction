@@ -13,7 +13,7 @@ namespace Auction.Api.Controllers
     public class AuthController(ISender sender) : ControllerBase
     {
         [HttpPost("registr")]
-        public async Task<IActionResult> Register(UserCreateDTO dto)
+        public async Task<IActionResult> Registration(UserCreateDTO dto)
         {
            var response = await sender.Send(new RegistrUserCommand(dto));
             if (response != false) return Ok();
@@ -27,5 +27,6 @@ namespace Auction.Api.Controllers
             if (response == null) return BadRequest("Wrong Email or Password");
             return Ok("Welcome!");
         }
+      
     }
 }
