@@ -1,0 +1,22 @@
+﻿@model UserLoginDTO
+
+<form asp-action="Login" method="post">
+
+    <div>
+        <label>Email</label>
+        <input class="form-control ml-2" type="email"
+               placeholder="Email"
+               asp-for="Email"
+               required />
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Password"
+               asp-for="Password"
+               required />
+    </div>
+
+    <button class="btn btn-primary mt-2" type="submit">LogIn</button>
+</form>

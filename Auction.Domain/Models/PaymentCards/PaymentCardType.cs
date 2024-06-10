@@ -4,5 +4,6 @@
     {
         Visa = 1,
         MasterCard,
+        AmericanExpress
     }
 }

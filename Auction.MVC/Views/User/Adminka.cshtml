@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .admin-panel {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+            .admin-panel h1 {
+                margin-bottom: 20px;
+            }
+
+            .admin-panel .btn-primary {
+                margin-bottom: 10px;
+            }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="admin-panel">
+            <h1>Admin Panel</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="@Url.Action("GetAllUsers", "User")">Get All Users</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="@Url.Action("GetUserById", "User")">Get User By Id</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="@Url.Action("DeleteUser", "User")">Delete User By Id</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="@Url.Action("ChangeUserRole", "User")">Change User Role</a>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-secondary back-button" href="javascript:history.back()">Back</a>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2024 - Online Auction - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

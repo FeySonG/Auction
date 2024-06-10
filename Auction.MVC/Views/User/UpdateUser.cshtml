@@ -1,0 +1,118 @@
+﻿@model UserUpdateDTO
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 500px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Update User</h1>
+        <form asp-action="UpdateUser" method="post" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="NickName">NickName</label>
+                <input type="text" class="form-control" id="NickName" placeholder="NickName" asp-for="NickName" required>
+                <div class="invalid-feedback">
+                    Please provide a valid nickname.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Email" asp-for="Email" required>
+                <div class="invalid-feedback">
+                    Please provide a valid email address.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" class="form-control" id="FirstName" placeholder="First Name" asp-for="FirstName" required>
+                <div class="invalid-feedback">
+                    Please provide a first name.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input type="text" class="form-control" id="LastName" placeholder="Last Name" asp-for="LastName" required>
+                <div class="invalid-feedback">
+                    Please provide a last name.
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" href="javascript:history.back()">Back</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

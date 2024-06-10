@@ -1,0 +1,72 @@
+﻿@model List<UserResponseDTO>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .user-profile {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+            .user-profile h2 {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+
+            .user-profile p {
+                margin: 0;
+            }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-back {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Users</h1>
+        @foreach (var user in Model)
+        {
+            <div class="user-profile">
+                <h2>@user.NickName</h2>
+                <div>
+                    <p><strong>Id:</strong> @user.Id</p>
+                    <p><strong>First Name:</strong> @user.FirstName</p>
+                    <p><strong>Last Name:</strong> @user.LastName</p>
+                    <p><strong>Email:</strong> @user.Email</p>
+                    <p><strong>Role:</strong> @user.Role</p>
+
+                </div>
+            </div>
+        }
+        <div class="text-center">
+            <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Online Auction - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

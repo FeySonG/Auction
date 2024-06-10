@@ -11,7 +11,5 @@ namespace Auction.Application.Contracts.Users
         public required string LastName { get; set; }
         public required string Email { get; set; }
         public UserRole Role { get; set; }
-        public UserContact? Contact { get; set; }
-        public PaymentCard? BankCard { get; set; }
     }
 }

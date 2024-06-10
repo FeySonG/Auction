@@ -27,10 +27,10 @@ namespace Auction.Application.Features.Users.Update
             var emailCheck = await repository.CheckUniqueEmailAsync(request.UserDTO.Email);
             var nickNameCheck = await repository.CheckUniqueNickNameAsync(request.UserDTO.NickName);
 
-            if (emailCheck == null)
+            if (emailCheck != null)
                 return new Error(UserErrorCodes.EmailIsNotUnique, UserErrorMessages.EmailIsNotUnique);
-            
-            if (nickNameCheck == null)
+
+            if (nickNameCheck != null)
                 return new Error(UserErrorCodes.NickNameIsNotUnique, UserErrorMessages.NickNameIsNotUnique);
 
 

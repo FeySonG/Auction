@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAuthentication().AddCookie("cookie");
+builder.Services.AddAuthentication().AddCookie("Cookie");
 
 builder.Services.AddDataAccessLayer(builder.Configuration);
 builder.Services.AddApplication();

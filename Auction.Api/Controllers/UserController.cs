@@ -6,6 +6,7 @@ using Auction.Application.Features.Users.GetAll;
 using Auction.Application.Features.Users.GetById;
 using Auction.Application.Features.Users.Update;
 using Auction.Application.Features.Users.UpdateRole;
+using Auction.Application.Features.Users.UserProfile;
 using Auction.Domain.Models.Users;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -108,6 +109,25 @@ namespace Auction.Api.Controllers
 
             return result.Match(
                 onSuccess: value => Ok(),
+                onFailure: error =>
+                {
+                    if (error.Code == UserErrorCodes.IdNotFound)
+                        return BadRequest(error.Message);
+
+                    return BadRequest();
+                }
+            );
+        }
+
+        [HttpGet("profile")]
+        public async Task<IActionResult> Profile()
+        {
+            int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+            var result = await sender.Send(new GetUserProfileCommand(userId));
+
+            return result.Match(
+                onSuccess: value => Ok(result.Value),
                 onFailure: error =>
                 {
                     if (error.Code == UserErrorCodes.IdNotFound)

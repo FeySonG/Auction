@@ -9,6 +9,7 @@ namespace Auction.DAL.Modules.Users
         {
             var response = await DbContext.Users.AnyAsync(u => u.Email == email);
             if(response == true) return email;   
+
             return null;
         }
 

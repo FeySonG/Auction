@@ -1,0 +1,40 @@
+﻿@model UserContactCreateDTO
+
+@{
+    ViewData["Title"] = "Create User Contact";
+}
+
+<h2>Create User Contact</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="control-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Telegram" class="control-label"></label>
+        <input asp-for="Telegram" class="form-control" />
+        <span asp-validation-for="Telegram" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Instagram" class="control-label"></label>
+        <input asp-for="Instagram" class="form-control" />
+        <span asp-validation-for="Instagram" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Country" class="control-label"></label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
