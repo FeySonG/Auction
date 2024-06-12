@@ -1,13 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Services;
-using Auction.Application.Services;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-
-namespace Auction.Application.Features.ServiceLayers.GetUserServices
+﻿namespace Auction.Application.Features.ServiceLayers.GetUserServices
 {
     public class GetUserServiceLayerQueryHandler(
         IServiceLayerRepository serviceLayerRepository,

@@ -51,18 +51,18 @@ namespace Auction.Api.Controllers
         }
 
         [HttpPut("UpdateService")]
-        public async Task<IActionResult> UpdateService(UpdateServiceLayerDto dto, string serviceName)
+        public async Task<IActionResult> UpdateService(UpdateServiceLayerDto dto, long id)
         {
-            var response = await sender.Send(new UpdateServiceLayerCommand(dto, serviceName));
+            var response = await sender.Send(new UpdateServiceLayerCommand(dto, id));
             return response.Match(
                 onSuccess: value => Ok(response.Value),
                 onFailure: error => BadRequest(error.Message));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteService(string serviceName)
+        public async Task<IActionResult> DeleteService(long id)
         {
-            var response = await sender.Send(new DeleteServiceLayerCommand(serviceName));
+            var response = await sender.Send(new DeleteServiceLayerCommand(id));
             return response.Match(
                 onSuccess: value => NoContent(),
                 onFailure: error => BadRequest(error.Message));

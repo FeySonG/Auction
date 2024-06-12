@@ -1,6 +1,6 @@
 ﻿using Auction.Domain.Abstractions;
 
-namespace Auction.Domain.Models.Services
+namespace Auction.Domain.Models.ServiceLayers
 {
     public class ServiceLayer : Entity
     {

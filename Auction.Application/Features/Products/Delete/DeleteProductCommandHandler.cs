@@ -1,14 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Result;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Features.Products.Delete
+﻿namespace Auction.Application.Features.Products.Delete
 {
     public class DeleteProductCommandHandler(
         IProductRepository productRepository,
@@ -17,7 +7,7 @@ namespace Auction.Application.Features.Products.Delete
     {
         public async Task<Result<bool>> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await productRepository.GetByName(request.productName);
+            var product = await productRepository.GetById(request.Id);
             if (product == null)
                 return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
 

@@ -1,5 +1,4 @@
-﻿
-namespace Auction.Application.Services
+﻿namespace Auction.Application.Services
 {
     public interface IPasswordService
     {

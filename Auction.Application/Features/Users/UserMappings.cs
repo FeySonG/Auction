@@ -1,8 +1,4 @@
-﻿using Auction.Application.Contracts.Users;
-using Auction.Domain.Models.Users;
-using AutoMapper;
-
-namespace Auction.Application.Features.Users
+﻿namespace Auction.Application.Features.Users
 {
     public class PaymentCardMappings : Profile
     {

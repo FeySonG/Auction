@@ -1,9 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.PaymentCards;
-using Auction.Domain.Result;
-
-namespace Auction.Application.Features.PaymentCards.Delete
+﻿namespace Auction.Application.Features.PaymentCards.Delete
 {
     public class DeletePaymentCardCommandHandler 
         (IPaymentCardRepository repository,

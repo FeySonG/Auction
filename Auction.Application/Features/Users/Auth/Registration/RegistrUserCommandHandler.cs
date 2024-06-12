@@ -1,9 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Users;
-using AutoMapper;
-
-namespace Auction.Application.Features.Users.Auth.Registration
+﻿namespace Auction.Application.Features.Users.Auth.Registration
 {
     public class RegistrUserCommandHandler(
         IUserRepository userRepository

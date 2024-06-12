@@ -1,17 +1,4 @@
-﻿using Auction.Application.Services;
-using Auction.DAL.Modules.AuctionLots.ProductAuctions;
-using Auction.DAL.Modules.AuctionLots.ServiceAuctions;
-using Auction.DAL.Modules.PaymentCards;
-using Auction.DAL.Modules.Products;
-using Auction.DAL.Modules.PurchaseActs;
-using Auction.DAL.Modules.Services;
-using Auction.DAL.Modules.UserContacts;
-using Auction.DAL.Modules.Users;
-using Auction.DAL.Services;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Auction.DAL.Extensions
+﻿namespace Auction.DAL.Extensions
 {
     public static class DependencyInjection
     {

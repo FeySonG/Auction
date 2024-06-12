@@ -1,15 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Services;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Features.ServiceLayers.GetAll
+﻿namespace Auction.Application.Features.ServiceLayers.GetAll
 {
     public class GetAllServiceLayerQueryHandler(IServiceLayerRepository serviceLayerRepository,
         IMapper mapper) 

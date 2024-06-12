@@ -1,9 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-
-namespace Auction.Application.Features.ServiceLayers.Delete
+﻿namespace Auction.Application.Features.ServiceLayers.Delete
 {
     public class DeleteServiceLayerCommandHandler(
         IServiceLayerRepository serviceLayerRepository,
@@ -12,7 +7,7 @@ namespace Auction.Application.Features.ServiceLayers.Delete
     {
         public async Task<Result<bool>> Handle(DeleteServiceLayerCommand request, CancellationToken cancellationToken)
         {
-            var service = await serviceLayerRepository.GetByName(request.ServiceName);
+            var service = await serviceLayerRepository.GetById(request.Id);
             if (service == null)
                 return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
             

@@ -1,9 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Users;
-using Auction.Domain.Result;
-
-namespace Auction.Application.Features.Users.UpdateRole
+﻿namespace Auction.Application.Features.Users.UpdateRole
 {
     public class UpdateUserRoleCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateUserRoleCommand, Result<bool>>
     {

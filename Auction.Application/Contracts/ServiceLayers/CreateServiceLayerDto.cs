@@ -1,11 +1,4 @@
-﻿using Auction.Domain.Models.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Contracts.Services
+﻿namespace Auction.Application.Contracts.Services
 {
     public class CreateServiceLayerDto
     {

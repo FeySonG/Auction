@@ -1,11 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.UserContacts;
-using Auction.Application.Services;
-using Auction.Domain.Models.UserContacts;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.UserContacts.Update;
+﻿namespace Auction.Application.Features.UserContacts.Update;
 
 internal class UpdateUserContactCommandHandler(
     IUserContactRepository userContactRepository,

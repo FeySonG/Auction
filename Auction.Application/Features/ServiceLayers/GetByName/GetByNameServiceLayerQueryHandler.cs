@@ -1,13 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Services;
-using Auction.Application.Features.Products;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.ServiceLayers.GetByName
+﻿namespace Auction.Application.Features.ServiceLayers.GetByName
 {
     public class GetByNameServiceLayerQueryHandler(
         IServiceLayerRepository serviceLayerRepository,

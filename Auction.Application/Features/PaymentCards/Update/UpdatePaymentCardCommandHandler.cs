@@ -1,10 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.PaymentCards;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.PaymentCards.Update
+﻿namespace Auction.Application.Features.PaymentCards.Update
 {
     internal class UpdatePaymentCardCommandHandler(
         IPaymentCardRepository repository,

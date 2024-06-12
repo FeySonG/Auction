@@ -1,9 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Users;
-using Auction.Domain.Result;
-
-namespace Auction.Application.Features.Users.Delete
+﻿namespace Auction.Application.Features.Users.Delete
 {
     public class DeleteUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<DeleteUserCommand, Result<bool>>
     {

@@ -1,10 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.UserContacts;
-using Auction.Domain.Result;
-using Mapster;
-
-namespace Auction.Application.Features.UserContacts.Create
+﻿namespace Auction.Application.Features.UserContacts.Create
 {
     public class CreateUserContactCommandHandler(IUserContactRepository repository, IUnitOfWork uow) : ICommandHandler<CreateUserContactCommand, Result<bool>>
     {
