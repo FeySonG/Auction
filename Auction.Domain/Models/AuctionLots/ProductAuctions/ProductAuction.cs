@@ -1,12 +1,5 @@
 ﻿using Auction.Domain.Abstractions;
 using Auction.Domain.Models.Products;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Auction.Domain.Models.AuctionLots.ProductAuctions
 {

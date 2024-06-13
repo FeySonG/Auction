@@ -1,6 +1,5 @@
 ﻿using Auction.Api.Extensions;
 using Auction.Application.Contracts.Products;
-using Auction.Application.Contracts.Profucts;
 using Auction.Application.Features.Products.ChangeQuantity;
 using Auction.Application.Features.Products.Create;
 using Auction.Application.Features.Products.Delete;

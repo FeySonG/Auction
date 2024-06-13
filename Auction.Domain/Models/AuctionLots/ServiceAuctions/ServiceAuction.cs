@@ -1,6 +1,5 @@
 ﻿using Auction.Domain.Abstractions;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Models.Users;
+using Auction.Domain.Models.ServiceLayers;
 
 
 namespace Auction.Domain.Models.AuctionLots.ServiceAuctions
