@@ -1,5 +1,6 @@
 using Auction.Application.Extensions;
 using Auction.DAL.Extensions;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,3 +34,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

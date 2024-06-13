@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Auction.DAL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,31 +7,11 @@ using System.Threading.Tasks;
 
 namespace Auction.DAL.Modules.AuctionLots.ProductAuctions
 {
-    public class ProductAuctionRepository : IProductAuctionRepository
+    public class ProductAuctionRepository(AppDbContext dbContext) : Repository<ProductAuction>(dbContext), IProductAuctionRepository
     {
-        public void Add(ProductAuction entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<ProductAuction>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ProductAuction?> GetByUserIdAsync(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(ProductAuction entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(ProductAuction entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<ProductAuction>> GetAllInqlude() => 
+            await DbContext.ProductAuctions.Include(p => p.Product).ToListAsync();
+        public async Task<ProductAuction?> GetById(long id) =>  
+            await DbContext.ProductAuctions.Include(p => p.Product).FirstOrDefaultAsync(a => a.Id == id);
     }
 }

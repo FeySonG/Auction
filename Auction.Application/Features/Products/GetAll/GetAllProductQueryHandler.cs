@@ -1,16 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Products;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Result;
-using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Features.Products.GetAll
+﻿namespace Auction.Application.Features.Products.GetAll
 {
     public class GetAllProductQueryHandler(IProductRepository productRepository, IMapper mapper) : IQueryHandler<GetAllProductQuery, Result<List<ResponseProductDto>>>
     {

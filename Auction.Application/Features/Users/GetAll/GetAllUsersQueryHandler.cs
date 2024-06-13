@@ -1,10 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Users;
-using Auction.Domain.Models.Users;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.Users.GetAll
+﻿namespace Auction.Application.Features.Users.GetAll
 {
     public class GetAllUsersQueryHandler(IUserRepository userRepository, IMapper mapper) 
         : IQueryHandler<GetAllUsersQuery, Result<List<UserResponseDTO>>>

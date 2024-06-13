@@ -60,27 +60,27 @@ namespace Auction.Api.Controllers
         }
 
         [HttpPut("ChangeProduct")]
-        public async Task<IActionResult> ChangeProduct(string productName, UpdateProductDto dto)
+        public async Task<IActionResult> ChangeProduct(long id, UpdateProductDto dto)
         {
-            var response = await sender.Send(new UpdateProductCommand(dto, productName));
+            var response = await sender.Send(new UpdateProductCommand(dto, id));
             return response.Match(
               onSuccess: value => Ok(response.Value),
               onFailure: error => BadRequest(error.Message));
         }
 
         [HttpPut("ChangeQuantity")]
-        public async Task<IActionResult> ChangeQuantity(string productName, long quantity)
+        public async Task<IActionResult> ChangeQuantity(long id, long quantity)
         {
-            var response = await sender.Send(new ChangeQuantityProductCommand(productName, quantity));
+            var response = await sender.Send(new ChangeQuantityProductCommand(id, quantity));
             return response.Match(
               onSuccess: value => Ok(response.Value),
               onFailure: error => BadRequest(error.Message));
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteProduct(string productName)
+        public async Task<IActionResult> DeleteProduct(long id)
         {
-            var response = await sender.Send(new DeleteProductCommand(productName));
+            var response = await sender.Send(new DeleteProductCommand(id));
             return response.Match(
               onSuccess: value => NoContent(),
               onFailure: error => BadRequest(error.Message));

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Contracts.Products
+﻿namespace Auction.Application.Contracts.Products
 {
     public class UpdateProductDto
     {

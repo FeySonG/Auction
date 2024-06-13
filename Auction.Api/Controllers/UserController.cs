@@ -20,7 +20,7 @@ namespace Auction.Api.Controllers
     [Authorize]
     public class UserController(ISender sender) : ControllerBase
     {
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -101,7 +101,7 @@ namespace Auction.Api.Controllers
             );
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         [HttpPut("change-role/{id}")]
         public async Task<IActionResult> ChangeUserRole(long id, UserRole role)
         {

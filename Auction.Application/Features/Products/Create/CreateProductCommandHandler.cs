@@ -1,14 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Profucts;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Models.Users;
-using Auction.Domain.Result;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-
-namespace Auction.Application.Features.Products.Create
+﻿namespace Auction.Application.Features.Products.Create
 {
     public class CreateProductCommandHandler(
         IHttpContextAccessor accessor,

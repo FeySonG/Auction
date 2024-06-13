@@ -1,10 +1,9 @@
-﻿using Auction.Domain.Models.Products;
-
-namespace Auction.Application.Contracts.Products
+﻿namespace Auction.Application.Contracts.Products
 {
     public class ResponseProductDto
     {
-        public long UsertId { get; set; }   
+        public int Id { get; set; } 
+        public long UserId { get; set; }   
         public required string ProductName { get; set; }
         public string? Description { get; set; }
         public decimal Price { get; set; } = 0;

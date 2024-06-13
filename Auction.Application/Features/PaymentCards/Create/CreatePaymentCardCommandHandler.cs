@@ -1,10 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.PaymentCards;
-using Auction.Domain.Result;
-using Mapster;
-
-namespace Auction.Application.Features.PaymentCards.Create
+﻿namespace Auction.Application.Features.PaymentCards.Create
 {
     public class CreatePaymentCardCommandHandler(IPaymentCardRepository repository, IUnitOfWork uow)
         : ICommandHandler<CreatePaymentCardCommand, Result<bool>>

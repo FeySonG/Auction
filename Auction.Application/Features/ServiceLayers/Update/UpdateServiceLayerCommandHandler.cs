@@ -1,12 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Services;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.ServiceLayers.Update
+﻿namespace Auction.Application.Features.ServiceLayers.Update
 {
     public class UpdateServiceLayerCommandHandler(
         IServiceLayerRepository serviceLayerRepository,
@@ -16,7 +8,7 @@ namespace Auction.Application.Features.ServiceLayers.Update
     {
         public async Task<Result<ResponseServiceLayerDto>> Handle(UpdateServiceLayerCommand request, CancellationToken cancellationToken)
         {
-            var service = await serviceLayerRepository.GetByName(request.ServiceName);
+            var service = await serviceLayerRepository.GetById(request.id);
             if (service == null) 
                 return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
            

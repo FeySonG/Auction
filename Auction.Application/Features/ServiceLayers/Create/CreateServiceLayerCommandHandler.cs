@@ -1,14 +1,4 @@
-﻿
-using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Services;
-using Auction.Application.Services;
-using Auction.Domain.Models.Services;
-using Auction.Domain.Result;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-
-namespace Auction.Application.Features.Service.Create
+﻿namespace Auction.Application.Features.Service.Create
 {
     public class CreateServiceLayerCommandHandler(
         IServiceLayerRepository serviceLayerRepository,
@@ -21,15 +11,15 @@ namespace Auction.Application.Features.Service.Create
 
         public async Task<Result<ResponseServiceLayerDto>> Handle(CreateServiceLayerCommand request, CancellationToken cancellationToken)
         {
-            var userId = long.Parse(_httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-            
+            var userId = long.TryParse(_httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier), out var id) ? id : default;
+
             var service = mapper.Map<ServiceLayer>(request.dto);
 
-            service.Id = userId;
+            service.UserId = userId;
             serviceLayerRepository.Add(service);
             await unitOfWork.SaveChangesAsync();
 
-            return mapper.Map<ResponseServiceLayerDto>(request.dto);
+            return mapper.Map<ResponseServiceLayerDto>(service);
         }
     }
 }

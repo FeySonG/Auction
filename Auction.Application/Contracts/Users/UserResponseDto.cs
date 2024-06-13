@@ -1,7 +1,4 @@
-﻿using Auction.Domain.Models.PaymentCards;
-using Auction.Domain.Models.UserContacts;
-using Auction.Domain.Models.Users;
-namespace Auction.Application.Contracts.Users
+﻿namespace Auction.Application.Contracts.Users
 {
     public class UserResponseDTO
     {

@@ -5,11 +5,11 @@ namespace Auction.DAL.Modules.Services
 {
     public class ServiceLayerRepository(AppDbContext dbContext) : Repository<ServiceLayer>(dbContext), IServiceLayerRepository
     {
-
-        public Task<ServiceLayer?> GetByName(string ServiceName) => DbContext.Services.FirstOrDefaultAsync(u => u.ServiceName == ServiceName);
+        public Task<ServiceLayer?> GetById(long Id) => DbContext.ServiceLayers.FirstOrDefaultAsync(u => u.Id == Id);
+        public Task<List<ServiceLayer>> GetByName(string serviceName) => DbContext.ServiceLayers.Where(p => p.ServiceName == serviceName).ToListAsync();
         public async Task<List<ServiceLayer?>> GetUserService(long userId)
         {
-            var services = await DbContext.Services.Where(p => p.UserId == userId).ToListAsync();
+            var services = await DbContext.ServiceLayers.Where(p => p.UserId == userId).ToListAsync();
             return services.Cast<ServiceLayer?>().Where(p => p != null).ToList();
         }
     }

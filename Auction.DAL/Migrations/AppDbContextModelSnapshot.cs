@@ -250,7 +250,7 @@ namespace Auction.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Services");
+                    b.ToTable("ServiceLayers");
                 });
 
             modelBuilder.Entity("Auction.Domain.Models.UserContacts.UserContact", b =>

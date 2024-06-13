@@ -1,11 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Products;
-using Auction.Application.Services;
-using Auction.Domain.Models.Products;
-using Auction.Domain.Result;
-using AutoMapper;
-
-namespace Auction.Application.Features.Products.Update
+﻿namespace Auction.Application.Features.Products.Update
 {
     public class UpdateProductCommandHandler(
         IProductRepository productRepository,
@@ -15,7 +8,7 @@ namespace Auction.Application.Features.Products.Update
     {
         public async Task<Result<ResponseProductDto>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await productRepository.GetByName(request.ProductName);
+            var product = await productRepository.GetById(request.Id);
             if (product == null)
                 return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
 

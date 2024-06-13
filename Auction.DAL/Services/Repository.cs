@@ -1,7 +1,4 @@
-﻿using Auction.Domain.Abstractions;
-using Microsoft.EntityFrameworkCore;
-
-namespace Auction.DAL.Services
+﻿namespace Auction.DAL.Services
 {
     public abstract class Repository<TEntity>(AppDbContext DbContext) : IRepository<TEntity> where TEntity : Entity
     {
@@ -11,12 +8,10 @@ namespace Auction.DAL.Services
 
         public Task<List<TEntity>> GetAllAsync() => DbContext
             .Set<TEntity>()
-            .AsNoTracking()
             .ToListAsync();
 
         public Task<TEntity?> GetByUserIdAsync(long id) => DbContext
             .Set<TEntity>()
-            .AsNoTracking()
             .FirstOrDefaultAsync(entity => entity.Id == id);
 
         public void Remove(TEntity entity) => DbContext

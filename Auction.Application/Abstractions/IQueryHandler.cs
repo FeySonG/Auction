@@ -1,5 +1,4 @@
-﻿using MediatR;
-
+﻿
 namespace Auction.Application.Abstractions
 {
     public interface IQueryHandler<TQuery, TResponse>

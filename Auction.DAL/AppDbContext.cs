@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Auction.DAL
+﻿namespace Auction.DAL
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
@@ -8,7 +6,7 @@ namespace Auction.DAL
         public DbSet<UserContact> UserContacts => Set<UserContact>();
         public DbSet<PaymentCard> PaymentCards => Set<PaymentCard>();
         public DbSet<PurchaseAct> PurchaseActs => Set<PurchaseAct>();
-        public DbSet<ServiceLayer> Services => Set<ServiceLayer>();
+        public DbSet<ServiceLayer> ServiceLayers => Set<ServiceLayer>();
         public DbSet<Product> Products => Set<Product>();
         public DbSet<ProductAuction> ProductAuctions => Set<ProductAuction>();
         public DbSet<ServiceAuction> ServiceAuctions => Set<ServiceAuction>();

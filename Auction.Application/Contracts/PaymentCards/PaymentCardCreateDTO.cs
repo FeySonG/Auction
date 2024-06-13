@@ -1,7 +1,4 @@
-﻿using Auction.Domain.Models.PaymentCards;
-using System.ComponentModel.DataAnnotations;
-
-namespace Auction.Application.Contracts.PaymentCards
+﻿namespace Auction.Application.Contracts.PaymentCards
 {
     public class PaymentCardCreateDTO
     {

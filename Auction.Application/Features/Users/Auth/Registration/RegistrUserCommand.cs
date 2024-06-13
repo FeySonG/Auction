@@ -1,5 +1,4 @@
 ﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;

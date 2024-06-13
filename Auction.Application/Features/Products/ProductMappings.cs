@@ -1,9 +1,4 @@
-﻿using Auction.Application.Contracts.Products;
-using Auction.Application.Contracts.Profucts;
-using Auction.Domain.Models.Products;
-using AutoMapper;
-
-namespace Auction.Application.Features.Products
+﻿namespace Auction.Application.Features.Products
 {
     public class ProductMappings : Profile
     {

@@ -1,16 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Contracts.Users;
-using Auction.Application.Services;
-using Auction.Domain.Models.Users;
-using Auction.Domain.Result;
-using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Auction.Application.Features.Users.Update
+﻿namespace Auction.Application.Features.Users.Update
 {
     public class UpdateUserCommandHandler(
         IUserRepository repository,

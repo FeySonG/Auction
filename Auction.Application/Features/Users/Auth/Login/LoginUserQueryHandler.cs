@@ -1,12 +1,4 @@
-﻿using Auction.Application.Abstractions;
-using Auction.Application.Services;
-using Auction.Domain.Models.Users;
-using AutoMapper;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-
-namespace Auction.Application.Features.Users.Auth.Login
+﻿namespace Auction.Application.Features.Users.Auth.Login
 {
     public class LoginUserQueryHandler : IQueryHandler<LoginUserQuery, User?>
     {
@@ -48,7 +40,7 @@ namespace Auction.Application.Features.Users.Auth.Login
                 new (ClaimTypes.Role, user.Role.ToString()),
                 new (ClaimTypes.Expiration, DateTime.UtcNow.AddHours(5).ToString()),
             };
-            var identity = new ClaimsIdentity(claims, "Cookie");
+            var identity = new ClaimsIdentity(claims, "Coockies");
             var principal = new ClaimsPrincipal(identity);
 
             return _httpContext.SignInAsync(principal);

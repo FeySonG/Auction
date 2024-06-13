@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Auction.Application.Contracts.UserContacts
+﻿namespace Auction.Application.Contracts.UserContacts
 {
     public class UserContactCreateDTO
     {
