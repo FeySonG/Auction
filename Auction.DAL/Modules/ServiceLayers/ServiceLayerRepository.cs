@@ -2,7 +2,7 @@
 {
     public class ServiceLayerRepository(AppDbContext dbContext) : Repository<ServiceLayer>(dbContext), IServiceLayerRepository
     {
-        public Task<ServiceLayer?> GetById(long Id) => DbContext.ServiceLayers.FirstOrDefaultAsync(u => u.Id == Id);
+        public Task<ServiceLayer?> GetById(long Id) => DbContext.ServiceLayers.FirstOrDefaultAsync(s => s.Id == Id);
         public Task<List<ServiceLayer>> GetByName(string serviceName) => DbContext.ServiceLayers.Where(p => p.ServiceName == serviceName).ToListAsync();
         public async Task<List<ServiceLayer?>> GetUserService(long userId)
         {

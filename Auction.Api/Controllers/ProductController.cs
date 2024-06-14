@@ -4,9 +4,11 @@ using Auction.Application.Features.Products.ChangeQuantity;
 using Auction.Application.Features.Products.Create;
 using Auction.Application.Features.Products.Delete;
 using Auction.Application.Features.Products.GetAll;
+using Auction.Application.Features.Products.GetById;
 using Auction.Application.Features.Products.GetByName;
 using Auction.Application.Features.Products.GetUserProduct;
 using Auction.Application.Features.Products.Update;
+using Azure;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +18,7 @@ namespace Auction.Api.Controllers
     [Route("api/products")]
     public class ProductController(ISender sender) : ControllerBase
     {
-        [HttpPost] 
+        [HttpPost]
         public async Task<IActionResult> AddProduct(CreateProductDto dto)
         {
             var response = await sender.Send(new CreateProductCommand(dto));
@@ -84,5 +86,16 @@ namespace Auction.Api.Controllers
               onSuccess: value => NoContent(),
               onFailure: error => BadRequest(error.Message));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await sender.Send(new GetByIdProductQuery(id));
+
+            return result.Match(
+             onSuccess: value => Ok(result.Value),
+             onFailure: error => BadRequest(error.Message));
+        }
+
     }
 }

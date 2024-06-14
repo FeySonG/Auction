@@ -2,7 +2,7 @@
 {
     public class ProductRepository(AppDbContext dbContext) : Repository<Product>(dbContext), IProductRepository
     {
-        public Task<Product?> GetById(long Id) => DbContext.Products.FirstOrDefaultAsync(u => u.Id == Id);
+        public Task<Product?> GetById(long Id) => DbContext.Products.FirstOrDefaultAsync(p => p.Id == Id);
         public async Task<List<Product>> GetByName(string productName) => await DbContext.Products.Where(p => p.ProductName == productName).ToListAsync();
         public async Task<List<Product?>> GetUserProducts(long userId)
         {

@@ -1,6 +1,7 @@
 ﻿namespace Auction.Application.Features.Products.GetByName
 {
-    public class GetByNameProductQueryHandler(IProductRepository productRepository, IMapper mapper) : IQueryHandler<GetByNameProductQuery, Result<List<ResponseProductDto>>>
+    public class GetByNameProductQueryHandler(IProductRepository productRepository, IMapper mapper)
+        : IQueryHandler<GetByNameProductQuery, Result<List<ResponseProductDto>>>
     {
         public async Task<Result<List<ResponseProductDto>>> Handle(GetByNameProductQuery request, CancellationToken cancellationToken)
         {

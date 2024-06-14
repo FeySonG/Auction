@@ -1,9 +1,11 @@
 ﻿using Auction.Api.Extensions;
 using Auction.Application.Contracts.Services;
 using Auction.Application.Features.Products.GetAll;
+using Auction.Application.Features.Products.GetById;
 using Auction.Application.Features.Service.Create;
 using Auction.Application.Features.ServiceLayers.Delete;
 using Auction.Application.Features.ServiceLayers.GetAll;
+using Auction.Application.Features.ServiceLayers.GetById;
 using Auction.Application.Features.ServiceLayers.GetByName;
 using Auction.Application.Features.ServiceLayers.GetUserServices;
 using Auction.Application.Features.ServiceLayers.Update;
@@ -66,6 +68,16 @@ namespace Auction.Api.Controllers
             return response.Match(
                 onSuccess: value => NoContent(),
                 onFailure: error => BadRequest(error.Message));
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await sender.Send(new GetByIdServiceQuery(id));
+            return result.Match(
+             onSuccess: value => Ok(result.Value),
+             onFailure: error => BadRequest(error.Message));
         }
     }
 }
