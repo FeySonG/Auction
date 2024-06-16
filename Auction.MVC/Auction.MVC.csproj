@@ -12,4 +12,10 @@
     <ProjectReference Include="..\Auction.DAL\Auction.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Products\" />
+    <Folder Include="Models\Users\" />
+    <Folder Include="Views\ServiceLayer\" />
+  </ItemGroup>
+
 </Project>

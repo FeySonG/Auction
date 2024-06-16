@@ -1,0 +1,112 @@
+﻿@using Auction.Application.Contracts.Products;
+@model List<ResponseProductDto>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .user-profile {
+            margin-bottom: 20px;
+            padding: 20px;
+            width: 250px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+        }
+
+            .product-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+
+        .user-profile h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .user-profile p {
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-back {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="mb-4">Users</h1>
+    </div>
+    <div>
+        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="CreateProduct">Create Product</a>
+    </div>
+    <div class="container product-container mt-4">
+        @foreach (var product in Model)
+        {
+            <div class="user-profile">
+
+                <div class="product-image">
+                    <a href="@Url.Action("GetById", "Product", new { id = product.Id })">
+                        @if (product.ImagePath != string.Empty)
+                        {
+                            <img src="@product.ImagePath" alt="card image" />
+                        }
+                        else if(product.ImagePath == string.Empty){
+                            <img src="/media/nophoto.jpg" alt="card image" />
+                        }
+
+                    </a>
+                </div>
+
+                <h2>@product.ProductName</h2>
+                <div>
+                    <p><strong>Id:</strong> @product.Id</p>
+                    <p><strong>Description: </strong> @product.Description</p>
+                    <p><strong>Category: </strong> @product.Category</p>
+                    <p><strong>Price: </strong> @product.Price</p>
+                    <p><strong>Quantity: </strong> @product.Quantity</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="text-center">
+        <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Online Auction - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
