@@ -1,11 +1,10 @@
-﻿namespace Auction.Application.Features.PaymentCards
+﻿namespace Auction.Application.Features.PaymentCards;
+
+public class PaymentCardMappings : Profile
 {
-    public class PaymentCardMappings : Profile
+    public PaymentCardMappings()
     {
-        public PaymentCardMappings()
-        {
-            CreateMap<PaymentCard, PaymentCardCreateDTO>().ReverseMap();
-            CreateMap<PaymentCard, PaymentCardUpdateDTO>().ReverseMap();
-        }
+        CreateMap<PaymentCard, CreatePaymentCardDTO>().ReverseMap();
+        CreateMap<PaymentCard, UpdatePaymentCardDTO>().ReverseMap();
     }
 }

@@ -1,20 +1,15 @@
-﻿using Auction.Domain.Result;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace Auction.Api.Extensions;
 
-namespace Auction.Api.Extensions
+public static class ResultExsension
 {
-    public static class ResultExsension
+    public static IActionResult Match<TValue>(
+        this Result<TValue> result,
+        Func<TValue?, IActionResult> onSuccess,
+        Func<Error, IActionResult> onFailure)
     {
-        public static IActionResult Match<TValue>(
-            this Result<TValue> result,
-            Func<TValue?, IActionResult> onSuccess,
-            Func<Error, IActionResult> onFailure)
-        {
-            if (result.IsSuccess)
-                return onSuccess(result.Value);
+        if (result.IsSuccess)
+            return onSuccess(result.Value);
 
-            return onFailure(result.Error!);
-        }
+        return onFailure(result.Error!);
     }
 }
-

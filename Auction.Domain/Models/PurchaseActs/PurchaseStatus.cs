@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Auction.Domain.Models.PurchaseActs;
 
-namespace Auction.Domain.Models.PurchaseActs
+public enum PurchaseStatus
 {
-    public enum PurchaseStatus
-    {
-        InProgress = 0,
-        Canceled = 1,
-        Completed = 2,
-    }
+    InProgress = 0,
+    Canceled = 1,
+    Completed = 2,
 }

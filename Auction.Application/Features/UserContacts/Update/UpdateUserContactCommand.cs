@@ -1,5 +1,3 @@
-﻿namespace Auction.Application.Features.UserContacts.Update
-{
-    public record UpdateUserContactCommand(UserContactUpdateDTO ContactDTO, int UserId): ICommand<Result<UserContactUpdateDTO>>;
-    
-}
+﻿namespace Auction.Application.Features.UserContacts.Update;
+
+public record UpdateUserContactCommand(UpdateUserContactDTO ContactDTO, int UserId): ICommand<Result<UpdateUserContactDTO>>;

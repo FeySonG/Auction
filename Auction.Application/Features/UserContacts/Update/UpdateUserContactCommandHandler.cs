@@ -4,9 +4,9 @@ internal class UpdateUserContactCommandHandler(
     IUserContactRepository userContactRepository,
     IUnitOfWork unitOfWork,
     IMapper mapper)
-    : ICommandHandler<UpdateUserContactCommand, Result<UserContactUpdateDTO>>
+    : ICommandHandler<UpdateUserContactCommand, Result<UpdateUserContactDTO>>
 {
-    public async Task<Result<UserContactUpdateDTO>> Handle(UpdateUserContactCommand request, CancellationToken cancellationToken)
+    public async Task<Result<UpdateUserContactDTO>> Handle(UpdateUserContactCommand request, CancellationToken cancellationToken)
     {
         UserContact? usercontact = await userContactRepository.GetByUserIdAsync(request.UserId);
 

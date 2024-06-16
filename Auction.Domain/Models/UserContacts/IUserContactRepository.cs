@@ -1,9 +1,6 @@
-﻿using Auction.Domain.Abstractions;
+﻿namespace Auction.Domain.Models.UserContacts;
 
-namespace Auction.Domain.Models.UserContacts
+public interface IUserContactRepository : IRepository<UserContact>
 {
-    public interface IUserContactRepository : IRepository<UserContact>
-    {
-        public bool CheckExistToCreate(int userId);
-    }
+    public bool CheckExistToCreate(int userId);
 }

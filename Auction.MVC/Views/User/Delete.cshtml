@@ -1,34 +1,24 @@
-﻿@model UserResponseDTO
+﻿@model GetUserDTO
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Change User Role</title>
+    <title>Delete User</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-4">
-        <h1>Change User Role</h1>
-        <form asp-action="ChangeUserRole" method="post" class="needs-validation" novalidate>
+        <h1>Delete User</h1>
+        <form asp-action="DeleteUser" method="post" class="needs-validation" novalidate>
             <div class="form-group">
-                <label for="userId">Change User Role By ID</label>
+                <label for="userId">Delete User By ID</label>
                 <input type="number" class="form-control" id="userId" name="id" placeholder="Enter User ID" required>
+                <input type="hidden" name="_method" value="DELETE" />
                 <div class="invalid-feedback">
                     Please provide a valid user ID.
                 </div>
             </div>
-            <div class="form-group">
-                <label for="userRole">Select User Role</label>
-                <select class="form-control" id="userRole" name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="User">User</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a user role.
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Change Role</button>
+            <button type="submit" class="btn btn-danger mt-3">Delete</button>
         </form>
         <div class="mt-3">
             <a class="btn btn-secondary" href="javascript:history.back()">Back</a>

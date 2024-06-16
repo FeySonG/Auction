@@ -1,32 +1,27 @@
-﻿using Auction.Application.Contracts.Users;
-using Auction.Application.Features.Users.Auth.Login;
-using Auction.Application.Features.Users.Auth.Registration;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace Auction.Api.Controllers;
 
-namespace Auction.Api.Controllers
+[AllowAnonymous]
+[ApiController]
+[Route("api/auth")]
+public class AuthController(ISender sender) : ControllerBase
 {
-    [AllowAnonymous]
-    [ApiController]
-    [Route("api/auth")]
-    public class AuthController(ISender sender) : ControllerBase
+    [HttpPost("registration")]
+    public async Task<IActionResult> Registration(CreateUserDTO dto)
     {
-        [HttpPost("registr")]
-        public async Task<IActionResult> Registration(UserCreateDTO dto)
-        {
-           var response = await sender.Send(new RegistrUserCommand(dto));
-            if (response != false) return Ok();
-            return BadRequest("email or nickname is not unique!");
-        }
+       var result = await sender.Send(new RegistrUserCommand(dto));
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(string email, string password)
-        {
-            var response = await sender.Send(new LoginUserQuery(email, password));
-            if (response == null) return BadRequest("Wrong Email or Password");
-            return Ok("Welcome!");
-        }
-      
+        return result.Match(
+            onSuccess: value => Ok(),
+            onFailure: error => BadRequest(error.Message));
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(string email, string password)
+    {
+        var result = await sender.Send(new LoginUserQuery(email, password));
+
+        return result.Match(
+            onSuccess: value => Ok("Welcome!"),
+            onFailure: error => BadRequest(error.Message));
     }
 }

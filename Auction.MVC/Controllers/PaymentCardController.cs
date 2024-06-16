@@ -10,7 +10,7 @@ public class PaymentCardController(ISender sender) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(PaymentCardCreateDTO cardDTO)
+    public async Task<IActionResult> Create(CreatePaymentCardDTO cardDTO)
     {
         var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         var result = await sender.Send(new CreatePaymentCardCommand(cardDTO, userId));
@@ -35,7 +35,7 @@ public class PaymentCardController(ISender sender) : Controller
 
 
     [HttpPost]
-    public async Task<IActionResult> Update(PaymentCardUpdateDTO paymentCardDTO)
+    public async Task<IActionResult> Update(UpdatePaymentCardDTO paymentCardDTO)
     {
         var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         var result = await sender.Send(new UpdatePaymentCardCommand(paymentCardDTO, userId));

@@ -30,7 +30,7 @@ public class UserController(ISender sender) : Controller
 
     [Authorize(Roles = "Admin")]
     [HttpGet]
-    public async Task<IActionResult> GetAllUsers()
+    public async Task<IActionResult> GetAll()
     {
         var result = await sender.Send(new GetAllUsersQuery());
 
@@ -55,7 +55,7 @@ public class UserController(ISender sender) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> GetUserById(long id)
+    public async Task<IActionResult> GetById(long id)
     {
         var result = await sender.Send(new GetByIdUserQuery(id));
 
@@ -72,14 +72,14 @@ public class UserController(ISender sender) : Controller
     }
 
     [HttpGet]
-    public IActionResult UpdateUser()
+    public IActionResult Update()
     {
         return View();
     }
 
 
     [HttpPost]
-    public async Task<IActionResult> UpdateUser(UserUpdateDTO userDTO)
+    public async Task<IActionResult> Update(UpdateUserDTO userDTO)
     {
         int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
@@ -106,7 +106,7 @@ public class UserController(ISender sender) : Controller
     }
 
 
-    public IActionResult DeleteUser()
+    public IActionResult Delete()
     {
         return View();
     }
@@ -114,7 +114,7 @@ public class UserController(ISender sender) : Controller
     [Authorize(Roles = "Admin")]
     [HttpPost]
     [ActionName("DeleteUser")]
-    public async Task<IActionResult> DeleteUserPost(long id)
+    public async Task<IActionResult> Delete(long id)
     {
         var result = await sender.Send(new DeleteUserCommand(id));
 
@@ -132,13 +132,13 @@ public class UserController(ISender sender) : Controller
 
 
     [Authorize(Roles = "Admin")]
-    public IActionResult ChangeUserRole()
+    public IActionResult ChangeRole()
     {
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> ChangeUserRole(long id, UserRole role)
+    public async Task<IActionResult> ChangeRole(long id, UserRole role)
     {
         var result = await sender.Send(new UpdateUserRoleCommand(role, id));
 
@@ -154,4 +154,3 @@ public class UserController(ISender sender) : Controller
         );
     }
 }
-

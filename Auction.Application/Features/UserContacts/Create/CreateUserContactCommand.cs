@@ -1,4 +1,3 @@
-﻿namespace Auction.Application.Features.UserContacts.Create
-{
-    public record CreateUserContactCommand(UserContactCreateDTO ContactDTO, int UserId) : ICommand<Result<bool>>;
-}
+﻿namespace Auction.Application.Features.UserContacts.Create;
+
+public record CreateUserContactCommand(CreateUserContactDTO ContactDTO, int UserId) : ICommand<Result<bool>>;

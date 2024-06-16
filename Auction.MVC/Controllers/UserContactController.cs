@@ -1,4 +1,5 @@
 ﻿namespace Auction.MVC.Controllers;
+
 public class UserContactController(ISender sender) : Controller
 {
     [HttpGet]
@@ -9,7 +10,7 @@ public class UserContactController(ISender sender) : Controller
 
 
     [HttpPost]
-    public async Task<IActionResult> Create(UserContactCreateDTO contactDTO)
+    public async Task<IActionResult> Create(CreateUserContactDTO contactDTO)
     {
         var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         var result = await sender.Send(new CreateUserContactCommand(contactDTO, userId));
@@ -35,7 +36,7 @@ public class UserContactController(ISender sender) : Controller
 
 
     [HttpPost]
-    public async Task<IActionResult> Update(UserContactUpdateDTO contactDTO)
+    public async Task<IActionResult> Update(UpdateUserContactDTO contactDTO)
     {
         var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         var result = await sender.Send(new UpdateUserContactCommand(contactDTO, userId));

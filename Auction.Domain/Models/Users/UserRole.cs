@@ -1,8 +1,7 @@
-﻿namespace Auction.Domain.Models.Users
+﻿namespace Auction.Domain.Models.Users;
+
+public enum UserRole
 {
-    public enum UserRole
-    {
-        User = 0,
-        Admin = 1,
-    }
+    User = 0,
+    Admin = 1,
 }

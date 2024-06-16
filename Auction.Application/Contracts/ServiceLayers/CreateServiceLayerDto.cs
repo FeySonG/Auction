@@ -1,9 +1,8 @@
-﻿namespace Auction.Application.Contracts.Services
+﻿namespace Auction.Application.Contracts.ServiceLayers;
+
+public class CreateServiceLayerDTO
 {
-    public class CreateServiceLayerDto
-    {
-        public required string ServiceName { get; set; }
-        public required string Description { get; set; }
-        public decimal Price { get; set; }
-    }
+    public required string ServiceName { get; set; }
+    public required string Description { get; set; }
+    public decimal Price { get; set; }
 }

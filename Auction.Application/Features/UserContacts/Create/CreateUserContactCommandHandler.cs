@@ -1,19 +1,18 @@
-﻿namespace Auction.Application.Features.UserContacts.Create
+﻿namespace Auction.Application.Features.UserContacts.Create;
+
+internal class CreateUserContactCommandHandler(IUserContactRepository repository, IUnitOfWork uow) : ICommandHandler<CreateUserContactCommand, Result<bool>>
 {
-    public class CreateUserContactCommandHandler(IUserContactRepository repository, IUnitOfWork uow) : ICommandHandler<CreateUserContactCommand, Result<bool>>
+    public async Task<Result<bool>> Handle(CreateUserContactCommand request, CancellationToken cancellationToken)
     {
-        public async Task<Result<bool>> Handle(CreateUserContactCommand request, CancellationToken cancellationToken)
-        {
-            if (repository.CheckExistToCreate(request.UserId))
-                return new Error(ContactErrorCodes.AlreadyExist, ContactErrorMessages.Existent);
+        if (repository.CheckExistToCreate(request.UserId))
+            return new Error(ContactErrorCodes.AlreadyExist, ContactErrorMessages.Existent);
 
-            UserContact contact = request.ContactDTO.Adapt<UserContact>();
-            contact.UserId = request.UserId;
+        UserContact contact = request.ContactDTO.Adapt<UserContact>();
+        contact.UserId = request.UserId;
 
-            repository.Add(contact);
-            await uow.SaveChangesAsync();
+        repository.Add(contact);
+        await uow.SaveChangesAsync();
 
-            return true;
-        }
+        return true;
     }
 }

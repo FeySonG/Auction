@@ -1,5 +1,3 @@
-﻿namespace Auction.Application.Features.Service.Create
-{
-    public record CreateServiceLayerCommand(CreateServiceLayerDto dto) : ICommand<Result<ResponseServiceLayerDto>>;
+﻿namespace Auction.Application.Features.ServiceLayers.Create;
 
-}
+public record CreateServiceLayerCommand(CreateServiceLayerDTO dto) : ICommand<Result<GetServiceLayerDTO>>;

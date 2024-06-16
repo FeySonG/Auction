@@ -1,4 +1,3 @@
-﻿namespace Auction.Application.Features.Users.GetAll
-{
-    public class GetAllUsersQuery : IQuery<Result<List<UserResponseDTO>>>;
-}
+﻿namespace Auction.Application.Features.Users.GetAll;
+
+public class GetAllUsersQuery : IQuery<Result<List<GetUserDTO>>>;

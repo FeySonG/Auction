@@ -1,7 +1,6 @@
-﻿namespace Auction.Application.Services
+﻿namespace Auction.Application.Services;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        Task<int> SaveChangesAsync();
-    }
+    Task<int> SaveChangesAsync();
 }

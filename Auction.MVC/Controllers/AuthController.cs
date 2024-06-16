@@ -9,11 +9,12 @@ public class AuthController(ISender sender) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Registration(UserCreateDTO userDTO)
+    public async Task<IActionResult> Registration(CreateUserDTO userDTO)
     {
-        var response = await sender.Send(new RegistrUserCommand(userDTO));
-        if (response != false) return RedirectToAction("Index", "Home");
-        return BadRequest("email or nickname is not unique!");   //obrabotatb
+        var result = await sender.Send(new RegistrUserCommand(userDTO));
+        return result.Match(
+            onSuccess: value => RedirectToAction("Login"),
+            onFailure: error => BadRequest(error.Message));
     }
 
     [HttpGet]
@@ -23,16 +24,15 @@ public class AuthController(ISender sender) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(UserLoginDTO loginDTO)
+    public async Task<IActionResult> Login(LoginUserDTO loginDTO)
     {
-        var response = await sender.Send(new LoginUserQuery(loginDTO.Email, loginDTO.Password));
-        if (response == null) return BadRequest("Wrong Email or Password");
+        var result = await sender.Send(new LoginUserQuery(loginDTO.Email, loginDTO.Password));
 
-        return RedirectToAction("Index", "Home");
+        return result.Match(
+            onSuccess: value => RedirectToAction("Index", "Home"),
+            onFailure: error => BadRequest(error.Message));
 
     }
-
-
 
     public async Task<IActionResult> Logout()
     {

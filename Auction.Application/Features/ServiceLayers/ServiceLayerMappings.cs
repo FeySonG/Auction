@@ -1,13 +1,11 @@
-﻿namespace Auction.Application.Features.Service
+﻿namespace Auction.Application.Features.ServiceLayers;
+
+public class ServiceLayerMappings : Profile
 {
-    public class ServiceLayerMappings : Profile
+    public ServiceLayerMappings() 
     {
-        public ServiceLayerMappings() 
-        {
-             CreateMap<ServiceLayer, CreateServiceLayerDto>().ReverseMap();
-             CreateMap<ServiceLayer, ResponseServiceLayerDto>().ReverseMap();
-             CreateMap<ServiceLayer, UpdateServiceLayerDto>().ReverseMap();
-        }
-        
+         CreateMap<ServiceLayer, CreateServiceLayerDTO>().ReverseMap();
+         CreateMap<ServiceLayer, GetServiceLayerDTO>().ReverseMap();
+         CreateMap<ServiceLayer, UpdateServiceLayerDTO>().ReverseMap();
     }
 }

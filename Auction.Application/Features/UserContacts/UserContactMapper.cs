@@ -1,13 +1,12 @@
-﻿namespace Auction.Application.Features.UserContacts
+﻿namespace Auction.Application.Features.UserContacts;
+
+
+public class UserContactMapper : Profile
 {
-
-    public class UserContactMapper : Profile
+    public UserContactMapper()
     {
-        public UserContactMapper()
-        {
-            CreateMap<UserContact, UserContactUpdateDTO>().ReverseMap();
+        CreateMap<UserContact, UpdateUserContactDTO>().ReverseMap();
 
-            CreateMap<UserContact, UserContactCreateDTO>().ReverseMap();
-        }
+        CreateMap<UserContact, CreateUserContactDTO>().ReverseMap();
     }
 }

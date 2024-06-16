@@ -1,7 +1,6 @@
-﻿namespace Auction.Domain.Models.ServiceLayers
+﻿namespace Auction.Domain.Models.ServiceLayers;
+
+public enum ServiceLayerCategory
 {
-    public enum ServiceLayerCategory
-    {
-        Cleaning = 0,
-    }
+    Cleaning = 0,
 }

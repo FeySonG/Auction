@@ -1,16 +1,15 @@
-﻿namespace Auction.Application.Features.ServiceLayers.GetByName
+﻿namespace Auction.Application.Features.ServiceLayers.GetByName;
+
+internal class GetByNameServiceLayerQueryHandler(
+    IServiceLayerRepository serviceLayerRepository,
+    IMapper mapper)
+    : IQueryHandler<GetByNameServiceLayerQuery, Result<List<GetServiceLayerDTO>>>
 {
-    public class GetByNameServiceLayerQueryHandler(
-        IServiceLayerRepository serviceLayerRepository,
-        IMapper mapper)
-        : IQueryHandler<GetByNameServiceLayerQuery, Result<List<ResponseServiceLayerDto>>>
+    public async Task<Result<List<GetServiceLayerDTO>>> Handle(GetByNameServiceLayerQuery request, CancellationToken cancellationToken)
     {
-        public async Task<Result<List<ResponseServiceLayerDto>>> Handle(GetByNameServiceLayerQuery request, CancellationToken cancellationToken)
-        {
-            var service = await serviceLayerRepository.GetByName(request.ServiceName);
-            if (service == null)
-                return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
-            return mapper.Map<List<ResponseServiceLayerDto>>(service);
-        }
+        var service = await serviceLayerRepository.GetByName(request.ServiceName);
+        if (service == null)
+            return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
+        return mapper.Map<List<GetServiceLayerDTO>>(service);
     }
 }

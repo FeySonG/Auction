@@ -1,25 +1,24 @@
-﻿namespace Auction.Application.Features.PaymentCards.Update
+﻿namespace Auction.Application.Features.PaymentCards.Update;
+
+internal class UpdatePaymentCardCommandHandler(
+    IPaymentCardRepository repository,
+    IUnitOfWork uow,
+    IMapper mapper)
+    : ICommandHandler<UpdatePaymentCardCommand, Result<bool>>
 {
-    internal class UpdatePaymentCardCommandHandler(
-        IPaymentCardRepository repository,
-        IUnitOfWork uow,
-        IMapper mapper)
-        : ICommandHandler<UpdatePaymentCardCommand, Result<bool>>
+    public async Task<Result<bool>> Handle(UpdatePaymentCardCommand request, CancellationToken cancellationToken)
     {
-        public async Task<Result<bool>> Handle(UpdatePaymentCardCommand request, CancellationToken cancellationToken)
-        {
-            var card = await repository.GetByUserIdAsync(request.UserId);
+        var card = await repository.GetByUserIdAsync(request.UserId);
 
-            if (card == null)
-                return new Error(PaymentCardErrorCodes.UserIdNotFound, PaymentCardErrorMessages.UserIdNotFound);
+        if (card == null)
+            return new Error(PaymentCardErrorCodes.UserIdNotFound, PaymentCardErrorMessages.UserIdNotFound);
 
-            mapper.Map(request.PaymentCardDTO, card);
+        mapper.Map(request.PaymentCardDTO, card);
 
-            repository.Update(card);
+        repository.Update(card);
 
-            await uow.SaveChangesAsync();
+        await uow.SaveChangesAsync();
 
-            return true;
-        }
+        return true;
     }
 }

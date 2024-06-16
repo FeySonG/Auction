@@ -1,8 +1,6 @@
-﻿
-namespace Auction.Application.Features.ServiceLayers
+﻿namespace Auction.Application.Features.ServiceLayers;
+
+public class ServiceLayerErrorCode
 {
-    public class ServiceLayerErrorCode
-    {
-        public const string ServiceNotFound = "Service.IsNotFound";
-    }
+    public const string ServiceNotFound = "Service.IsNotFound";
 }

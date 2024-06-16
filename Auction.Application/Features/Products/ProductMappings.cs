@@ -1,12 +1,11 @@
-﻿namespace Auction.Application.Features.Products
+﻿namespace Auction.Application.Features.Products;
+
+public class ProductMappings : Profile
 {
-    public class ProductMappings : Profile
+    public ProductMappings()
     {
-        public ProductMappings()
-        {
-            CreateMap<Product, CreateProductDto>().ReverseMap();
-            CreateMap<Product, ResponseProductDto>().ReverseMap();
-            CreateMap<Product, UpdateProductDto>().ReverseMap();
-        }
+        CreateMap<Product, CreateProductDTO>().ReverseMap();
+        CreateMap<Product, GetProductDTO>().ReverseMap();
+        CreateMap<Product, UpdateProductDTO>().ReverseMap();
     }
 }

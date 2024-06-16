@@ -1,18 +1,17 @@
-﻿namespace Auction.DAL.Modules.Services
+﻿namespace Auction.DAL.Modules.ServiceLayers;
+
+public class ServiceLayerConfiguration : IEntityTypeConfiguration<ServiceLayer>
 {
-    public class ServiceLayerConfiguration : IEntityTypeConfiguration<ServiceLayer>
+    public void Configure(EntityTypeBuilder<ServiceLayer> builder)
     {
-        public void Configure(EntityTypeBuilder<ServiceLayer> builder)
-        {
-            builder.Property(x => x.Id)
-                .ValueGeneratedOnAdd();
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
 
-            builder.HasOne<User>()
-              .WithMany()
-              .HasForeignKey(x => x.UserId);
+        builder.HasOne<User>()
+          .WithMany()
+          .HasForeignKey(x => x.UserId);
 
-            builder.Property(x => x.Price)
-                .HasPrecision(18, 2);
-        }
+        builder.Property(x => x.Price)
+            .HasPrecision(18, 2);
     }
 }

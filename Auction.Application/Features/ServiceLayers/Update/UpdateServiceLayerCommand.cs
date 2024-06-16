@@ -1,4 +1,3 @@
-﻿namespace Auction.Application.Features.ServiceLayers.Update
-{
-    public record UpdateServiceLayerCommand(UpdateServiceLayerDto Dto, long id) : ICommand<Result<ResponseServiceLayerDto>>;
-}
+﻿namespace Auction.Application.Features.ServiceLayers.Update;
+
+public record UpdateServiceLayerCommand(UpdateServiceLayerDTO Dto, long id) : ICommand<Result<GetServiceLayerDTO>>;

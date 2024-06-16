@@ -1,8 +1,5 @@
-﻿using MediatR;
+﻿namespace Auction.Application.Abstractions;
 
-namespace Auction.Application.Abstractions
-{
-    public interface ICommand<TResponse> : IRequest<TResponse>;
+public interface ICommand<TResponse> : IRequest<TResponse>;
 
-    public interface ICommand : IRequest;
-}
+public interface ICommand : IRequest;

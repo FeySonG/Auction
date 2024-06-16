@@ -1,9 +1,8 @@
-﻿namespace Auction.Domain.Models.PaymentCards
+﻿namespace Auction.Domain.Models.PaymentCards;
+
+public enum PaymentCardType
 {
-    public enum PaymentCardType
-    {
-        Visa = 1,
-        MasterCard,
-        AmericanExpress
-    }
+    Visa = 1,
+    MasterCard,
+    AmericanExpress
 }

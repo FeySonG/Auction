@@ -1,15 +1,14 @@
-﻿namespace Auction.Application.Features.Products.GetById
-{
-    public class GetByIdProductQueryHandler (IProductRepository repository, IMapper mapper)
-        : IQueryHandler<GetByIdProductQuery, Result<ResponseProductDto>>
-    {
-        public async Task<Result<ResponseProductDto>> Handle(GetByIdProductQuery request, CancellationToken cancellationToken)
-        {
-            var product = await repository.GetById(request.Id);
-            if (product == null)
-                return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
+﻿namespace Auction.Application.Features.Products.GetById;
 
-            return mapper.Map<ResponseProductDto>(product);
-        }
+internal class GetByIdProductQueryHandler (IProductRepository repository, IMapper mapper)
+    : IQueryHandler<GetByIdProductQuery, Result<GetProductDTO>>
+{
+    public async Task<Result<GetProductDTO>> Handle(GetByIdProductQuery request, CancellationToken cancellationToken)
+    {
+        var product = await repository.GetById(request.Id);
+        if (product == null)
+            return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
+
+        return mapper.Map<GetProductDTO>(product);
     }
 }

@@ -1,4 +1,3 @@
-﻿namespace Auction.Application.Features.ServiceAuctions.Create
-{
-    public record CreateServiceAuctionCommand(CreateServiceAuctionDto Dto) : ICommand<Result<ResponseServiceAuctionDto>>;
-}
+﻿namespace Auction.Application.Features.ServiceAuctions.Create;
+
+public record CreateServiceAuctionCommand(CreateServiceAuctionDTO Dto) : ICommand<Result<GetServiceAuctionDTO>>;

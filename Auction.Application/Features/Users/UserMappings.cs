@@ -1,23 +1,22 @@
-﻿namespace Auction.Application.Features.Users
+﻿namespace Auction.Application.Features.Users;
+
+public class PaymentCardMappings : Profile
 {
-    public class PaymentCardMappings : Profile
+    public PaymentCardMappings()
     {
-        public PaymentCardMappings()
-        {
-            CreateMap<User, UserResponseDTO>().ReverseMap();
-            CreateMap<User, UserCreateDTO>().ReverseMap();
-            CreateMap<User, UserUpdateDTO>().ReverseMap();
+        CreateMap<User, GetUserDTO>().ReverseMap();
+        CreateMap<User, CreateUserDTO>().ReverseMap();
+        CreateMap<User, UpdateUserDTO>().ReverseMap();
 
-            CreateMap<User, UserGetProfileDTO>()
-           .ForMember(dest => dest.BankCard, opt => opt.MapFrom(src => src.BankCard))
-           .ForMember(dest => dest.Contact, opt => opt.MapFrom(src => src.Contact))
-           .ReverseMap()
-           .ForMember(dest => dest.BankCard, opt => opt.MapFrom(src => src.BankCard))
-           .ForMember(dest => dest.Contact, opt => opt.MapFrom(src => src.Contact));
+        CreateMap<User, GetUserProfileDTO>()
+       .ForMember(dest => dest.BankCard, opt => opt.MapFrom(src => src.BankCard))
+       .ForMember(dest => dest.Contact, opt => opt.MapFrom(src => src.Contact))
+       .ReverseMap()
+       .ForMember(dest => dest.BankCard, opt => opt.MapFrom(src => src.BankCard))
+       .ForMember(dest => dest.Contact, opt => opt.MapFrom(src => src.Contact));
 
 
-            CreateMap<UserContact, UserContactGetDTO>();
-            CreateMap<PaymentCard, PaymentCardGetDTO>();
-        }
+        CreateMap<UserContact, GetUserContactDTO>();
+        CreateMap<PaymentCard, GetPaymentCardDTO>();
     }
 }
