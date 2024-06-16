@@ -3,6 +3,7 @@
 [AllowAnonymous]
 public class AuthController(ISender sender) : Controller
 {
+    [HttpGet]
     public IActionResult Registration()
     {
         return View();
@@ -34,6 +35,7 @@ public class AuthController(ISender sender) : Controller
 
     }
 
+    [HttpGet]
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync();

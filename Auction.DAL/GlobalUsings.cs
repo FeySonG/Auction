@@ -21,6 +21,7 @@ global using Auction.DAL.Modules.AuctionLots.ServiceAuctions;
 global using Auction.Application.Services;
 
 global using System.Reflection;
+
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;

@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-
-namespace Auction.Application.Extensions;
+﻿namespace Auction.Application.Extensions;
 
 public static class DependencyInjection
 {

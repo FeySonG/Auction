@@ -9,4 +9,5 @@ public class GetProductDTO
     public decimal Price { get; set; } = 0;
     public long Quantity { get; set; } = 1;
     public ProductCategory Category { get; set; } = ProductCategory.Unknown;
+    public string? ImagePath { get; set; }
 }

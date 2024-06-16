@@ -3,6 +3,7 @@
 [Authorize]
 public class UserController(ISender sender) : Controller
 {
+    [HttpGet]
     public async Task<IActionResult> Profile()
     {
         int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
@@ -21,14 +22,14 @@ public class UserController(ISender sender) : Controller
         );
 
     }
-    public IActionResult Adminka()
+
+    [HttpGet]
+    public IActionResult AdminDashboard()
     {
         return View();
     }
 
 
-
-    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -47,14 +48,12 @@ public class UserController(ISender sender) : Controller
     }
 
 
-    [Authorize(Roles = "Admin")]
     [HttpGet]
-    public IActionResult GetUserById()
+    public IActionResult GetById()
     {
         return View();
     }
 
-    [HttpPost]
     public async Task<IActionResult> GetById(long id)
     {
         var result = await sender.Send(new GetByIdUserQuery(id));
@@ -105,21 +104,20 @@ public class UserController(ISender sender) : Controller
 
     }
 
-
+    [HttpGet]
     public IActionResult Delete()
     {
         return View();
     }
 
-    [Authorize(Roles = "Admin")]
     [HttpPost]
-    [ActionName("DeleteUser")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(long id)
     {
         var result = await sender.Send(new DeleteUserCommand(id));
 
         return result.Match(
-            onSuccess: value => RedirectToAction("Adminka"),  /// обработать мол удаление прошло успешно туда сюда
+            onSuccess: value => RedirectToAction("AdminDashboard"),  /// обработать мол удаление прошло успешно туда сюда
             onFailure: error =>
             {
                 if (error.Code == UserErrorCodes.IdNotFound)
@@ -130,6 +128,7 @@ public class UserController(ISender sender) : Controller
         );
     }
 
+    [HttpGet]
 
     [Authorize(Roles = "Admin")]
     public IActionResult ChangeRole()
@@ -143,7 +142,7 @@ public class UserController(ISender sender) : Controller
         var result = await sender.Send(new UpdateUserRoleCommand(role, id));
 
         return result.Match(
-            onSuccess: value => RedirectToAction("Adminka"),
+            onSuccess: value => RedirectToAction("AdminDashboard"),
             onFailure: error =>
             {
                 if (error.Code == UserErrorCodes.IdNotFound)

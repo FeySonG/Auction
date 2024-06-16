@@ -4,7 +4,9 @@ global using AutoMapper;
 
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Authentication;
+global using Microsoft.Extensions.DependencyInjection;
 
+global using System.Reflection;
 global using System.Security.Claims;
 global using System.ComponentModel.DataAnnotations;
 
