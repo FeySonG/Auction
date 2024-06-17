@@ -2,17 +2,20 @@
 
 public class UpdateUserContactDTO
 {
-    [StringLength(100)]
+
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(22, ErrorMessage = Message.MAX_LENGTH)]
     public required string PhoneNumber { get; set; }
-    [StringLength(100)]
-    public string? Telegram { get; set; }
 
-    [StringLength(100)]
-    public string? Instagram { get; set; }
+    [MaxLength(20, ErrorMessage = Message.MAX_LENGTH)]
+    public string Telegram { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    public string? City { get; set; }
+    [MaxLength(20, ErrorMessage = Message.MAX_LENGTH)]
+    public string Instagram { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    public string? Country { get; set; }
+    [MaxLength(100, ErrorMessage = Message.MAX_LENGTH)]
+    public string City { get; set; } = string.Empty;
+
+    [MaxLength(100, ErrorMessage = Message.MAX_LENGTH)]
+    public string Country { get; set; } = string.Empty;
 }

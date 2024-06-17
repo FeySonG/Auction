@@ -1,5 +1,6 @@
 ﻿namespace Auction.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/services-auctions")]
 public class ServiceAuctionController(ISender sender) : ControllerBase

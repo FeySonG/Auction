@@ -3,6 +3,7 @@ global using System.Security.Claims;
 global using Microsoft.AspNetCore.Mvc;
 global using System.Text.Json.Serialization;
 global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Authentication;
 
 global using Auction.Domain.Result;
 global using Auction.Domain.Models.Users;
@@ -58,3 +59,4 @@ global using Auction.Application.Features.ServiceLayers.GetByName;
 global using Auction.Application.Features.ServiceLayers.GetUserServices;
 global using Auction.Application.Features.ProductAuctions.ChangeCurrentPrice;
 global using Auction.Application.Features.ServiceAuctions.ChangeCurrentPrice;
+global using Auction.Application.Features.UserContacts.DeleteUserContact;

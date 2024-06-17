@@ -2,23 +2,19 @@
 
 public class CreateUserContactDTO
 {
-    [StringLength(100)]
-    [Required]
-    public string PhoneNumber { get; set; } = string.Empty;
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(22, ErrorMessage = Message.MAX_LENGTH)]
+    public required string PhoneNumber { get; set; }
 
-    [StringLength(100)]
-    [Required]
+    [MaxLength(20, ErrorMessage = Message.MAX_LENGTH)]
     public string Telegram { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    [Required]
+    [MaxLength(20, ErrorMessage = Message.MAX_LENGTH)]
     public string Instagram { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    [Required]
+    [MaxLength(100, ErrorMessage = Message.MAX_LENGTH)]
     public string City { get; set; } = string.Empty;
 
-    [StringLength(100)]
-    [Required]
+    [MaxLength(100, ErrorMessage = Message.MAX_LENGTH)]
     public string Country { get; set; } = string.Empty;
 }

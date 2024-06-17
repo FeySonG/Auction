@@ -1,25 +1,27 @@
 ﻿namespace Auction.Application.Contracts.PaymentCards;
+
 public class CreatePaymentCardDTO
 {
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(16, ErrorMessage = Message.MAX_LENGTH)]
+    public required string CardNumber { get; set; }
 
-    [Required]
-    [StringLength(16)]
-    public string CardNumber { get; set; } = string.Empty;
-
-    [Required]
-    [StringLength(5)]
-    [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{2}$", ErrorMessage = "Введите дату в формате MM/YY")]
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(5, ErrorMessage = Message.MAX_LENGTH)]
+    [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{2}$", ErrorMessage = Message.EXPIRY_DATE)]
     [DisplayFormat(DataFormatString = "{0:MM/yy}", ApplyFormatInEditMode = true)]
-    public string ExpiryDate { get; set; } = string.Empty;
+    public required string ExpiryDate { get; set; }
 
-    [Required]
-    [StringLength(3)]
-    public string CVV { get; set; } = string.Empty;
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(3, ErrorMessage = Message.MAX_LENGTH)]
+    [RegularExpression("^[0-9]*$", ErrorMessage = Message.ONLY_DIGITAL)]
+    public required string CVV { get; set; }
 
-    [Required]
-    public PaymentCardType CardType { get; set; }
+    [Required(ErrorMessage = Message.REQUIRED)]
+    [EnumDataType(typeof(PaymentCardType))]
+    public required PaymentCardType CardType { get; set; }
 
-    [Required]
-    [Range(0, double.MaxValue)]
-    public decimal Balance { get; set; } = 0;
+    [Required(ErrorMessage = Message.REQUIRED)]
+    [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
+    public required decimal Balance { get; set; }
 }

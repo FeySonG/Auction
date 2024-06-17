@@ -2,13 +2,9 @@
 
 public class GetUserContactDTO
 {
-    public string? PhoneNumber { get; set; }
-
-    public string? Telegram { get; set; } 
-
-    public string? Instagram { get; set; }
-
-    public string? City { get; set; } 
-
-    public string? Country { get; set; }
+    public string PhoneNumber { get; set; } = string.Empty;
+    public string Telegram { get; set; } = string.Empty;
+    public string Instagram { get; set; } = string.Empty; 
+    public string City { get; set; } = string.Empty;
+    public string Country { get; set; } = string.Empty;
 }

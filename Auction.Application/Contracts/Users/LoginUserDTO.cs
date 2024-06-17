@@ -2,7 +2,12 @@
 
 public class LoginUserDTO
 {
-    [EmailAddress]
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(40, ErrorMessage = Message.MAX_LENGTH)]
+    [EmailAddress(ErrorMessage = Message.EMAIL)]
+    public required string Email { get; set; }
+
+    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
+    [MaxLength(30, ErrorMessage = Message.MAX_LENGTH)]
+    public required string Password { get; set; }
 }

@@ -1,8 +1,8 @@
 ﻿namespace Auction.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/user-contacts")]
-[Authorize]
 public class UserContactController(ISender sender) : ControllerBase
 {
     [HttpPost]
@@ -43,4 +43,24 @@ public class UserContactController(ISender sender) : ControllerBase
             return BadRequest();
         });
     }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCurrentContact()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new DeleteUserContactCommand(userId));
+
+        return result.Match(
+            onSuccess: value => NoContent(),
+            onFailure: error =>
+            {
+                if (error.Code == UserErrorCodes.IdNotFound)
+                    return BadRequest(error.Message);
+
+                return BadRequest();
+            }
+        );
+    }
+
 }

@@ -1,5 +1,6 @@
 ﻿namespace Auction.MVC.Controllers;
 
+[Authorize]
 public class UserContactController(ISender sender) : Controller
 {
     [HttpGet]
@@ -53,5 +54,24 @@ public class UserContactController(ISender sender) : Controller
 
             return BadRequest();
         });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteCurrentContact()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new DeleteUserContactCommand(userId));
+
+        return result.Match(
+            onSuccess: value => RedirectToAction("Profile", "User"),
+            onFailure: error =>
+            {
+                if (error.Code == UserErrorCodes.IdNotFound)
+                    return BadRequest(error.Message);
+
+                return BadRequest();
+            }
+        );
     }
 }

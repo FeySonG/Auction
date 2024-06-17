@@ -1,5 +1,6 @@
 ﻿namespace Auction.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/services")]
 public class ServiceLayerController(ISender sender) : ControllerBase

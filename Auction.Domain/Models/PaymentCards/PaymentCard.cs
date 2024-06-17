@@ -7,8 +7,8 @@ public class PaymentCard : Entity
     [StringLength(16)]
     public required string CardNumber { get; set; }
 
+
     [StringLength(5)]
-  
     public required string ExpiryDate { get; set; }
 
     [StringLength(3)]

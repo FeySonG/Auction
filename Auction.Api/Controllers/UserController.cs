@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿namespace Auction.Api.Controllers;
 
-namespace Auction.Api.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/users")]
-[Authorize]
 public class UserController(ISender sender) : ControllerBase
 {
-    [Authorize(Roles = "Admin, User")]
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -88,7 +86,7 @@ public class UserController(ISender sender) : ControllerBase
         );
     }
 
-    [Authorize(Roles = "Admin, User")]
+    [Authorize(Roles = "Admin")]
     [HttpPut("role/{id}")]
     public async Task<IActionResult> ChangeRole(long id, UserRole role)
     {
@@ -111,6 +109,25 @@ public class UserController(ISender sender) : ControllerBase
     public async Task<IActionResult> Delete(long id)
     {
         var result = await sender.Send(new DeleteUserCommand(id));
+
+        return result.Match(
+            onSuccess: value => NoContent(),
+            onFailure: error =>
+            {
+                if (error.Code == UserErrorCodes.IdNotFound)
+                    return BadRequest(error.Message);
+
+                return BadRequest();
+            }
+        );
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new DeleteUserCommand(userId));
 
         return result.Match(
             onSuccess: value => NoContent(),

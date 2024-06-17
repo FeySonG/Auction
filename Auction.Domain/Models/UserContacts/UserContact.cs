@@ -2,20 +2,20 @@
 
 public class UserContact : Entity
 {
-    public long UserId { get; set; }
+    public required long UserId { get; set; }
 
-    [StringLength(100)]
+    [StringLength(22)]
     public required string PhoneNumber { get; set; }
     
-    [StringLength(100)]
-    public string? Telegram { get; set; }
+    [StringLength(20)]
+    public string Telegram { get; set; } = string.Empty;
+
+    [StringLength(20)]
+    public string Instagram { get; set; } = string.Empty;
 
     [StringLength(100)]
-    public string? Instagram { get; set; }
+    public string City { get; set; } = string.Empty;
 
     [StringLength(100)]
-    public string? City { get; set; }
-
-    [StringLength(100)]
-    public string? Country { get; set; }
+    public string Country { get; set; } = string.Empty;
 }

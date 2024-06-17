@@ -56,5 +56,7 @@ global using Auction.Application.Features.Users.Auth.Registration;
 global using Auction.Application.Features.ServiceAuctions.GetById;
 global using Auction.Application.Features.ServiceLayers.GetByName;
 global using Auction.Application.Features.ServiceLayers.GetUserServices;
+global using Auction.Application.Features.UserContacts.DeleteUserContact;
 global using Auction.Application.Features.ProductAuctions.ChangeCurrentPrice;
 global using Auction.Application.Features.ServiceAuctions.ChangeCurrentPrice;
+

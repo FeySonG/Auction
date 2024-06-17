@@ -23,6 +23,7 @@ public class UserController(ISender sender) : Controller
 
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult AdminDashboard()
     {
@@ -30,6 +31,7 @@ public class UserController(ISender sender) : Controller
     }
 
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -48,12 +50,15 @@ public class UserController(ISender sender) : Controller
     }
 
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult GetById()
     {
         return View();
     }
 
+    [Authorize(Roles = "Admin")]
+    [HttpPost]
     public async Task<IActionResult> GetById(long id)
     {
         var result = await sender.Send(new GetByIdUserQuery(id));
@@ -69,6 +74,7 @@ public class UserController(ISender sender) : Controller
             }
         );
     }
+
 
     [HttpGet]
     public IActionResult Update()
@@ -104,14 +110,15 @@ public class UserController(ISender sender) : Controller
 
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public IActionResult Delete()
     {
         return View();
     }
 
-    [HttpPost]
     [Authorize(Roles = "Admin")]
+    [HttpPost]
     public async Task<IActionResult> Delete(long id)
     {
         var result = await sender.Send(new DeleteUserCommand(id));
@@ -128,14 +135,33 @@ public class UserController(ISender sender) : Controller
         );
     }
 
-    [HttpGet]
+    [HttpPost]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new DeleteUserCommand(userId));
+
+        return result.Match(
+            onSuccess: value => RedirectToAction( "Registration", "Auth"),
+            onFailure: error =>
+            {
+                if (error.Code == UserErrorCodes.IdNotFound)
+                    return BadRequest(error.Message);
+
+                return BadRequest();
+            }
+        );
+    }
 
     [Authorize(Roles = "Admin")]
+    [HttpGet]
     public IActionResult ChangeRole()
     {
         return View();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> ChangeRole(long id, UserRole role)
     {

@@ -1,5 +1,6 @@
 ﻿namespace Auction.MVC.Controllers;
 
+[Authorize]
 public class ServiceLayerController(ISender sender) : Controller
 {
     [HttpGet]

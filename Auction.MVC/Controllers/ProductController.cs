@@ -1,5 +1,6 @@
 ﻿namespace Auction.MVC.Controllers;
 
+[Authorize]
 public class ProductController(ISender sender , IWebHostEnvironment appEnvironment) : Controller
 {
     public IActionResult Create()

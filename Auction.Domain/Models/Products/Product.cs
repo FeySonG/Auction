@@ -2,12 +2,20 @@
 
 public class Product : Entity
 {
-    public long UserId { get; set; }
+    public required long UserId { get; set; }
+    
+    [StringLength(50)]
     public required string ProductName { get; set; }
-    public string? Description { get; set; }
-    public decimal Price { get; set; } = 0;
-    public long Quantity { get; set; } = 1;
-    public ProductCategory Category { get; set; } = ProductCategory.Unknown;
+
+    [StringLength(300)]
+    public string Description { get; set; } = string.Empty;
+
+    public required decimal Price { get; set; } = 0;
+
+    public required long Quantity { get; set; } = 1;
+
+    public required ProductCategory Category { get; set; } = ProductCategory.Unknown;
+
     public string ImagePath { get; set; } = string.Empty;
 
 }

@@ -3,9 +3,9 @@
 public class GetServiceLayerDTO
 {
     public long Id { get; set; }
-    public required long UserId { get; set; }
-    public required string ServiceName { get; set; }
-    public required string Description { get; set; }
+    public long UserId { get; set; }
+    public string ServiceName { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public ServiceLayerCategory Category { get; set; }
     public decimal Price { get; set; }
-    public ServiceLayerCategory? Category { get; set; }
 }
