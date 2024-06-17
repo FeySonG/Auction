@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Contracts.PaymentCards;
+﻿using Auction.Application.Validation;
+
+namespace Auction.Application.Contracts.PaymentCards;
 
 public class UpdatePaymentCardDTO
 {

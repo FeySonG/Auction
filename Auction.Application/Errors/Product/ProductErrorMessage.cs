@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.Products;
+﻿namespace Auction.Application.Errors.Product;
 
 public class ProductErrorMessage
 {

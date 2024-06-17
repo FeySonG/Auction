@@ -1,4 +1,6 @@
-﻿namespace Auction.MVC.Controllers;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.MVC.Controllers;
 
 [Authorize]
 public class UserController(ISender sender) : Controller

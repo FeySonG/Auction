@@ -11,7 +11,6 @@ public class User : Entity
     [MaxLength(50)]
     public string LastName { get; set; } = string.Empty;
 
-    [MaxLength(40)]
     public required string Password { get; set; }
 
     [MaxLength(40)]

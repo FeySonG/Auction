@@ -1,4 +1,6 @@
 ﻿
+using Auction.Application.Validation;
+
 namespace Auction.Application.Contracts.Users;
 
 public class CreateUserDTO

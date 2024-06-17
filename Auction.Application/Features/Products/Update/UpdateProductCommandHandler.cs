@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Products.Update;
+﻿using Auction.Application.Errors.Product;
+
+namespace Auction.Application.Features.Products.Update;
 
 internal class UpdateProductCommandHandler(
     IProductRepository productRepository,

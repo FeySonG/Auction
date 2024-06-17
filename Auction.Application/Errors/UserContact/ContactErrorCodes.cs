@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.UserContacts;
+﻿namespace Auction.Application.Errors.UserContact;
 
 public class ContactErrorCodes
 {

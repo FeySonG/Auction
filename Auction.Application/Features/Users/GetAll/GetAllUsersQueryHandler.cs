@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Users.GetAll;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Application.Features.Users.GetAll;
 
 public class GetAllUsersQueryHandler(IUserRepository userRepository, IMapper mapper) 
     : IQueryHandler<GetAllUsersQuery, Result<List<GetUserDTO>>>

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Products.Delete;
+﻿using Auction.Application.Errors.Product;
+
+namespace Auction.Application.Features.Products.Delete;
 
 internal class DeleteProductCommandHandler(
     IProductRepository productRepository,

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Products.GetAll;
+﻿using Auction.Application.Errors.Global;
+
+namespace Auction.Application.Features.Products.GetAll;
 
 internal class GetAllProductQueryHandler(IProductRepository productRepository, IMapper mapper) : IQueryHandler<GetAllProductQuery, Result<List<GetProductDTO>>>
 {

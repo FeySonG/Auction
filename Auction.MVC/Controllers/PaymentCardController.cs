@@ -1,4 +1,6 @@
-﻿namespace Auction.MVC.Controllers;
+﻿using Auction.Application.Errors.PaymentCard;
+
+namespace Auction.MVC.Controllers;
 
 [Authorize]
 public class PaymentCardController(ISender sender) : Controller

@@ -24,7 +24,7 @@ global using Auction.Application.Abstractions;
 global using Auction.Application.Contracts.Users;
 global using Auction.Application.Features.Products;
 global using Auction.Application.Contracts.Products;
-global using Auction.Application.Contracts.Validation;
+global using Auction.Application.Validation;
 global using Auction.Application.Contracts.UserContacts;
 global using Auction.Application.Features.ServiceLayers;
 global using Auction.Application.Contracts.PaymentCards;

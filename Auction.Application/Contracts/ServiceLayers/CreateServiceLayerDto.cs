@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Contracts.ServiceLayers;
+﻿using Auction.Application.Validation;
+
+namespace Auction.Application.Contracts.ServiceLayers;
 
 public class CreateServiceLayerDTO
 {

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceAuctions.ChangeCurrentPrice;
+﻿using Auction.Application.Errors.ServiceAuction;
+
+namespace Auction.Application.Features.ServiceAuctions.ChangeCurrentPrice;
 
 internal class ChangeCurrentPriceServiceAuctionCommandHandler(
     IServiceAuctionRepository serviceAuctionRepository,

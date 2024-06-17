@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Users.GetById;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Application.Features.Users.GetById;
 
 internal class GetByIdUserQueryHandler(IUserRepository userRepository, IMapper mapper)
     : IQueryHandler<GetByIdUserQuery, Result<GetUserDTO>>

@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.Users;
+﻿namespace Auction.Application.Errors.User;
 
 public class UserErrorCodes
 {

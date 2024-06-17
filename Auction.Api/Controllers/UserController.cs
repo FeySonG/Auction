@@ -1,4 +1,6 @@
-﻿namespace Auction.Api.Controllers;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Api.Controllers;
 
 [Authorize]
 [ApiController]

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.PaymentCards.Update;
+﻿using Auction.Application.Errors.PaymentCard;
+
+namespace Auction.Application.Features.PaymentCards.Update;
 
 internal class UpdatePaymentCardCommandHandler(
     IPaymentCardRepository repository,

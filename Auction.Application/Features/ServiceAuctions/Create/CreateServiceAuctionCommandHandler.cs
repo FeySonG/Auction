@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceAuctions.Create;
+﻿using Auction.Application.Errors.ServiceLayer;
+
+namespace Auction.Application.Features.ServiceAuctions.Create;
 
 internal class CreateServiceAuctionCommandHandler(
     IServiceAuctionRepository serviceAuctionRepository,

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceAuctions.GetById;
+﻿using Auction.Application.Errors.ServiceAuction;
+
+namespace Auction.Application.Features.ServiceAuctions.GetById;
 
 internal class GetByIdServiceAuctionQueryHandler(
     IServiceAuctionRepository serviceAuctionRepository,

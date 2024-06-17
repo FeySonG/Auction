@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Contracts.Users;
+﻿using Auction.Application.Validation;
+
+namespace Auction.Application.Contracts.Users;
 
 public class LoginUserDTO
 {

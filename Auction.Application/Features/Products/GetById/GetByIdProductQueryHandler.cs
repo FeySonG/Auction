@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Products.GetById;
+﻿using Auction.Application.Errors.Product;
+
+namespace Auction.Application.Features.Products.GetById;
 
 internal class GetByIdProductQueryHandler (IProductRepository repository, IMapper mapper)
     : IQueryHandler<GetByIdProductQuery, Result<GetProductDTO>>

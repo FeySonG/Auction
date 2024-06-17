@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features;
+﻿namespace Auction.Application.Errors.Global;
 
 public class GlobalErrorMessage
 {

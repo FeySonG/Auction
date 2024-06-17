@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Users.Update;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Application.Features.Users.Update;
 
 internal class UpdateUserCommandHandler(
     IUserRepository repository,

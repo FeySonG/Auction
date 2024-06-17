@@ -1,4 +1,6 @@
-﻿namespace Auction.Api.Controllers;
+﻿using Auction.Application.Errors.PaymentCard;
+
+namespace Auction.Api.Controllers;
 
 [ApiController]
 [Route("api/payment-cards")]

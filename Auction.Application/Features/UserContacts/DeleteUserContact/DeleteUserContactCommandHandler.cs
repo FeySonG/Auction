@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.UserContacts.DeleteUserContact;
+﻿using Auction.Application.Errors.UserContact;
+
+namespace Auction.Application.Features.UserContacts.DeleteUserContact;
 
 internal class DeleteUserContactCommandHandler(IUserContactRepository repository, IUnitOfWork uow) : ICommandHandler<DeleteUserContactCommand, Result<bool>>
 {

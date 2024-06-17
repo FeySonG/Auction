@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.ServiceLayers;
+﻿namespace Auction.Application.Errors.ServiceLayer;
 
 public class ServiceLayerErrorCode
 {

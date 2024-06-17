@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Users.Auth.Registration;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Application.Features.Users.Auth.Registration;
 
 internal class RegistrUserCommandHandler(
     IUserRepository userRepository

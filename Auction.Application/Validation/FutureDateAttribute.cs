@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Contracts.Validation;
+﻿namespace Auction.Application.Validation;
 
 public class FutureDateAttribute : ValidationAttribute
 {

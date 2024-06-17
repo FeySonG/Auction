@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.PaymentCards.Create;
+﻿using Auction.Application.Errors.PaymentCard;
+
+namespace Auction.Application.Features.PaymentCards.Create;
 
 internal class CreatePaymentCardCommandHandler(IPaymentCardRepository repository, IUnitOfWork uow)
     : ICommandHandler<CreatePaymentCardCommand, Result<bool>>

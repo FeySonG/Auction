@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.UserContacts.Create;
+﻿using Auction.Application.Errors.UserContact;
+
+namespace Auction.Application.Features.UserContacts.Create;
 
 internal class CreateUserContactCommandHandler(IUserContactRepository repository, IUnitOfWork uow) : ICommandHandler<CreateUserContactCommand, Result<bool>>
 {

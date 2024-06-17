@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.ServiceAuctions;
+﻿namespace Auction.Application.Errors.ServiceAuction;
 
 public class ServiceAuctionErrorCode
 {

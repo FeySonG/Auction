@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceLayers.Update;
+﻿using Auction.Application.Errors.ServiceLayer;
+
+namespace Auction.Application.Features.ServiceLayers.Update;
 
 internal class UpdateServiceLayerCommandHandler(
     IServiceLayerRepository serviceLayerRepository,

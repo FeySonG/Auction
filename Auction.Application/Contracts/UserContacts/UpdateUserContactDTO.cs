@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Contracts.UserContacts;
+﻿using Auction.Application.Validation;
+
+namespace Auction.Application.Contracts.UserContacts;
 
 public class UpdateUserContactDTO
 {

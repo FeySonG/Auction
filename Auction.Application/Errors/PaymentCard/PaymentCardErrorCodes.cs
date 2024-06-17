@@ -1,4 +1,4 @@
-﻿namespace Auction.Application.Features.PaymentCards;
+﻿namespace Auction.Application.Errors.PaymentCard;
 
 public class PaymentCardErrorCodes
 {

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.Users.Delete;
+﻿using Auction.Application.Errors.User;
+
+namespace Auction.Application.Features.Users.Delete;
 
 internal class DeleteUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<DeleteUserCommand, Result<bool>>
 {

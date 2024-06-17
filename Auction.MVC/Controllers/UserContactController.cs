@@ -1,4 +1,7 @@
-﻿namespace Auction.MVC.Controllers;
+﻿using Auction.Application.Errors.User;
+using Auction.Application.Errors.UserContact;
+
+namespace Auction.MVC.Controllers;
 
 [Authorize]
 public class UserContactController(ISender sender) : Controller

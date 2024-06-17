@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceLayers.GetByName;
+﻿using Auction.Application.Errors.ServiceLayer;
+
+namespace Auction.Application.Features.ServiceLayers.GetByName;
 
 internal class GetByNameServiceLayerQueryHandler(
     IServiceLayerRepository serviceLayerRepository,
