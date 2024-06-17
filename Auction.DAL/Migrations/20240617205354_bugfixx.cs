@@ -5,7 +5,7 @@
 namespace Auction.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class ResizePasswordColumn : Migration
+    public partial class bugfixx : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
