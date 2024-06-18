@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.PaymentCard;
-
-namespace Auction.Application.Features.PaymentCards.Delete;
+﻿namespace Auction.Application.Features.PaymentCards.Delete;
 
 internal class DeletePaymentCardCommandHandler 
     (IPaymentCardRepository repository,

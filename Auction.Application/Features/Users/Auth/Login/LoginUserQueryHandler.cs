@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.User;
-
-namespace Auction.Application.Features.Users.Auth.Login;
+﻿namespace Auction.Application.Features.Users.Auth.Login;
 
 internal class LoginUserQueryHandler : IQueryHandler<LoginUserQuery, Result<User>>
 {

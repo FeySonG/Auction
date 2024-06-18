@@ -107,7 +107,7 @@ public class UserController(ISender sender) : ControllerBase
     }
 
     [Authorize(Roles = "Admin")]
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(long id)
     {
         var result = await sender.Send(new DeleteUserCommand(id));

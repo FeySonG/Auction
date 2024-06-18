@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.Products.Create;
+﻿namespace Auction.Application.Features.Products.Create;
 
 internal class CreateProductCommandHandler(
     IHttpContextAccessor accessor,

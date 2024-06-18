@@ -1,6 +1,4 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.ServiceLayers;
+﻿namespace Auction.Application.Contracts.ServiceLayers;
 
 public class UpdateServiceLayerDTO
 {

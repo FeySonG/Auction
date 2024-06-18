@@ -1,11 +1,6 @@
-﻿using Auction.Application.Errors.User;
+﻿namespace Auction.Application.Features.Users.Update;
 
-namespace Auction.Application.Features.Users.Update;
-
-internal class UpdateUserCommandHandler(
-    IUserRepository repository,
-    IMapper mapper,
-    IUnitOfWork uow)
+internal class UpdateUserCommandHandler(IUserRepository repository, IMapper mapper, IUnitOfWork uow)
     : ICommandHandler<UpdateUserCommand, Result<bool>>
 {
     public async Task<Result<bool>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)

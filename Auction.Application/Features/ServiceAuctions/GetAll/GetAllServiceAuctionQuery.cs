@@ -1,3 +1,3 @@
 ﻿namespace Auction.Application.Features.ServiceAuctions.GetAll;
 
-public class GetAllServiceAuctionQuery : IQuery<Result<List<GetServiceAuctionDTO>>>;
+public record GetAllServiceAuctionQuery : IQuery<Result<List<GetServiceAuctionDTO>>>;

@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.Products.GetByName;
+﻿namespace Auction.Application.Features.Products.GetByName;
 
 internal class GetByNameProductQueryHandler(IProductRepository productRepository, IMapper mapper)
     : IQueryHandler<GetByNameProductQuery, Result<List<GetProductDTO>>>

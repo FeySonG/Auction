@@ -1,6 +1,4 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.ServiceAuctions;
+﻿namespace Auction.Application.Contracts.ServiceAuctions;
 
 public class CreateServiceAuctionDTO
 {
@@ -16,7 +14,6 @@ public class CreateServiceAuctionDTO
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     public required decimal StartingPrice { get; set; }
-
 
     [Required(ErrorMessage = Message.REQUIRED)]
     [FutureDate(ErrorMessage = Message.CANT_BE_PAST)]

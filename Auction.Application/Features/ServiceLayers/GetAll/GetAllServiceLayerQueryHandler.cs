@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Global;
-
-namespace Auction.Application.Features.ServiceLayers.GetAll;
+﻿namespace Auction.Application.Features.ServiceLayers.GetAll;
 
 internal class GetAllServiceLayerQueryHandler(IServiceLayerRepository serviceLayerRepository,
     IMapper mapper) 

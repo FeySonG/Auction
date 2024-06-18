@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.User;
-
-namespace Auction.Application.Features.Users.UpdateRole;
+﻿namespace Auction.Application.Features.Users.UpdateRole;
 
 internal class UpdateUserRoleCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateUserRoleCommand, Result<bool>>
 {

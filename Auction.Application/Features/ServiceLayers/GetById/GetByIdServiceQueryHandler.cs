@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.ServiceLayers.GetById;
+﻿namespace Auction.Application.Features.ServiceLayers.GetById;
 
 internal class GetByIdServiceQueryHandler(IServiceLayerRepository repository, IMapper mapper)
    : IQueryHandler<GetByIdServiceQuery, Result<GetServiceLayerDTO>>

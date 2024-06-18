@@ -16,6 +16,9 @@ global using Auction.Application.Extensions;
 global using Auction.Application.Features.Users;
 global using Auction.Application.Contracts.Users;
 global using Auction.Application.Contracts.Products;
+global using Auction.Application.Contracts.ProductAuctions;
+global using Auction.Application.Contracts.ServiceAuctions;
+
 global using Auction.Application.Features.UserContacts;
 global using Auction.Application.Features.Users.Delete;
 global using Auction.Application.Features.Users.GetAll;
@@ -31,8 +34,6 @@ global using Auction.Application.Features.Products.Delete;
 global using Auction.Application.Features.Products.GetAll;
 global using Auction.Application.Features.Products.GetById;
 global using Auction.Application.Features.Users.Auth.Login;
-global using Auction.Application.Contracts.ServiceAuctions;
-global using Auction.Application.Contracts.ProductAuctions;
 global using Auction.Application.Features.Users.UpdateRole;
 global using Auction.Application.Features.Users.UserProfile;
 global using Auction.Application.Features.Products.GetByName;

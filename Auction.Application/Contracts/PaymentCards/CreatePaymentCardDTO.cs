@@ -1,11 +1,10 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.PaymentCards;
+﻿namespace Auction.Application.Contracts.PaymentCards;
 
 public class CreatePaymentCardDTO
 {
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(16, ErrorMessage = Message.MAX_LENGTH)]
+    [MinLength(16, ErrorMessage = Message.MIN_LENGTH)]
     public required string CardNumber { get; set; }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
@@ -16,6 +15,7 @@ public class CreatePaymentCardDTO
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(3, ErrorMessage = Message.MAX_LENGTH)]
+    [MinLength(3, ErrorMessage = Message.MIN_LENGTH)]
     [RegularExpression("^[0-9]*$", ErrorMessage = Message.ONLY_DIGITAL)]
     public required string CVV { get; set; }
 

@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.UserContact;
-
-namespace Auction.Application.Features.UserContacts.Update;
+﻿namespace Auction.Application.Features.UserContacts.Update;
 
 internal class UpdateUserContactCommandHandler(
     IUserContactRepository userContactRepository,

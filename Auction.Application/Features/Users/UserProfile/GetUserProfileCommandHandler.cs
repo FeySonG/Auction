@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.User;
-
-namespace Auction.Application.Features.Users.UserProfile;
+﻿namespace Auction.Application.Features.Users.UserProfile;
 
 internal class GetUserProfileCommandHandler(IUserRepository repository, IMapper mapper) : ICommandHandler<GetUserProfileCommand, Result<GetUserProfileDTO>>
 {

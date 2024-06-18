@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.Products.GetUserProduct;
+﻿namespace Auction.Application.Features.Products.GetUserProduct;
 
 internal class GetUserProductQueryHandler : IQueryHandler<GetUserProductQuery, Result<List<GetProductDTO>>>
 {

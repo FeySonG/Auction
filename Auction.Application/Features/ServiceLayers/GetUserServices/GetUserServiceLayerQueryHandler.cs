@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.ServiceLayer;
-
-namespace Auction.Application.Features.ServiceLayers.GetUserServices;
+﻿namespace Auction.Application.Features.ServiceLayers.GetUserServices;
 
 internal class GetUserServiceLayerQueryHandler(
     IServiceLayerRepository serviceLayerRepository,

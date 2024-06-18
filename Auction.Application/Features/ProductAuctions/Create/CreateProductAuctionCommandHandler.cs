@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.ProductAuctions.Create;
+﻿namespace Auction.Application.Features.ProductAuctions.Create;
 
 internal class CreateProductAuctionCommandHandler(
     IProductAuctionRepository productAuctionRepository,

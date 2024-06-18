@@ -1,6 +1,4 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.ProductAuctions;
+﻿namespace Auction.Application.Contracts.ProductAuctions;
 
 public class CreateProductAuctionDTO
 {

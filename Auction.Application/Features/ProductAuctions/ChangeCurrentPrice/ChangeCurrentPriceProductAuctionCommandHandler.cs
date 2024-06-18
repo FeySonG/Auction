@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.ProductAuction;
-
-namespace Auction.Application.Features.ProductAuctions.ChangeCurrentPrice;
+﻿namespace Auction.Application.Features.ProductAuctions.ChangeCurrentPrice;
 
 public class ChangeCurrentPriceProductAuctionCommandHandler(
     IProductAuctionRepository productAuctionRepository,

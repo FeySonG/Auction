@@ -1,6 +1,4 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.Products;
+﻿namespace Auction.Application.Contracts.Products;
 
 public class UpdateProductDTO
 {

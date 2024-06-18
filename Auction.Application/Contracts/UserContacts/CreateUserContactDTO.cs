@@ -1,6 +1,4 @@
-﻿using Auction.Application.Validation;
-
-namespace Auction.Application.Contracts.UserContacts;
+﻿namespace Auction.Application.Contracts.UserContacts;
 
 public class CreateUserContactDTO
 {

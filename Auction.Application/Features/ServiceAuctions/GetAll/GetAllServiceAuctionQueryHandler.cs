@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Global;
-
-namespace Auction.Application.Features.ServiceAuctions.GetAll;
+﻿namespace Auction.Application.Features.ServiceAuctions.GetAll;
 
 internal class GetAllServiceAuctionQueryHandler(
     IServiceAuctionRepository serviceAuctionRepository,

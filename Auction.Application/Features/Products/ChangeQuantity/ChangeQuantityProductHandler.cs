@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-
-namespace Auction.Application.Features.Products.ChangeQuantity;
+﻿namespace Auction.Application.Features.Products.ChangeQuantity;
 
 internal class ChangeQuantityProductHandler(
     IProductRepository productRepository,

@@ -1,6 +1,4 @@
-﻿using Auction.Application.Errors.ServiceLayer;
-
-namespace Auction.Application.Features.ServiceLayers.Delete;
+﻿namespace Auction.Application.Features.ServiceLayers.Delete;
 
 internal class DeleteServiceLayerCommandHandler(
     IServiceLayerRepository serviceLayerRepository,
