@@ -18,5 +18,7 @@ public class CreateProductAuctionDTO
 
     [Required(ErrorMessage = Message.REQUIRED)]
     [FutureDate(ErrorMessage = Message.CANT_BE_PAST)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy:HH:mm}", ApplyFormatInEditMode = true)]
+    [DataType(DataType.DateTime)]
     public required DateTime StartTime { get; set; }
 }

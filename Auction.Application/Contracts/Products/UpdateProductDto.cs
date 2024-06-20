@@ -13,5 +13,8 @@ public class UpdateProductDTO
     [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
     public required decimal Price { get; set; }
 
+    [Required(ErrorMessage = Message.REQUIRED)]
+    [EnumDataType(typeof(ProductCategory))]
+    public required ProductCategory Category { get; set; }
     public string? ImagePath { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿@model UpdateUserDTO
+﻿@model Auction.Application.Contracts.Users.UpdateUserDTO
 
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@
         <form asp-action="Update" method="post" class="needs-validation" novalidate>
             <div class="form-group">
                 <label for="NickName">NickName</label>
-                <input type="text" class="form-control" id="NickName" placeholder="NickName" asp-for="NickName" required>
+                <input type="text" class="form-control" id="NickName" placeholder="NickName" asp-for="NickName">
                 <div class="invalid-feedback">
                     Please provide a valid nickname.
                 </div>
@@ -65,7 +65,7 @@
 
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email" placeholder="Email" asp-for="Email" required>
+                <input type="email" class="form-control" id="Email" placeholder="Email" asp-for="Email">
                 <div class="invalid-feedback">
                     Please provide a valid email address.
                 </div>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label for="FirstName">First Name</label>
-                <input type="text" class="form-control" id="FirstName" placeholder="First Name" asp-for="FirstName" required>
+                <input type="text" class="form-control" id="FirstName" placeholder="First Name" asp-for="FirstName">
                 <div class="invalid-feedback">
                     Please provide a first name.
                 </div>
@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label for="LastName">Last Name</label>
-                <input type="text" class="form-control" id="LastName" placeholder="Last Name" asp-for="LastName" required>
+                <input type="text" class="form-control" id="LastName" placeholder="Last Name" asp-for="LastName">
                 <div class="invalid-feedback">
                     Please provide a last name.
                 </div>

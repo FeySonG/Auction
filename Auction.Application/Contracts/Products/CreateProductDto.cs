@@ -22,8 +22,6 @@ public class CreateProductDTO
     public required ProductCategory Category { get; set; }
 
     public IFormFile? UploadFile { get; set; }
-
     public string? ImagePath { get; set; }
-
 
 }

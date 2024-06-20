@@ -11,4 +11,12 @@ public class CreateServiceLayerDTO
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     public required decimal Price { get; set; }
+
+    [Required(ErrorMessage = Message.REQUIRED)]
+    [EnumDataType(typeof(ServiceLayerCategory))]
+    public ServiceLayerCategory? Category { get; set; }
+
+    public IFormFile? UploadFile { get; set; }
+    public string? ImagePath { get; set; }
+
 }
