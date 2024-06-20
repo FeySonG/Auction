@@ -146,6 +146,9 @@
             <form method="post" asp-action="DeleteAccount">
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>
             </form>
+           
+            <a class="btn btn-secondary mt-2" href="@Url.Action("Logout", "Auth")">Log Out</a>
+
             <a class="btn btn-secondary mt-2" href="javascript:history.back()">Cancel</a>
         </div>
     </div>

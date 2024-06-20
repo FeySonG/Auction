@@ -1,5 +1,57 @@
 ﻿@model LoginUserDTO
 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+ 
+ <link rel="stylesheet" href="/css/Form.css" />
+
+<style>
+
+</style>
+
+<div class="bform py-5">
+    <!-- Row -->
+    <div class="row">
+        <div class="container">
+            <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+                <div class="">
+                    <h2 class="mb-3 font-weight-light">Get Register For Free</h2>
+                    <h6 class="subtitle font-weight-normal">Lorem ipsum dolor sit amet, adipiscing.</h6>
+                    <form class="mt-3" asp-action="Login" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="email" placeholder="email address" asp-for="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="password" placeholder="password" asp-for="Password" required>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0">Sigh In</button>
+                                <!-- -->
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row" style="height: 200px;">
+                        <div class="col-lg-12 text-center mt-4 " >
+                            Нет аккаунта? <a class="text-danger" asp-area="" asp-controller="Auth" asp-action="Registration">Регистрация</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 right-image pl-3" style="background-image:url('/image/Auction.jpg');">
+        </div>
+    </div>
+</div>
+
+
+@* @model LoginUserDTO
+
 <form asp-action="Login" method="post">
 
     <div>
@@ -19,4 +71,4 @@
     </div>
 
     <button class="btn btn-primary mt-2" type="submit">LogIn</button>
-</form>
+</form>*@

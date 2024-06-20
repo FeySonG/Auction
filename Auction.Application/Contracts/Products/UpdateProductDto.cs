@@ -17,4 +17,5 @@ public class UpdateProductDTO
     [EnumDataType(typeof(ProductCategory))]
     public required ProductCategory Category { get; set; }
     public string? ImagePath { get; set; }
+    public IFormFile? UploadFile { get; set; }
 }

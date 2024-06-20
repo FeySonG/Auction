@@ -1,0 +1,52 @@
+﻿@{
+    bool showBanner = ViewBag.ShowBanner ?? false;
+}
+
+<!-- Header -->
+<section id="header">
+
+    <!-- Logo -->
+    <h1><a href="index.html">Online Auction</a></h1>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "current" : "")">
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Shop" ? "current" : "")">
+                <a asp-area="" asp-controller="Home" asp-action="Shop">Shop</a>
+            </li>
+            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "current" : "")">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Auctions</a>
+            </li>
+            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Auth" && ViewContext.RouteData.Values["action"]?.ToString() == "Registration" ? "current" : "")">
+                <a asp-area="" asp-controller="Auth" asp-action="Registration">Sign In</a>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "User" && ViewContext.RouteData.Values["action"]?.ToString() == "AdminDashboard" ? "current" : "")">
+                    <a asp-area="" asp-controller="User" asp-action="AdminDashboard">Admin</a>
+                </li>
+            }
+            @if (User.IsInRole("User") || User.IsInRole("Admin"))
+            {
+                <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "User" && ViewContext.RouteData.Values["action"]?.ToString() == "Profile" ? "current" : "")">
+                    <a asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+
+    @if (showBanner)
+    {
+        <!-- Banner -->
+        <section id="banner">
+            <header>
+                <h2>Howdy. This is Dopetrope.</h2>
+                <p>A responsive template by HTML5 UP</p>
+            </header>
+        </section>
+    }
+</section>

@@ -1,0 +1,119 @@
+﻿@model GetProductDTO
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .user-profile {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+        }
+
+            .product-image img {
+                width: 60%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+        .user-profile h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .user-profile p {
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-back {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Users</h1>
+
+        <div class="user-profile">
+
+            <div class="product-image">
+                @if (Model.ImagePath != string.Empty)
+                {
+                    <img src="@Model.ImagePath" alt="card image" />
+                }
+                else if (Model.ImagePath == string.Empty)
+                {
+                    <img src="/media/nophoto.jpg" alt="card image" />
+                }
+            </div>
+
+            <h2>@Model.ProductName</h2>
+            <div>
+                <p><strong>Id:</strong> @Model.Id</p>
+                <p><strong>Description: </strong> @Model.Description</p>
+                <p><strong>Category:</strong> @Model.Category</p>
+                <p><strong>Price: </strong> @Model.Price</p>
+                <p><strong>Quantity: </strong> @Model.Quantity</p>
+
+            </div>
+
+
+            <form asp-action="ChangeQuantity" asp-route-id="@Model.Id" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div>
+                    <input class="form-control mb-2 w-25" type="number" name="Quantity" value="@Model.Quantity" placeholder="Количество" />
+                </div>
+                <button type="submit" class="button alt mb-1">Изменить количество</button>
+            </form>
+
+            <form id="deleteForm" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="button alt">Удалить</button>
+            </form>
+        </div>
+
+        <div class="text-center">
+            <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Online Auction - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript для подтверждения удаления (необязательно)
+        document.getElementById('deleteForm').addEventListener('submit', function (event) {
+            var result = confirm('Вы уверены, что хотите удалить этот продукт?');
+            if (!result) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+

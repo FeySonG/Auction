@@ -1,0 +1,54 @@
+﻿@model List<GetProductDTO>
+
+@{
+    ViewBag.Title = "Auction Shop";
+}
+
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Blog -->
+                <section>
+                    <header class="major">
+                        <h2>Shop</h2>
+                    </header>
+                    <div class="row">
+                        <div class="col-6 col-12-small">
+                            <section class="box">
+                                <a href="#" class="image featured"><img src="~/image/services.jpeg" alt="" /></a>
+                                <header>
+                                    <h3>Раздел услуг</h3>
+                                </header>
+                                <p>Обратитесь к частным специалистам либо предоставьте свои услуги </p>
+                                <footer>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-file-alt">Перейти</a></li>
+                                        <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                                    </ul>
+                                </footer>
+                            </section>
+                        </div>
+                        <div class="col-6 col-12-small">
+                            <section class="box">
+                                <a href="#" class="image featured"><img src="~/image/Product.jpg" alt="" /></a>
+                                <header>
+                                    <h3>Раздел товаров</h3>
+                                </header>
+                                <p>Покупайте или обменивайте товары с другими пользователями</p>
+                                <footer>
+                                    <ul class="actions">
+                                        <li><a class="button icon solid fa-file-alt" asp-area="" asp-controller="Product" asp-action="GetAll">Перейти</a></li>
+                                        <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                                    </ul>
+                                </footer>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>

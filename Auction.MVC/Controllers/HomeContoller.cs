@@ -1,11 +1,28 @@
-﻿namespace Auction.MVC.Controllers;
+﻿
+namespace Auction.MVC.Controllers;
 
 [AllowAnonymous]
-public class HomeController : Controller
+public class HomeController(ISender sender) : Controller
 {
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View("index");
+        var response = await sender.Send(new GetAllProductQuery());
+
+        ViewBag.ShowBanner = true;
+
+        return response.Match(
+		   onSuccess: value => View("index", response.Value),
+		   onFailure: error => BadRequest(error.Message));
+	}
+
+    [HttpGet("Shop")]
+    public async Task<IActionResult> Shop()
+    {
+        var response = await sender.Send(new GetAllProductQuery());
+
+        return response.Match(
+           onSuccess: value => View("Shop", response.Value),
+           onFailure: error => BadRequest(error.Message));
     }
 }
