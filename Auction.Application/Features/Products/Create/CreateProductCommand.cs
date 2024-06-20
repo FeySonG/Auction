@@ -1,3 +1,3 @@
 ﻿namespace Auction.Application.Features.Products.Create;
 
-public record CreateProductCommand(CreateProductDTO Dto) : ICommand<Result<CreateProductDTO>>;
+public record CreateProductCommand(CreateProductDTO Dto) : ICommand<Result<GetProductDTO>>;

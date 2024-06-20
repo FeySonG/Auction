@@ -14,4 +14,5 @@ public class UpdateProductDTO
     public required decimal Price { get; set; }
 
     public string? ImagePath { get; set; }
+    public IFormFile? UploadFile { get; set; }
 }

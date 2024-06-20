@@ -1,0 +1,93 @@
+﻿/*@import url(//fonts.googleapis.com/css?family=Montserrat:300,400,500);*/
+
+.bform {
+   /* font-family: "Montserrat", sans-serif;*/
+    color: #8d97ad;
+  /*  font-weight: 300;*/
+    overflow: hidden;
+    position: relative;
+}
+
+    .bform h1,
+    .bform h2,
+    .bform h3,
+    .bform h4,
+    .bform h5,
+    .bform h6 {
+        color: #3e4555;
+    }
+
+    .bform .subtitle {
+        color: #8d97ad;
+        line-height: 24px;
+    }
+
+    .bform a {
+        text-decoration: none;
+    }
+
+    .bform .btn-danger-gradiant {
+        background: #242122;
+/*        background: -webkit-linear-gradient(legacy-direction(to right), #242122 0%, #C4374D 100%);
+        background: -webkit-gradient(linear, left top, right top, from(#242122), to(#C4374D));
+        background: -webkit-linear-gradient(left, #242122 0%, #C4374D 100%);
+        background: -o-linear-gradient(left, #242122 0%, #C4374D 100%);
+        background: linear-gradient(to right, #242122 0%, #C4374D 100%);*/
+    }
+
+        .bform .btn-danger-gradiant:hover {
+            background: #C4374D;
+            /* background: -webkit-linear-gradient(legacy-direction(to right), #C4374D 0%, #242122 100%);
+            background: -webkit-gradient(linear, left top, right top, from(#C4374D), to(#242122));
+            background: -webkit-linear-gradient(left, #C4374D 0%, #242122 100%);
+            background: -o-linear-gradient(left, #C4374D 0%, #242122 100%);
+            background: linear-gradient(to right, #C4374D 0%, #242122 100%);*/
+        }
+
+    .bform .btn-md {
+       /* padding: 15px 45px;*/
+        font-size: 16px;
+    }
+
+    .bform .bg-facebook {
+        background-color: #3b5a9a;
+    }
+
+    .bform .bg-twitter {
+        background-color: #56adf2;
+    }
+
+    .bform .text-danger {
+        color: #ff4d7e !important;
+    }
+
+    .bform .right-image {
+        background-position: center bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+@media (max-width: 1023px) {
+    .bform .contact-form {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .bform .contact-form {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .bform .right-image {
+        position: relative;
+        bottom: -95px;
+    }
+}

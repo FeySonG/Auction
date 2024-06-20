@@ -5,10 +5,10 @@ internal class CreateProductCommandHandler(
     IProductRepository productRepository,
     IMapper _mapper,
     IUnitOfWork _unitOfWork)
-    : ICommandHandler<CreateProductCommand, Result<CreateProductDTO>>
+    : ICommandHandler<CreateProductCommand, Result<GetProductDTO>>
 {
     private readonly HttpContext _httpContext = accessor.HttpContext!;
-    public async Task<Result<CreateProductDTO>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<Result<GetProductDTO>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var newProduct =  _mapper.Map<Product>(request.Dto);
 
@@ -22,6 +22,7 @@ internal class CreateProductCommandHandler(
 
          productRepository.Add(newProduct);
         await _unitOfWork.SaveChangesAsync();
-        return request.Dto;
+
+        return _mapper.Map<GetProductDTO>(newProduct);
     }
 }

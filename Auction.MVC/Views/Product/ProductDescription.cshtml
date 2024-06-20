@@ -76,6 +76,7 @@
                 <p><strong>Quantity: </strong> @Model.Quantity</p>
 
             </div>
+           
         </div>
 
         <div class="text-center">
@@ -91,5 +92,14 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript для подтверждения удаления (необязательно)
+        document.getElementById('deleteForm').addEventListener('submit', function (event) {
+            var result = confirm('Вы уверены, что хотите удалить этот продукт?');
+            if (!result) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

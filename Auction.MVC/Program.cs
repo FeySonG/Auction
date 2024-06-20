@@ -1,3 +1,5 @@
+using Auction.MVC.Filters;
+
 namespace Auction.MVC;
 
 public class Program
@@ -6,7 +8,10 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews(options =>
+        {
+            options.Filters.Add<GlobalExceptionFilter>();
+        });
 
         builder.Services.AddApplication();
         builder.Services.AddDataAccessLayer(builder.Configuration);
