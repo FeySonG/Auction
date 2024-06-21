@@ -9,15 +9,15 @@
                 <!-- Sidebar -->
                 <section class="box">
                     <header>
-                        <h3>Категории</h3>
+                        <h3>Categories</h3>
                     </header>
                     <ul class="divided">
-                        <li><a href="#">Акции</a></li>
-                        <li><a href="#">Одежда</a></li>
-                        <li><a href="#">Бытовая техника</a></li>
-                        <li><a href="#">Недвижимость</a></li>
-                        <li><a href="#">Автомобили</a></li>
-                        <li><a href="#">Для сада</a></li>
+                        <li><a href="#">shares</a></li>
+                        <li><a href="#">Clothes</a></li>
+                        <li><a href="#">Appliances</a></li>
+                        <li><a href="#">Real estate</a></li>
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">For garden</a></li>
                     </ul>
                     <footer>
                         <a class="button alt" asp-area="" asp-controller="Product" asp-action="GetUserProducts">My Showcase</a>
@@ -56,29 +56,12 @@
                                     <p>@product.Price</p>
                                     <footer>
                                         <ul class="actions">
-                                            <li><a href="#" class="button alt">Go to</a></li>
+                                            <li><a href="@Url.Action("GetById", "Product", new { id = product.Id })" class="button alt">Go to</a></li>
                                         </ul>
                                     </footer>
                                 </section>
                             </div>
-                          
                         }
-
-                        <div class="col-4 col-6-medium col-12-small">
-                            <section class="box">
-                                <a href="#" class="image featured"><img src="image/pic02.jpg" alt="" /></a>
-                                <header>
-                                    <h3>Ipsum feugiat et dolor</h3>
-                                </header>
-                                <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                <footer>
-                                    <ul class="actions">
-                                        <li><a href="#" class="button alt">Go to</a></li>
-                                    </ul>
-                                </footer>
-                            </section>
-                        </div>
-
                     </div>
                 </section>
 

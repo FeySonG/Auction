@@ -1,0 +1,50 @@
+﻿@model UpdateServiceLayerDTO
+
+
+<form asp-controller="ServiceLayer" asp-action="Update" method="post" enctype="multipart/form-data">
+
+    <input class="form-control ml-2" type="number" name="id" value="@ViewBag.ServiceId" placeholder="Product Id" />
+
+    <div>
+        <label>Name</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Name"
+               asp-for="ServiceName"/>
+    </div>
+
+
+    <div>
+        <label>Description</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Description"
+               asp-for="Description"/>
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input class="form-control ml-2" type="number"
+               placeholder="Price"
+               asp-for="Price"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UploadFile" class="control-label">Image</label>
+        <input name="UploadFile" type="file" class="form-control" />
+    </div>
+
+    @*     <div>
+    <label>Last Name</label>
+    <input class="form-control ml-2" type="text"
+    placeholder="Last Name"
+    asp-for="Category"
+    required />
+    </div> *@
+
+    <button class="btn btn-primary mt-2" type="submit">Update</button>
+
+</form>
+
+<div class="text-center mt-5">
+    <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model List<GetServiceLayerDTO>
+
+<!-- Main -->
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+
+                <!-- Sidebar -->
+                <section class="box">
+                    <header>
+                        <h3>Categories</h3>
+                    </header>
+                    <ul class="divided">
+                        <li><a href="#">shares</a></li>
+                        <li><a href="#">Clothes</a></li>
+                        <li><a href="#">Appliances</a></li>
+                        <li><a href="#">Real estate</a></li>
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">For garden</a></li>
+                    </ul>
+                    <footer>
+                        <a class="button alt" asp-area="" asp-controller="ServiceLayer" asp-action="GetUserServices">My Showcase</a>
+                    </footer>
+                </section>
+
+            </div>
+            <div class="col-8 col-12-medium imp-medium">
+                <!-- Portfolio -->
+                <section>
+                    <header class="major">
+                        <h2>Online Store</h2>
+                    </header>
+                    <div class="row">
+
+
+                        @foreach (var serviceLayer in Model)
+                        {
+                            <div class="col-4 col-6-medium col-12-small">
+                                <section class="box">
+                                    <a class="image featured" href="@Url.Action("GetById", "ServiceLayer", new { id = serviceLayer.Id })">
+                                        @if (serviceLayer.ImagePath != string.Empty)
+                                        {
+                                            <img src="@serviceLayer.ImagePath" alt="card image" />
+                                        }
+                                        else if (serviceLayer.ImagePath == string.Empty)
+                                        {
+                                            <img src="/media/nophoto.jpg" alt="card image" />
+                                        }
+
+                                    </a>
+
+                                    <header>
+                                        <h3>@serviceLayer.ServiceName</h3>
+                                    </header>
+                                    <p>@serviceLayer.Price</p>
+                                    <footer>
+                                        <ul class="actions">
+                                            <li><a href="@Url.Action("GetById", "ServiceLayer", new { id = serviceLayer.Id })" class="button alt">Go to</a></li>
+                                        </ul>
+                                    </footer>
+                                </section>
+                            </div>
+                        }
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>

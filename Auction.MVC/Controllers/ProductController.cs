@@ -1,7 +1,4 @@
-﻿
-using Auction.Domain.Result;
-
-namespace Auction.MVC.Controllers;
+﻿namespace Auction.MVC.Controllers;
 
 
 public class ProductController(ISender sender, IWebHostEnvironment appEnvironment) : Controller
@@ -23,7 +20,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             }
             dto.ImagePath = path;
         }
-        if (dto.ImagePath == null) { dto.ImagePath = string.Empty; }
+        dto.ImagePath ??= string.Empty;
         var response = await sender.Send(new CreateProductCommand(dto));
         return response.Match(
             onSuccess: value => View("UserProductDescription", response.Value),
@@ -62,8 +59,8 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
         return response.Match(
           onSuccess: value => View("UserShowcase", response.Value),
           onFailure: error => BadRequest(error.Message));
-
     }
+
 
     public IActionResult Update()
     {
@@ -84,7 +81,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
                 }
                 dto.ImagePath = path;
             }
-            if (dto.ImagePath == null) { dto.ImagePath = string.Empty; }
+            dto.ImagePath ??= string.Empty;
             var response = await sender.Send(new UpdateProductCommand(dto, id));
             return response.Match(
               onSuccess: value => View("UserProductDescription", response.Value),
@@ -132,7 +129,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
          onFailure: error => BadRequest(error.Message));
     }
 
-    [HttpGet("ChangeDescription{id}")]
+    [HttpGet]
     public async Task<IActionResult> GetByIdUser(int id)
     {
         var result = await sender.Send(new GetByIdProductQuery(id));

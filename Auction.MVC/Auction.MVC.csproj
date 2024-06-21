@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Models\Products\" />
     <Folder Include="Models\Users\" />
-    <Folder Include="Views\ServiceLayer\" />
   </ItemGroup>
 
   <ItemGroup>

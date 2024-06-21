@@ -1,0 +1,74 @@
+﻿@model List<GetServiceLayerDTO>
+
+<!-- Main -->
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+                <!-- Sidebar -->
+                <section class="box">
+                    <header>
+                        <h3>Showcase setup</h3>
+                    </header>
+                    <ul class="divided">
+                        <li><a href="@Url.Action("Create", "ServiceLayer")">Add Service Layer</a></li>
+                        <li><a href="@Url.Action("Update", "ServiceLayer")">Change Service Layer</a></li>
+@*                         <li><a href="#" onclick="toggleDisplay('products')">Show Products</a></li>
+                        <li><a href="#" onclick="toggleDisplay('services')">Show Services</a></li> *@
+                    </ul>
+                    <footer>
+                        <a href="#" class="button alt">Put up for auction</a>
+                    </footer>
+                </section>
+            </div>
+            <div class="col-8 col-12-medium imp-medium">
+                <!-- Portfolio -->
+                <section id="portfolio">
+                    <header class="major">
+                        <h2>Service Layers</h2>
+                    </header>
+                    <div class="row">
+                        @foreach (var service in Model)
+                        {
+                            <div class="col-4 col-6-medium col-12-small service">
+                                <section class="box">
+                                    <a class="image featured" href="@Url.Action("GetByIdUser", "ServiceLayer", new { id = service.Id })">
+                                        @if (!string.IsNullOrEmpty(service.ImagePath))
+                                        {
+                                            <img src="@service.ImagePath" alt="card image" />
+                                        }
+                                        else
+                                        {
+                                            <img src="/media/nophoto.jpg" alt="card image" />
+                                        }
+                                    </a>
+                                    <header>
+                                        <h3>@service.ServiceName</h3>
+                                    </header>
+                                    <p>Цена: @service.Price сом</p>
+                                    <footer>
+                                        <ul class="actions">
+                                            <li><a href="@Url.Action("GetByIdUser", "ServiceLayer", new { id = service.Id })" class="button alt">Go to</a></li>
+                                        </ul>
+                                    </footer>
+                                </section>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleDisplay(type) {
+        if (type === 'products') {
+            $('.product').show();
+            $('.service').hide();
+        } else if (type === 'services') {
+            $('.product').hide();
+            $('.service').show();
+        }
+    }
+</script>
