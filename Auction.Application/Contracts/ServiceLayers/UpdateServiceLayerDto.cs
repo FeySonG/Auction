@@ -2,19 +2,17 @@
 
 public class UpdateServiceLayerDTO
 {
-    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(50, ErrorMessage = Message.MAX_LENGTH)]
-    public required string ServiceName { get; set; }
+    public string? ServiceName { get; set; }
    
     [MaxLength(300, ErrorMessage = Message.MAX_LENGTH)]
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 
-    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
-    public required decimal Price { get; set; }
+    public decimal? Price { get; set; }
 
-    [Required(ErrorMessage = Message.REQUIRED)]
     [EnumDataType(typeof(ServiceLayerCategory))]
     public ServiceLayerCategory? Category { get; set; }
     public string? ImagePath { get; set; }
+    public IFormFile? UploadFile { get; set; }
 
 }

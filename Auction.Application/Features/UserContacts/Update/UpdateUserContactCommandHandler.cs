@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.UserContacts.Update;
+﻿using Auction.Domain.Models.Users;
+
+namespace Auction.Application.Features.UserContacts.Update;
 
 internal class UpdateUserContactCommandHandler(
     IUserContactRepository userContactRepository,
@@ -13,7 +15,24 @@ internal class UpdateUserContactCommandHandler(
         if (usercontact == null)
             return new Error(ContactErrorCodes.IdNotFound, ContactErrorMessages.NonExistent);
 
-            mapper.Map(request.ContactDTO, usercontact);
+
+        if (request.ContactDTO.City == null || request.ContactDTO.City == "string")
+            request.ContactDTO.City = usercontact.City;
+
+        if (request.ContactDTO.Country == null || request.ContactDTO.Country == "string")
+            request.ContactDTO.Country = usercontact.Country;
+
+        if (request.ContactDTO.Instagram == null || request.ContactDTO.Instagram == "string")
+            request.ContactDTO.Instagram = usercontact.Instagram;
+
+        if (request.ContactDTO.Telegram == null || request.ContactDTO.Telegram == "string")
+            request.ContactDTO.Telegram = usercontact.Telegram;
+
+        if (request.ContactDTO.PhoneNumber == null || request.ContactDTO.PhoneNumber == "string")
+            request.ContactDTO.PhoneNumber = usercontact.PhoneNumber;
+
+
+        mapper.Map(request.ContactDTO, usercontact);
 
 
         userContactRepository.Update(usercontact);

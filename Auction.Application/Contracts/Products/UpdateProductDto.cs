@@ -2,20 +2,20 @@
 
 public class UpdateProductDTO
 {
-    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(50, ErrorMessage = Message.MAX_LENGTH)]
-    public required string ProductName { get; set; }
+    public string? ProductName { get; set; }
 
     [MaxLength(300, ErrorMessage = Message.MAX_LENGTH)]
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 
-    [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
-    public required decimal Price { get; set; }
+    public decimal? Price { get; set; }
 
-    [Required(ErrorMessage = Message.REQUIRED)]
+    [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
+    public long? Quantity { get; set; }
+
     [EnumDataType(typeof(ProductCategory))]
-    public required ProductCategory Category { get; set; }
+    public ProductCategory? Category { get; set; }
     public string? ImagePath { get; set; }
     public IFormFile? UploadFile { get; set; }
 }

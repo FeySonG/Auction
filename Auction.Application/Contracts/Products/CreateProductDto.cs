@@ -14,7 +14,7 @@ public class CreateProductDTO
     public required decimal Price { get; set; }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
-    [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
+    [Range(1, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
     public long Quantity { get; set; } = 1;
 
     [Required(ErrorMessage = Message.REQUIRED)]

@@ -1,4 +1,6 @@
-﻿namespace Auction.Application.Features.ServiceLayers.Update;
+﻿using Auction.Domain.Models.UserContacts;
+
+namespace Auction.Application.Features.ServiceLayers.Update;
 
 internal class UpdateServiceLayerCommandHandler(
     IServiceLayerRepository serviceLayerRepository,
@@ -11,7 +13,19 @@ internal class UpdateServiceLayerCommandHandler(
         var service = await serviceLayerRepository.GetById(request.id);
         if (service == null) 
             return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
-       
+
+        if (request.Dto.Category == null || request.Dto.Category == 0)
+            request.Dto.Category = service.Category;
+
+        if (request.Dto.ServiceName == null || request.Dto.ServiceName == "string")
+            request.Dto.ServiceName = service.ServiceName;
+
+        if (request.Dto.Price == null )
+            request.Dto.Price = service.Price;
+
+        if (request.Dto.Description == null || request.Dto.Description == "string")
+            request.Dto.Description = service.Description;
+
         mapper.Map(request.Dto, service);
 
         serviceLayerRepository.Update(service);

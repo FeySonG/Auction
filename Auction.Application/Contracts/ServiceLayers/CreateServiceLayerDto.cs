@@ -18,5 +18,4 @@ public class CreateServiceLayerDTO
 
     public IFormFile? UploadFile { get; set; }
     public string? ImagePath { get; set; }
-
 }

@@ -21,7 +21,7 @@ public class UserContactController(ISender sender) : Controller
 
         return result.Match
         (
-            onSuccess: value => RedirectToAction("Profile"),
+            onSuccess: value => RedirectToAction("Profile", "User"),
             onFailure: error =>
             {
                 if (error.Code == ContactErrorCodes.AlreadyExist)
