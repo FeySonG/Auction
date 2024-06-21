@@ -21,6 +21,12 @@ public class ChangeCurrentPriceProductAuctionCommandHandler(
             return new Error(
                 ProductAuctionErrorCode.PriceIsLess,
                 ProductAuctionErrorMessage.PriceIsLess);
+        if(userId == auction.SallerId)
+        {
+            return new Error(
+                ProductAuctionErrorCode.CannotBetOnYourLot,
+                ProductAuctionErrorMessage.CannotBetOnYourLot);
+        }
         if (auction.EndTime > DateTime.UtcNow && auction.StartTime < DateTime.UtcNow)
         {
             auction.CurrentWinnerId = userId;

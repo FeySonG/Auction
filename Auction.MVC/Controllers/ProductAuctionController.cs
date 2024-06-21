@@ -1,8 +1,7 @@
 ﻿using Auction.Application.Features.ProductAuctions.GetUserAuctions;
 namespace Auction.Api.Controllers;
 
-//[Authorize]
-//[Route("product-auction")]
+
 public class ProductAuctionController(ISender sender) : Controller
 {
     [HttpGet("all-auctions")]
@@ -59,6 +58,24 @@ public class ProductAuctionController(ISender sender) : Controller
         }
     }
 
+    [HttpGet("auct-user{id}")]
+    public async Task<IActionResult> GetByIdUser(long id)
+    {
+        try
+        {
+            var result = await sender.Send(new GetByIdProductAuctionQuery(id));
+            return result.Match(
+                onSuccess: value => View("UserAuctionPage", result.Value),
+                onFailure: error => throw new Exception(error.Message));
+
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
+    }
+
     public IActionResult Create()
     {
         return View();
@@ -82,14 +99,14 @@ public class ProductAuctionController(ISender sender) : Controller
         }
     }
 
-    [HttpPut]
+    [HttpPost]
     public async Task<IActionResult> ChangeCurrentPrice(decimal offeredPrice, long lotId)
     {
         try
         {
             var result = await sender.Send(new ChangeCurrentPriceProductAuctionCommand(offeredPrice, lotId));
             return result.Match(
-                onSuccess: value => Ok(result.Value),
+                onSuccess: value => View("AuctionPage",result.Value),
                 onFailure: error => throw new Exception(error.Message));
 
         }

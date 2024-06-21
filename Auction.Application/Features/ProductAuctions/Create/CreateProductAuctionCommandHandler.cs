@@ -20,6 +20,7 @@ internal class CreateProductAuctionCommandHandler(
             return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
         auction.SallerId = sallerId;
         auction.Product = product;
+        auction.StartingPrice = product.Price;
         auction.EndTime = auction.StartTime.AddHours(request.dto.Duration);   
 
         productAuctionRepository.Add(auction);

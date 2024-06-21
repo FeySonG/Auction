@@ -6,7 +6,7 @@
 
         <!-- Content -->
         <article class="box post">
-            <a href="#" class="image featured"><img src="@Model.Product.ImagePath" alt=""/></a>
+            <a href="#" class="image featured"><img src="@Model.Product.ImagePath" alt="" /></a>
             <header>
                 <p>Лот номер: @Model.Id</p>
                 <h2>@Model.Title</h2>
@@ -19,14 +19,6 @@
             <h3>Текущая ставка: @Model.CurrentPrice</h3>
             <p>Код товара: @Model.Product.Id</p>
 
-            <form asp-controller="ProductAuction" asp-action="ChangeCurrentPrice" asp-route-id="@Model.Id" method="post">
-                <input type="hidden" name="lotId" value="@Model.Id" />
-                <div>
-                    <input class="form-control mb-2 w-25" type="number" name="offeredPrice" placeholder="Bid" />
-                </div>
-                <button type="submit" class="button alt mb-1">Сделать ставку</button>
-            </form>
-           
         </article>
     </div>
 

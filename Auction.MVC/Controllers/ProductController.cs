@@ -164,7 +164,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("product{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         try

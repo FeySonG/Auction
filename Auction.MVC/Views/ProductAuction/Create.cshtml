@@ -3,7 +3,7 @@
 
 <form asp-controller="ProductAuction" asp-action="Create" method="post" enctype="multipart/form-data">
     <div>
-        <label>Name</label>
+        <label>Title</label>
         <input class="form-control ml-2" type="text"
                placeholder="Name"
                asp-for="Title"
@@ -26,6 +26,13 @@
                asp-for="StartTime"
                required />
     </div>
+    <div>
+        <label>Duration Hours</label>
+        <input class="form-control ml-2" type="number"
+               placeholder="from 1 to 3"
+               asp-for="Duration"
+               required />
+    </div>
 
     <div>
         <label>Product Id</label>
@@ -34,14 +41,6 @@
                asp-for="ProductId"
                required />
     </div>
-
-    @*     <div>
-    <label>Last Name</label>
-    <input class="form-control ml-2" type="text"
-    placeholder="Last Name"
-    asp-for="Category"
-    required />
-    </div> *@
 
     <button class="btn btn-primary mt-2" type="submit">Create</button>
 
