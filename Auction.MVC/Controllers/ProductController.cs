@@ -1,6 +1,7 @@
-﻿namespace Auction.MVC.Controllers;
+﻿using Auction.MVC.Filters;
 
-//[Route("product-controller")]
+namespace Auction.MVC.Controllers;
+
 public class ProductController(ISender sender, IWebHostEnvironment appEnvironment) : Controller
 {
     public IActionResult Create()
@@ -11,7 +12,8 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
     [HttpPost]
     public async Task<IActionResult> Create(CreateProductDTO dto)
     {
-       
+        try
+        {
             if (dto.UploadFile != null)
             {
                 string path = "/image/" + dto.UploadFile.FileName;
@@ -25,11 +27,15 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             var response = await sender.Send(new CreateProductCommand(dto));
             return response.Match(
                 onSuccess: value => View("UserProductDescription", response.Value),
-                onFailure: error =>
-                {
-                    return BadRequest(error.Message);
-                });
-      
+                onFailure: error => throw new Exception(error.Message));
+
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
+
     }
 
 
@@ -41,12 +47,12 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             var response = await sender.Send(new GetAllProductQuery());
             return response.Match(
                 onSuccess: value => View("Products", response.Value),
-                onFailure: error => BadRequest(error.Message));
+                onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
@@ -58,32 +64,32 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             var response = await sender.Send(new GetByNameProductQuery(name));
             return response.Match(
                onSuccess: value => View("Products", response.Value),
-               onFailure: error =>
-               {
-                   return BadRequest(error.Message);
-               });
+               onFailure: error => throw new Exception(error.Message));
+              
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
+    [Authorize]
     [HttpGet("user-products")]
     public async Task<IActionResult> GetUserProducts()
     {
         try
         {
+
             var response = await sender.Send(new GetUserProductQuery());
             return response.Match(
               onSuccess: value => View("UserShowcase", response.Value),
-              onFailure: error => BadRequest(error.Message));
+              onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
@@ -92,6 +98,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
         return View();
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Update(long id, UpdateProductDTO dto)
     {
@@ -114,11 +121,12 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> ChangeQuantity(long id, long quantity)
     {
@@ -127,16 +135,16 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             var response = await sender.Send(new ChangeQuantityProductCommand(id, quantity));
             return response.Match(
               onSuccess: value => View("UserProductDescription", response.Value),
-              onFailure: error => BadRequest(error.Message));
+              onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Delete(long id)
     {
@@ -147,12 +155,12 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
             var products = await sender.Send(new GetUserProductQuery());
             return response.Match(
               onSuccess: value => View("UserShowcase", products.Value),
-              onFailure: error => BadRequest(error.Message));
+              onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
@@ -165,15 +173,16 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
 
             return result.Match(
              onSuccess: value => View("ProductDescription", result.Value),
-             onFailure: error => BadRequest(error.Message));
+             onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetByIdUser(int id)
     {
@@ -183,12 +192,12 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
 
             return result.Match(
              onSuccess: value => View("UserProductDescription", result.Value),
-             onFailure: error => BadRequest(error.Message));
+             onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 }

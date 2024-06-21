@@ -1,7 +1,12 @@
-﻿@{
+﻿@model ErrorViewModel
+
+@{
     ViewData["Title"] = "Error";
 }
 
-<h1>An error occurred</h1>
-<p>@ViewData["ErrorMessage"]</p>
+<h1>Error</h1>
+<h5>@Model.ErrorMessage</h5>
 <p>Sorry for the inconvenience. Please try again later.</p>
+<div class="text-center">
+    <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+</div>

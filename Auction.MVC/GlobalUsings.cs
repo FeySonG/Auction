@@ -59,4 +59,6 @@ global using Auction.Application.Features.ServiceLayers.GetUserServices;
 global using Auction.Application.Features.UserContacts.DeleteUserContact;
 global using Auction.Application.Features.ProductAuctions.ChangeCurrentPrice;
 global using Auction.Application.Features.ServiceAuctions.ChangeCurrentPrice;
+global using Auction.Application.Features.ProductAuctions.GetUserAuctions;
+global using Auction.MVC.Filters;
 

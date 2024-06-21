@@ -12,10 +12,18 @@ public class AuthController(ISender sender) : Controller
     [HttpPost]
     public async Task<IActionResult> Registration(CreateUserDTO userDTO)
     {
-        var result = await sender.Send(new RegistrUserCommand(userDTO));
-        return result.Match(
-            onSuccess: value => RedirectToAction("Login"),
-            onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var result = await sender.Send(new RegistrUserCommand(userDTO));
+            return result.Match(
+                onSuccess: value => RedirectToAction("Login"),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
     [HttpGet]
@@ -27,18 +35,35 @@ public class AuthController(ISender sender) : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginUserDTO loginDTO)
     {
-        var result = await sender.Send(new LoginUserQuery(loginDTO.Email, loginDTO.Password));
+        try
+        {
+            var result = await sender.Send(new LoginUserQuery(loginDTO.Email, loginDTO.Password));
 
-        return result.Match(
-            onSuccess: value => RedirectToAction("Index", "Home"),
-            onFailure: error => BadRequest(error.Message));
+            return result.Match(
+                onSuccess: value => RedirectToAction("Index", "Home"),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
 
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync();
-        return RedirectToAction("Login");
+        try
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 }

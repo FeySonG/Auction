@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
+﻿using Auction.Application.Features.ProductAuctions.GetUserAuctions;
 namespace Auction.Api.Controllers;
 
 //[Authorize]
 //[Route("product-auction")]
 public class ProductAuctionController(ISender sender) : Controller
 {
-    [HttpGet]
+    [HttpGet("all-auctions")]
     public async Task<IActionResult> GetAll()
     {
         try
@@ -14,29 +13,49 @@ public class ProductAuctionController(ISender sender) : Controller
             var result = await sender.Send(new GetAllProductAuctionQuery());
             return result.Match(
                 onSuccess: value => View("Auctions", result.Value),
-                onFailure: error => BadRequest(error.Message));
+                onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
-    [HttpGet("auction{id}")]
+    [Authorize]
+	[HttpGet("user-auctions")]
+	public async Task<IActionResult> GetUserAuctions()
+	{
+		try
+		{
+			var result = await sender.Send(new GetUserProductAuctionQuery());
+            return result.Match(
+                onSuccess: value => View("ProductAuctionUser", result.Value),
+                onFailure: error => throw new Exception(error.Message)
+                );
+		}
+		catch (Exception ex)
+		{
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
+	}
+
+	[HttpGet("auction{id}")]
     public async Task<IActionResult> GetById(long id)
     {
         try
         {
             var result = await sender.Send(new GetByIdProductAuctionQuery(id));
             return result.Match(
-                onSuccess: value => View("AuctionPage",result.Value),
-                onFailure: error => BadRequest(error.Message));
-        }
+                onSuccess: value => View("AuctionPage", result.Value),
+                onFailure: error => throw new Exception(error.Message));
+
+		}
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
@@ -53,12 +72,13 @@ public class ProductAuctionController(ISender sender) : Controller
             var result = await sender.Send(new CreateProductAuctionCommand(dto));
             return result.Match(
                 onSuccess: value => View("AuctionPage", result.Value),
-                onFailure: error => BadRequest(error.Message));
+                onFailure: error => throw new Exception(error.Message));
+
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
@@ -70,12 +90,13 @@ public class ProductAuctionController(ISender sender) : Controller
             var result = await sender.Send(new ChangeCurrentPriceProductAuctionCommand(offeredPrice, lotId));
             return result.Match(
                 onSuccess: value => Ok(result.Value),
-                onFailure: error => BadRequest(error.Message));
+                onFailure: error => throw new Exception(error.Message));
+
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 }

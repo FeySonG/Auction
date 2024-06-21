@@ -1,4 +1,5 @@
 using Auction.MVC.Filters;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Auction.MVC;
 
@@ -16,7 +17,11 @@ public class Program
         builder.Services.AddApplication();
         builder.Services.AddDataAccessLayer(builder.Configuration);
 
-        builder.Services.AddAuthentication().AddCookie("Cookie");
+        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+		{
+			options.LoginPath = "/Auth/Login";
+			options.AccessDeniedPath = "/Auth/Registration"; 
+		});
 
 
         builder.Logging. Services.AddHttpContextAccessor();

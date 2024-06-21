@@ -7,33 +7,57 @@ public class HomeController(ISender sender) : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var response = await sender.Send(new GetAllProductQuery());
+        try
+        {
+            var response = await sender.Send(new GetAllProductQuery());
 
-        ViewBag.ShowBanner = true;
+            ViewBag.ShowBanner = true;
 
-        return response.Match(
-		   onSuccess: value => View("index", response.Value),
-		   onFailure: error => BadRequest(error.Message));
-	}
+            return response.Match(
+               onSuccess: value => View("index", response.Value),
+               onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
+    }
 
     [HttpGet("Shop")]
     public async Task<IActionResult> Shop()
     {
-        var response = await sender.Send(new GetAllProductQuery());
+        try
+        {
+            var response = await sender.Send(new GetAllProductQuery());
 
-        return response.Match(
-           onSuccess: value => View("Shop", response.Value),
-           onFailure: error => BadRequest(error.Message));
+            return response.Match(
+               onSuccess: value => View("Shop", response.Value),
+               onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
 
-	[HttpGet("Auction")]
-	public async Task<IActionResult> Auction()
-	{
-		var response = await sender.Send(new GetAllProductQuery());
+    [HttpGet("Auction")]
+    public async Task<IActionResult> Auction()
+    {
+        try
+        {
+            var response = await sender.Send(new GetAllProductQuery());
 
-		return response.Match(
-		   onSuccess: value => View("Auction"),
-		   onFailure: error => BadRequest(error.Message));
-	}
+            return response.Match(
+               onSuccess: value => View("Auction"),
+               onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
+    }
 }

@@ -1,34 +1,58 @@
 ﻿namespace Auction.MVC.Controllers;
 
-[Authorize]
+
 public class ServiceLayerController(ISender sender, IWebHostEnvironment appEnvironment) : Controller
 {
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var response = await sender.Send(new GetAllServiceLayerQuery());
-        return response.Match(
-            onSuccess: value => View("ServiсesLayer", response.Value),
-            onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var response = await sender.Send(new GetAllServiceLayerQuery());
+            return response.Match(
+                onSuccess: value => View("ServiсesLayer", response.Value),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
     [HttpGet]
     public async Task<IActionResult> GetByName(string serviceName)
     {
-        var response = await sender.Send(new GetByNameServiceLayerQuery(serviceName));
-        return response.Match(
-            onSuccess: value => View(response.Value),
-            onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var response = await sender.Send(new GetByNameServiceLayerQuery(serviceName));
+            return response.Match(
+                onSuccess: value => View(response.Value),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
 
     [HttpGet]
     public async Task<IActionResult> GetById(int id)
     {
-        var result = await sender.Send(new GetByIdServiceQuery(id));
-        return result.Match(
-         onSuccess: value => View("ServiceLayerDescription", result.Value),
-         onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var result = await sender.Send(new GetByIdServiceQuery(id));
+            return result.Match(
+             onSuccess: value => View("ServiceLayerDescription", result.Value),
+             onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
 
@@ -37,24 +61,32 @@ public class ServiceLayerController(ISender sender, IWebHostEnvironment appEnvir
         return View();
     }
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(CreateServiceLayerDTO dto)
     {
-        if (dto.UploadFile != null)
+        try
         {
-            string path = "/image/" + dto.UploadFile.FileName;
-            using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
+            if (dto.UploadFile != null)
             {
-                await dto.UploadFile.CopyToAsync(fileStream);
+                string path = "/image/" + dto.UploadFile.FileName;
+                using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await dto.UploadFile.CopyToAsync(fileStream);
+                }
+                dto.ImagePath = path;
             }
-            dto.ImagePath = path;
+            dto.ImagePath ??= string.Empty;
+            var response = await sender.Send(new CreateServiceLayerCommand(dto));
+            return response.Match(
+                onSuccess: value => View("UserServicesLayerDescription", response.Value),
+                onFailure: error => throw new Exception(error.Message));
         }
-        dto.ImagePath ??= string.Empty;
-        var response = await sender.Send(new CreateServiceLayerCommand(dto));
-        return response.Match(
-            onSuccess: value => View("UserServicesLayerDescription", response.Value),
-            onFailure: error => BadRequest(error.Message));
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
     [HttpGet]
@@ -63,7 +95,7 @@ public class ServiceLayerController(ISender sender, IWebHostEnvironment appEnvir
         return View();
     }
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Update(UpdateServiceLayerDTO dto, long id)
     {
@@ -83,43 +115,70 @@ public class ServiceLayerController(ISender sender, IWebHostEnvironment appEnvir
             var response = await sender.Send(new UpdateServiceLayerCommand(dto, id));
             return response.Match(
                 onSuccess: value => View("UserServicesLayerDescription", response.Value),
-                onFailure: error => BadRequest(error.Message));
+                onFailure: error => throw new Exception(error.Message));
         }
         catch (Exception ex)
         {
-
-            return View("Error", new { ErrorMessage = ex.Message });
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
         }
     }
 
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Delete(long id)
     {
-        var response = await sender.Send(new DeleteServiceLayerCommand(id));
+        try
+        {
+            var response = await sender.Send(new DeleteServiceLayerCommand(id));
 
-        var services = await sender.Send(new GetUserServiceLayerQuery());
+            var services = await sender.Send(new GetUserServiceLayerQuery());
 
-        return response.Match(
-            onSuccess: value => View("ServicesLayerUserShowcase", services.Value),
-            onFailure: error => BadRequest(error.Message));
+            return response.Match(
+                onSuccess: value => View("ServicesLayerUserShowcase", services.Value),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetByIdUser(int id)
     {
-        var result = await sender.Send(new GetByIdServiceQuery(id));
-        return result.Match(
-         onSuccess: value => View("UserServicesLayerDescription", result.Value),
-         onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var result = await sender.Send(new GetByIdServiceQuery(id));
+            return result.Match(
+             onSuccess: value => View("UserServicesLayerDescription", result.Value),
+             onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetUserServices()
     {
-        var response = await sender.Send(new GetUserServiceLayerQuery());
-        return response.Match(
-            onSuccess: value => View("ServicesLayerUserShowcase", response.Value),
-            onFailure: error => BadRequest(error.Message));
+        try
+        {
+            var response = await sender.Send(new GetUserServiceLayerQuery());
+            return response.Match(
+                onSuccess: value => View("ServicesLayerUserShowcase", response.Value),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 }

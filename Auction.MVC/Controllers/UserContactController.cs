@@ -12,24 +12,25 @@ public class UserContactController(ISender sender) : Controller
         return View();
     }
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(CreateUserContactDTO contactDTO)
     {
-        var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-        var result = await sender.Send(new CreateUserContactCommand(contactDTO, userId));
+        try
+        {
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var result = await sender.Send(new CreateUserContactCommand(contactDTO, userId));
 
-        return result.Match
-        (
-            onSuccess: value => RedirectToAction("Profile", "User"),
-            onFailure: error =>
-            {
-                if (error.Code == ContactErrorCodes.AlreadyExist)
-                    return BadRequest(error.Message);
-
-                return BadRequest();
-            }
-        );
+            return result.Match
+            (
+                onSuccess: value => RedirectToAction("Profile", "User"),
+                onFailure: error => throw new Exception(error.Message));
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
     [HttpGet]
@@ -38,43 +39,46 @@ public class UserContactController(ISender sender) : Controller
         return View();
     }
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Update(UpdateUserContactDTO contactDTO)
     {
-        var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-        var result = await sender.Send(new UpdateUserContactCommand(contactDTO, userId));
-
-        return result.Match(
-        onSuccess: value => RedirectToAction("Profile","User"),
-        onFailure: error =>
+        try
         {
-            if (error.Code == ContactErrorCodes.IdNotFound)
-                return NotFound();
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var result = await sender.Send(new UpdateUserContactCommand(contactDTO, userId));
 
-            else if (result == null)
-                return NoContent();
+            return result.Match(
+            onSuccess: value => RedirectToAction("Profile", "User"),
+            onFailure: error => throw new Exception(error.Message));
 
-            return BadRequest();
-        });
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> DeleteCurrentContact()
     {
-        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        try
+        {
+            int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
-        var result = await sender.Send(new DeleteUserContactCommand(userId));
+            var result = await sender.Send(new DeleteUserContactCommand(userId));
 
-        return result.Match(
-            onSuccess: value => RedirectToAction("Profile", "User"),
-            onFailure: error =>
-            {
-                if (error.Code == UserErrorCodes.IdNotFound)
-                    return BadRequest(error.Message);
-
-                return BadRequest();
-            }
-        );
+            return result.Match(
+                onSuccess: value => RedirectToAction("Profile", "User"),
+                onFailure: error => throw new Exception(error.Message));
+      
+        }
+        catch (Exception ex)
+        {
+            var model = new ErrorViewModel { ErrorMessage = ex.Message };
+            return View("Error", model);
+        }
     }
 }
