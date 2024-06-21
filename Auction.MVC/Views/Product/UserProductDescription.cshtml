@@ -81,14 +81,14 @@
             <form asp-action="ChangeQuantity" asp-route-id="@Model.Id" method="post">
                 <input type="hidden" name="id" value="@Model.Id" />
                 <div>
-                    <input class="form-control mb-2 w-25" type="number" name="Quantity" value="@Model.Quantity" placeholder="Количество" />
+                    <input class="form-control mb-2 w-25" type="number" name="Quantity" value="@Model.Quantity" placeholder="Quantity" />
                 </div>
-                <button type="submit" class="button alt mb-1">Изменить количество</button>
+                <button type="submit" class="button alt mb-1">Change Quantity</button>
             </form>
 
             <form id="deleteForm" asp-action="Delete" asp-route-id="@Model.Id" method="post">
                 <input type="hidden" name="id" value="@Model.Id" />
-                <button type="submit" class="button alt">Удалить</button>
+                <button type="submit" class="button alt">Delete</button>
             </form>
         </div>
 
