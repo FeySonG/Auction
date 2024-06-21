@@ -17,11 +17,11 @@
             <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Shop" ? "current" : "")">
                 <a asp-area="" asp-controller="Home" asp-action="Shop">Shop</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "current" : "")">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Auctions</a>
+            <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Auction" ? "current" : "")">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Auction">Auctions</a>
             </li>
             <li class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Auth" && ViewContext.RouteData.Values["action"]?.ToString() == "Registration" ? "current" : "")">
-                <a asp-area="" asp-controller="Auth" asp-action="Registration">Sign In</a>
+                <a asp-area="" asp-controller="Auth" asp-action="Login">Sign In</a>
             </li>
             @if (User.IsInRole("Admin"))
             {

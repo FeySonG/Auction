@@ -1,0 +1,32 @@
+﻿@model GetProductAuctionDTO
+
+<!-- Main -->
+<section id="main">
+    <div class="container">
+
+        <!-- Content -->
+        <article class="box post">
+            <a href="#" class="image featured"><img src="@Model.Product.ImagePath" alt=""/></a>
+            <header>
+                <p>Лот номер: @Model.Id</p>
+                <h2>@Model.Title</h2>
+                <p>@Model.Description</p>
+                <p>@Model.Product.ProductName</p>
+            </header>
+            <h3>Стартовая цена: @Model.StartingPrice</h3>
+            <p>Начало торгов: @Model.StartTime</p>
+            <p>Конец торгов: @Model.EndTime</p>
+            <h3>Текущая ставка: @Model.CurrentPrice</h3>
+            <p>Код товара: @Model.Product.Id</p>
+
+
+            <footer>
+                <a href="@Url.Action("Create", "ProductAuction")" class="button alt">Создать</a>
+            </footer>
+        </article>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+    </div>
+</section>

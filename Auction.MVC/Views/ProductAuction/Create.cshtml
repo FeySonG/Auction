@@ -1,0 +1,52 @@
+﻿@model CreateProductAuctionDTO
+
+
+<form asp-controller="ProductAuction" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Name"
+               asp-for="Title"
+               required />
+    </div>
+
+
+    <div>
+        <label>Description</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Description"
+               asp-for="Description"
+               required />
+    </div>
+
+    <div>
+        <label>Start time</label>
+        <input class="form-control ml-2" type="datetime-local"
+               placeholder="Start time"
+               asp-for="StartTime"
+               required />
+    </div>
+
+    <div>
+        <label>Product Id</label>
+        <input class="form-control ml-2" type="number"
+               placeholder="Product Id"
+               asp-for="ProductId"
+               required />
+    </div>
+
+    @*     <div>
+    <label>Last Name</label>
+    <input class="form-control ml-2" type="text"
+    placeholder="Last Name"
+    asp-for="Category"
+    required />
+    </div> *@
+
+    <button class="btn btn-primary mt-2" type="submit">Create</button>
+
+</form>
+
+<div class="text-center mt-5">
+    <a class="btn btn-secondary btn-back" href="javascript:history.back()">Back</a>
+</div>

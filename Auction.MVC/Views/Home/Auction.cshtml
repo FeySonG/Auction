@@ -1,1 +1,86 @@
-﻿
+﻿@{
+    ViewBag.Title = "Auction";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<div>
+    <!-- Intro -->
+    <section id="intro" class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+                <section class="first">
+                    <i class="icon solid featured fa-star"></i>
+                    <header>
+                        <h2>Классический Аукцион</h2>
+                    </header>
+                    <p>Участвуйте в аукционах за интересующие вас товары или создайте свой лот!</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="middle">
+                    <i class="icon solid featured alt fa-bolt"></i>
+                    <header>
+                        <h2>Аукцион стал ближе!</h2>
+                    </header>
+                    <p>Станьте участниками аукциона в реальном времени или возьмите на себя роль Аукциониста!</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="last">
+                    <i class="icon solid featured  fa-star"></i>
+                    <header>
+                        <h2>Аукцион услуг</h2>
+                    </header>
+                    <p>ввв</p>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <ul class="actions">
+                <li><a href="#" class="button alt large">Аукциону услуг</a></li>
+                <li><a class="button alt large" asp-area="" asp-controller="ProductAuction" asp-action="GetAll">Классический аукцион</a></li>
+            </ul>
+        </footer>
+    </section>
+
+    <!-- Blog -->
+    <section>
+        <header class="major">
+            <h2>Аукционы</h2>
+        </header>
+        <div class="row">
+            <div class="col-6 col-12-small">
+                <section class="box">
+                    <a href="#" class="image featured"><img src="~/image/tender2.jpg" alt="" /></a>
+                    <header>
+                        <h3>Аукцион услуг</h3>
+                    </header>
+                    <p>Торгуйтесь за услуги с другими пользователями либо предоставьте свои услуги в виде аукционного лота!</p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="#" class="button icon solid fa-file-alt">Перейти</a></li>
+                            <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                        </ul>
+                    </footer>
+                </section>
+            </div>
+            <div class="col-6 col-12-small">
+                <section class="box">
+                    <a href="#" class="image featured"><img src="~/image/ClassicAuction.jpg" alt="" /></a>
+                    <header>
+                        <h3>Классический Аукцион</h3>
+                    </header>
+                    <p>Классический аукцион предметов на любой вкус, полный шума и азарта! торгуйтесь за редкие и не очень товары либо создайте свой лот</p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a class="button icon solid fa-file-alt" asp-area="" asp-controller="ProductAuction" asp-action="GetAll">Перейти</a></li>
+                            <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                        </ul>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+

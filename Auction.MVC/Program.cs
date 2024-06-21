@@ -10,7 +10,7 @@ public class Program
 
         builder.Services.AddControllersWithViews(options =>
         {
-            options.Filters.Add<GlobalExceptionFilter>();
+           // options.Filters.Add<GlobalExceptionFilter>();
         });
 
         builder.Services.AddApplication();

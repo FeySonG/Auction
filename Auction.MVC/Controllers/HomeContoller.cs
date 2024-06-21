@@ -25,4 +25,15 @@ public class HomeController(ISender sender) : Controller
            onSuccess: value => View("Shop", response.Value),
            onFailure: error => BadRequest(error.Message));
     }
+
+
+	[HttpGet("Auction")]
+	public async Task<IActionResult> Auction()
+	{
+		var response = await sender.Send(new GetAllProductQuery());
+
+		return response.Match(
+		   onSuccess: value => View("Auction"),
+		   onFailure: error => BadRequest(error.Message));
+	}
 }
