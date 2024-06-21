@@ -17,7 +17,7 @@ public class ChangeCurrentPriceProductAuctionCommandHandler(
             return new Error(
                 ProductAuctionErrorCode.ProductAuctionIsNotFound,
                 ProductAuctionErrorMessage.ProductAuctionIsNotFound);
-        if (request.CurrentPrice < auction.CurrentPrice)
+        if (request.CurrentPrice < auction.CurrentPrice || request.CurrentPrice < auction.StartingPrice)
             return new Error(
                 ProductAuctionErrorCode.PriceIsLess,
                 ProductAuctionErrorMessage.PriceIsLess);
@@ -27,7 +27,7 @@ public class ChangeCurrentPriceProductAuctionCommandHandler(
                 ProductAuctionErrorCode.CannotBetOnYourLot,
                 ProductAuctionErrorMessage.CannotBetOnYourLot);
         }
-        if (auction.EndTime > DateTime.UtcNow && auction.StartTime < DateTime.UtcNow)
+        if (auction.EndTime > DateTime.UtcNow.AddHours(6) && auction.StartTime < DateTime.UtcNow.AddHours(6))
         {
             auction.CurrentWinnerId = userId;
             auction.CurrentPrice = request.CurrentPrice;

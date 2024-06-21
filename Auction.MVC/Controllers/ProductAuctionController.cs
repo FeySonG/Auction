@@ -88,7 +88,7 @@ public class ProductAuctionController(ISender sender) : Controller
         {
             var result = await sender.Send(new CreateProductAuctionCommand(dto));
             return result.Match(
-                onSuccess: value => View("AuctionPage", result.Value),
+                onSuccess: value => View("UserAuctionPage", result.Value),
                 onFailure: error => throw new Exception(error.Message));
 
         }
