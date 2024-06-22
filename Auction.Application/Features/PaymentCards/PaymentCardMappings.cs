@@ -1,9 +1,17 @@
-﻿namespace Auction.Application.Features.PaymentCards;
-
-public class PaymentCardMappings : Profile
+﻿namespace Auction.Application.Features.PaymentCards
 {
-    public PaymentCardMappings()
+    /// <summary>
+    /// Class for configuring mapping between payment card entities and their DTOs.
+    /// </summary>
+    public class PaymentCardMappings : Profile
     {
-        CreateMap<PaymentCard, CreatePaymentCardDTO>().ReverseMap();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaymentCardMappings"/> class.
+        /// </summary>
+        public PaymentCardMappings()
+        {
+            // Configure mapping from PaymentCard entity to CreatePaymentCardDTO and vice versa.
+            CreateMap<PaymentCard, CreatePaymentCardDTO>().ReverseMap();
+        }
     }
 }
