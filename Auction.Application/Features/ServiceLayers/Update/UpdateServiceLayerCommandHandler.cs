@@ -1,6 +1,4 @@
-﻿using Auction.Domain.Models.UserContacts;
-
-namespace Auction.Application.Features.ServiceLayers.Update;
+﻿namespace Auction.Application.Features.ServiceLayers.Update;
 
 internal class UpdateServiceLayerCommandHandler(
     IServiceLayerRepository serviceLayerRepository,
@@ -19,9 +17,6 @@ internal class UpdateServiceLayerCommandHandler(
 
         if (request.Dto.ServiceName == null || request.Dto.ServiceName == "string")
             request.Dto.ServiceName = service.ServiceName;
-
-        if (request.Dto.Price == null )
-            request.Dto.Price = service.Price;
 
         if (request.Dto.Description == null || request.Dto.Description == "string")
             request.Dto.Description = service.Description;

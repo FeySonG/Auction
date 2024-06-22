@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿namespace Auction.Api.Controllers;
 
-namespace Auction.Api.Controllers;
-
-[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-
+[Authorize]
 [ApiController]
 [Route("api/products")]
 public class ProductController(ISender sender) : ControllerBase
 {
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -30,7 +27,9 @@ public class ProductController(ISender sender) : ControllerBase
     [HttpGet("my-product")]
     public async Task<IActionResult> GetUserProducts()
     {
-        var result = await sender.Send(new GetUserProductQuery());
+        long userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new GetUserProductQuery(userId));
         return result.Match(
           onSuccess: value => Ok(result.Value),
           onFailure: error => BadRequest(error.Message));

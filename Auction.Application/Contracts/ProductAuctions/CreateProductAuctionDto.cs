@@ -7,6 +7,7 @@ public class CreateProductAuctionDTO
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(50, ErrorMessage = Message.MAX_LENGTH)]
+    [RegularExpression(@"^[\p{L}][\p{L}\s]*[\p{L}]$", ErrorMessage = Message.ONLY_LETTERS)]
     public required string Title { get; set; }
 
     [MaxLength(300, ErrorMessage = Message.MAX_LENGTH)]
@@ -23,6 +24,6 @@ public class CreateProductAuctionDTO
     [FutureDate(ErrorMessage = Message.CANT_BE_PAST)]
     public required DateTime StartTime { get; set; }
 
-	[Range(1, 3, ErrorMessage = Message.NON_NEGATIVE)]
+	[Range(1, 5, ErrorMessage = Message.NON_NEGATIVE)]
 	public int Duration { get; set; }
 }

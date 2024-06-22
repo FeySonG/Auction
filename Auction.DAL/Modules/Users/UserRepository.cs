@@ -21,4 +21,6 @@ public class UserRepository(AppDbContext dbContext) : Repository<User>(dbContext
 
     public async Task<User?> GetUserById(long Id) => await DbContext.Users.Include(u => u.Contact).Include(u => u.BankCard).FirstOrDefaultAsync(u => u.Id == Id);
 
+    public async Task<bool> ExistsAsync(long id) => await DbContext.Users.AnyAsync(u => u.Id == id);
+
 }

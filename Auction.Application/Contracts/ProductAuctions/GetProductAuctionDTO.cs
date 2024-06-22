@@ -1,6 +1,4 @@
-﻿using Auction.Domain.Models.AuctionLots;
-
-namespace Auction.Application.Contracts.ProductAuctions;
+﻿namespace Auction.Application.Contracts.ProductAuctions;
 
 public class GetProductAuctionDTO
 {

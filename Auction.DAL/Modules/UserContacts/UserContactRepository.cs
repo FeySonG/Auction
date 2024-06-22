@@ -21,4 +21,5 @@ public class UserContactRepository(AppDbContext dbContext) : IUserContactReposit
 
     public void Update(UserContact contact) => dbContext.Update(contact);
 
+    public void RemoveRange(List<UserContact> entity) => dbContext.RemoveRange(entity);
 }

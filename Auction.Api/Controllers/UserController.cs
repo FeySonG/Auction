@@ -1,10 +1,4 @@
-﻿using Auction.Application.Errors.Product;
-using Auction.Application.Errors.ServiceLayer;
-using Auction.Application.Errors.User;
-using Auction.Application.Features.Users.GetOwnedProducts;
-using Auction.Application.Features.Users.GetOwnedServices;
-
-namespace Auction.Api.Controllers;
+﻿namespace Auction.Api.Controllers;
 
 [Authorize]
 [ApiController]
@@ -192,5 +186,4 @@ public class UserController(ISender sender) : ControllerBase
            }
        );
     }
-
 }

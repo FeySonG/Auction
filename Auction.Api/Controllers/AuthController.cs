@@ -16,9 +16,9 @@ public class AuthController(ISender sender) : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(string email, string password)
+    public async Task<IActionResult> Login(LoginUserDTO loginDto)
     {
-        var result = await sender.Send(new LoginUserQuery(email, password));
+        var result = await sender.Send(new LoginUserQuery(loginDto.Email, loginDto.Password));
 
         return result.Match(
             onSuccess: value => Ok("Welcome!"),

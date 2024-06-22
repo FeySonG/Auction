@@ -32,7 +32,7 @@ public class ServiceAuctionController(ISender sender) : ControllerBase
             onFailure: error => BadRequest(error.Message));
     }
 
-    [HttpPut]
+    [HttpPut("{offeredPrice}")]
     public async Task<IActionResult> ChangeCurrentPrice(decimal offeredPrice, long lotId)
     {
         var result = await sender.Send(new ChangeCurrentPriceServiceAuctionCommand(offeredPrice, lotId));
@@ -40,4 +40,5 @@ public class ServiceAuctionController(ISender sender) : ControllerBase
             onSuccess: value => Ok(result.Value),
             onFailure: error => BadRequest(error.Message));
     }
+
 }

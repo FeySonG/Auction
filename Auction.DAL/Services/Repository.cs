@@ -21,4 +21,9 @@ public abstract class Repository<TEntity>(AppDbContext DbContext) : IRepository<
     public void Update(TEntity entity) => DbContext
         .Set<TEntity>()
         .Update(entity);
+
+
+    public void RemoveRange(List<TEntity> entity) => DbContext
+    .Set<TEntity>()
+    .RemoveRange(entity);
 }

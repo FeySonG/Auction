@@ -6,4 +6,5 @@ public interface IUserRepository : IRepository<User>
     Task<User?> GetUserByEmailAsync(string email);
     Task<string?> CheckUniqueNickNameAsync(string nickName);
     Task<string?> CheckUniqueEmailAsync(string email);
+    Task<bool> ExistsAsync(long id);
 }

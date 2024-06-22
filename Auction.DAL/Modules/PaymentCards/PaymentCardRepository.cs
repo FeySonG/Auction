@@ -17,5 +17,7 @@ public class PaymentCardRepository(AppDbContext dbContext) : IPaymentCardReposit
 
     public void Remove(PaymentCard card) => dbContext.PaymentCards.Remove(card);
 
+    public void RemoveRange(List<PaymentCard> entity) => dbContext.PaymentCards.RemoveRange(entity);
+
     public void Update(PaymentCard card) => dbContext.PaymentCards.Update(card);
 }

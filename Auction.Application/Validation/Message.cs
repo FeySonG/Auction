@@ -12,4 +12,7 @@ public class Message
     public const string CANT_BE_PAST = "Поле {0} не может быть прошлым";
     public const string EXPIRY_DATE = "Поле {0} должно содержать дату в формате  MM/YY";
     public const string ONLY_DIGITAL = "Поле {0} должно содержать только цифры";
+    public const string ONLY_LETTERS = "Поле {0} должно содержать только буквы";
+    public const string LETTERS_AND_OPTIONAL_DIGITS = "Поле {0} должно содержать буквы";
+    public const string NO_LEADING_TRAILING_SPACES = "Поле {0} не может содержать пробелы";
 }

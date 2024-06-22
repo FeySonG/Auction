@@ -5,6 +5,7 @@
 [Route("api/services")]
 public class ServiceLayerController(ISender sender) : ControllerBase
 {
+    [Authorize(Roles ="Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

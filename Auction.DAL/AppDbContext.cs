@@ -5,7 +5,6 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<User> Users => Set<User>();
     public DbSet<UserContact> UserContacts => Set<UserContact>();
     public DbSet<PaymentCard> PaymentCards => Set<PaymentCard>();
-    public DbSet<PurchaseAct> PurchaseActs => Set<PurchaseAct>();
     public DbSet<ServiceLayer> ServiceLayers => Set<ServiceLayer>();
     public DbSet<Product> Products => Set<Product>();
     public DbSet<ProductAuction> ProductAuctions => Set<ProductAuction>();

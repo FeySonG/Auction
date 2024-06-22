@@ -13,5 +13,6 @@ public class ProductRepository(AppDbContext dbContext) : Repository<Product>(dbC
     {
         var products = await DbContext.Products.Where(p => p.OwnerId == ownerId).ToListAsync();
         return products.Cast<Product?>().Where(p => p != null).ToList();
+
     }
 }

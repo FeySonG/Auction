@@ -22,12 +22,6 @@ internal class UpdateProductCommandHandler(
         if (request.Dto.Category == null || request.Dto.Category == 0)
             request.Dto.Category = product.Category;
 
-        if (request.Dto.Price == null)
-            request.Dto.Price = product.Price;
-
-        if (request.Dto.ImagePath == null || request.Dto.ImagePath == "string")
-            request.Dto.ImagePath = product.ImagePath;
-
         if (request.Dto.Quantity == null || request.Dto.Quantity == 0)
             request.Dto.Quantity = product.Quantity;
 

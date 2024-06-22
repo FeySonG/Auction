@@ -15,5 +15,4 @@ public class GetServiceAuctionDTO
 
     // Navigation properties
     public ServiceLayer? Service { get; set; }
-
 }

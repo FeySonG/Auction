@@ -1,10 +1,8 @@
-﻿using Auction.Application.Errors.PaymentCard;
+﻿namespace Auction.Api.Controllers;
 
-namespace Auction.Api.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/payment-cards")]
-[Authorize]
 public class PaymentCardController(ISender sender) : ControllerBase
 {
     [HttpPost]
@@ -23,23 +21,6 @@ public class PaymentCardController(ISender sender) : ControllerBase
                 return BadRequest();
             });
           
-    }
-    [HttpPut]
-    public async Task<IActionResult> Update(UpdatePaymentCardDTO paymentCardDTO)
-    {
-        var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-        var result = await  sender.Send(new UpdatePaymentCardCommand(paymentCardDTO, userId));
-
-        return result.Match(
-            onSuccess: value => Ok(),
-            onFailure: error =>
-            {
-                if(error.Code == PaymentCardErrorCodes.UserIdNotFound)
-                    return BadRequest(error.Message);
-
-                return BadRequest();
-            }
-        );
     }
 
     [HttpDelete]

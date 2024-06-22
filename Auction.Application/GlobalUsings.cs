@@ -36,6 +36,7 @@ global using Auction.Application.Errors.Global;
 global using Auction.Application.Errors.Product;
 global using Auction.Application.Errors.UserContact;
 global using Auction.Application.Errors.PaymentCard;
+global using Auction.Application.BackGroundServices;
 global using Auction.Application.Errors.ServiceLayer;
 global using Auction.Application.Errors.ProductAuction;
 global using Auction.Application.Errors.ServiceAuction;

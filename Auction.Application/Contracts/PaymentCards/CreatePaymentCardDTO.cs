@@ -5,6 +5,7 @@ public class CreatePaymentCardDTO
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [MaxLength(16, ErrorMessage = Message.MAX_LENGTH)]
     [MinLength(16, ErrorMessage = Message.MIN_LENGTH)]
+    [RegularExpression("^[0-9]*$", ErrorMessage = Message.ONLY_DIGITAL)]
     public required string CardNumber { get; set; }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
@@ -22,8 +23,4 @@ public class CreatePaymentCardDTO
     [Required(ErrorMessage = Message.REQUIRED)]
     [EnumDataType(typeof(PaymentCardType))]
     public required PaymentCardType CardType { get; set; }
-
-    [Required(ErrorMessage = Message.REQUIRED)]
-    [Range(0, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
-    public required decimal Balance { get; set; }
 }

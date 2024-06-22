@@ -12,16 +12,17 @@ internal class CreateServiceAuctionCommandHandler(
 
     public async Task<Result<GetServiceAuctionDTO>> Handle(CreateServiceAuctionCommand request, CancellationToken cancellationToken)
     {
+
         var sallerId = long.Parse(_httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
         var auction = mapper.Map<ServiceAuction>(request.Dto);
 
-        var serviceLayer = await serviceLayerRepository.GetById(request.Dto.ServiceId);
-        if (serviceLayer == null)
-            return new Error(ServiceLayerErrorCode.ServiceNotFound, ServiceLayerErrorMessage.ServiceNotFound);
+        var service = await serviceLayerRepository.GetById(request.Dto.ServiceId);
+        if (service == null)
+            return new Error(ProductErrorCode.ProductNotFound, ProductErrorMessage.ProductNotFound);
         auction.SallerId = sallerId;
-        auction.Service = serviceLayer;
-        auction.EndTime = auction.StartTime.AddHours(3);
+        auction.Service = service;
+        auction.EndTime = auction.StartTime.AddHours(request.Dto.Duration);
 
         serviceAuctionRepository.Add(auction);
         await unitOfWork.SaveChangesAsync();

@@ -1,7 +1,4 @@
-﻿using Auction.Application.Errors.User;
-using Auction.Application.Errors.UserContact;
-
-namespace Auction.Api.Controllers;
+﻿namespace Auction.Api.Controllers;
 
 [Authorize]
 [ApiController]

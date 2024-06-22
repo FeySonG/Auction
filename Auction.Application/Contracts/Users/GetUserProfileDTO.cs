@@ -2,10 +2,10 @@
 
 public class GetUserProfileDTO
 {
-    public  string NickName { get; set; } = string.Empty;
-    public  string FirstName { get; set; } = string.Empty;
-    public  string LastName { get; set; } = string.Empty;
-    public  string Email { get; set; } = string.Empty;
+    public  string? NickName { get; set; }
+    public  string? FirstName { get; set; }
+    public  string? LastName { get; set; }
+    public  string? Email { get; set; }
 
     // Navigation properties
     public GetUserContactDTO? Contact { get; set; }
