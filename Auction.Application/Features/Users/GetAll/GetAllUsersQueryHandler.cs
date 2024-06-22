@@ -7,7 +7,7 @@ public class GetAllUsersQueryHandler(IUserRepository userRepository, IMapper map
     {
         var users = await userRepository.GetAllAsync();
         if (users.Count == 0)
-            return new Error(UserErrorCodes.NoContent, "");
+            return new Error(UserErrorCodes.NoContent, UserErrorMessages.NoContent);
 
         return mapper.Map<List<GetUserDTO>>(users);
     }

@@ -3,5 +3,5 @@
 public class ServiceLayerErrorMessage
 {
     public const string ServiceNotFound = "Service not found!";
-
+    public const string UserHasNoServices = "No Content!";
 }

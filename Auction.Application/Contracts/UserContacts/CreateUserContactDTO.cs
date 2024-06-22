@@ -3,7 +3,8 @@
 public class CreateUserContactDTO
 {
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
-    [MaxLength(22, ErrorMessage = Message.MAX_LENGTH)]
+    [MaxLength(12, ErrorMessage = Message.MAX_LENGTH)]
+    [MinLength(10, ErrorMessage = Message.MIN_LENGTH)]
     public required string PhoneNumber { get; set; }
 
     [MaxLength(20, ErrorMessage = Message.MAX_LENGTH)]

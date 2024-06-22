@@ -15,7 +15,7 @@ public class CreateProductDTO
 
     [Required(AllowEmptyStrings = false, ErrorMessage = Message.REQUIRED)]
     [Range(1, long.MaxValue, ErrorMessage = Message.NON_NEGATIVE)]
-    public long Quantity { get; set; } = 1;
+    public long Quantity { get; set; }
 
     [Required(ErrorMessage = Message.REQUIRED)]
     [EnumDataType(typeof(ProductCategory))]
@@ -23,5 +23,4 @@ public class CreateProductDTO
 
     public IFormFile? UploadFile { get; set; }
     public string? ImagePath { get; set; }
-
 }

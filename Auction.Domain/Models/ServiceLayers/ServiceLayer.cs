@@ -4,6 +4,8 @@ public class ServiceLayer : Entity
 {
     public required long UserId { get; set; }
 
+    public long? OwnerId { get; set; }
+
     [StringLength(50)]
     public required string ServiceName { get; set; }
 

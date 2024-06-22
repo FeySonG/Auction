@@ -22,6 +22,6 @@ public class AuthController(ISender sender) : ControllerBase
 
         return result.Match(
             onSuccess: value => Ok("Welcome!"),
-            onFailure: error => BadRequest(error.Message));
+            onFailure: error => Unauthorized(error.Message));
     }
 }

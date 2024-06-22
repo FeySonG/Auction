@@ -13,5 +13,11 @@ public class ServiceLayerConfiguration : IEntityTypeConfiguration<ServiceLayer>
 
         builder.Property(x => x.Price)
             .HasPrecision(18, 2);
+
+
+        builder.HasOne<User>()
+          .WithMany()
+          .HasForeignKey(x => x.OwnerId);
+
     }
 }

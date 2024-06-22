@@ -21,4 +21,6 @@ public class User : Entity
     // Navigation properties
     public PaymentCard? BankCard { get; set; }
     public UserContact? Contact { get; set; }
+    public List<Product>? Products { get; set; }
+    public List<ServiceLayer>? ServicesLayer { get; set; }
 }

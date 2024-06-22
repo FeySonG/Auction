@@ -20,6 +20,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasOne(x => x.Contact)
             .WithOne()
             .HasForeignKey<UserContact>(x => x.UserId);
-        
     }
 }

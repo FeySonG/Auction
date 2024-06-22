@@ -23,7 +23,7 @@ public class ProductController(ISender sender, IWebHostEnvironment appEnvironmen
                 }
                 dto.ImagePath = path;
             }
-            if (dto.ImagePath == null) { dto.ImagePath = string.Empty; }
+            dto.ImagePath ??= string.Empty;
             var response = await sender.Send(new CreateProductCommand(dto));
             return response.Match(
                 onSuccess: value => View("UserProductDescription", response.Value),
