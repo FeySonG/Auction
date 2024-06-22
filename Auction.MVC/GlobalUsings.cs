@@ -1,7 +1,6 @@
 ﻿global using MediatR;
 global using System.Security.Claims;
 global using Microsoft.AspNetCore.Mvc;
-global using System.Text.Json.Serialization;
 global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Authorization;
 
@@ -12,14 +11,11 @@ global using Auction.MVC.Extensions;
 global using Auction.DAL.Extensions;
 
 global using Auction.Application.Extensions;
-global using Auction.Application.Features.Users;
 global using Auction.Application.Contracts.Users;
 global using Auction.Application.Contracts.Products;
-global using Auction.Application.Features.UserContacts;
 global using Auction.Application.Features.Users.Delete;
 global using Auction.Application.Features.Users.GetAll;
 global using Auction.Application.Features.Users.Update;
-global using Auction.Application.Features.PaymentCards;
 global using Auction.Application.Features.Users.GetById;
 global using Auction.Application.Contracts.UserContacts;
 global using Auction.Application.Contracts.PaymentCards;
@@ -36,7 +32,6 @@ global using Auction.Application.Features.Users.UpdateRole;
 global using Auction.Application.Features.Users.UserProfile;
 global using Auction.Application.Features.Products.GetByName;
 global using Auction.Application.Features.PaymentCards.Create;
-global using Auction.Application.Features.PaymentCards.Update;
 global using Auction.Application.Features.PaymentCards.Delete;
 global using Auction.Application.Features.UserContacts.Update;
 global using Auction.Application.Features.UserContacts.Create;
