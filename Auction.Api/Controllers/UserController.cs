@@ -1,4 +1,8 @@
-﻿using Auction.Application.Errors.User;
+﻿using Auction.Application.Errors.Product;
+using Auction.Application.Errors.ServiceLayer;
+using Auction.Application.Errors.User;
+using Auction.Application.Features.Users.GetOwnedProducts;
+using Auction.Application.Features.Users.GetOwnedServices;
 
 namespace Auction.Api.Controllers;
 
@@ -149,4 +153,44 @@ public class UserController(ISender sender) : ControllerBase
         await HttpContext.SignOutAsync();
         return RedirectToAction("Login");
     }
+
+    [HttpGet("owned-products")]
+    public async Task<IActionResult> GetOwnedProducts()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new GetOwnedProductsQuery(userId));
+
+        return result.Match(
+           onSuccess: value => Ok(result.Value),
+           onFailure: error =>
+           {
+               if (error.Code == ProductErrorCode.ProductNoContent)
+                   return NoContent();
+
+               return BadRequest();
+           }
+       );
+    }
+
+
+    [HttpGet("owned-services")]
+    public async Task<IActionResult> GetOwnedServices()
+    {
+        int userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+        var result = await sender.Send(new GetOwnedServicesQuery(userId));
+
+        return result.Match(
+           onSuccess: value => Ok(result.Value),
+           onFailure: error =>
+           {
+               if (error.Code == ServiceLayerErrorCode.ServiceNoContent)
+                   return NoContent();
+
+               return BadRequest();
+           }
+       );
+    }
+
 }

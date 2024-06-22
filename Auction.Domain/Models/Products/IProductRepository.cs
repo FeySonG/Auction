@@ -5,4 +5,5 @@ public interface IProductRepository : IRepository<Product>
     Task<List<Product>> GetByName(string Name);
     Task<Product?> GetById(long Id);
     Task<List<Product?>> GetUserProducts(long Id);
+    Task<List<Product?>> GetUserOwnedProducts(long ownerId);
 }

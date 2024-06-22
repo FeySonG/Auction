@@ -9,4 +9,10 @@ public class ServiceLayerRepository(AppDbContext dbContext) : Repository<Service
         var services = await DbContext.ServiceLayers.Where(p => p.UserId == userId).ToListAsync();
         return services.Cast<ServiceLayer?>().Where(p => p != null).ToList();
     }
+
+    public async Task<List<ServiceLayer?>> GetUserOwnedServices(long ownerId)
+    {
+        var services = await DbContext.ServiceLayers.Where(p => p.OwnerId == ownerId).ToListAsync();
+        return services.Cast<ServiceLayer?>().Where(p => p != null).ToList();
+    }
 }

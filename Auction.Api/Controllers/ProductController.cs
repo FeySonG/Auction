@@ -1,12 +1,14 @@
-﻿namespace Auction.Api.Controllers;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-[Authorize]
+namespace Auction.Api.Controllers;
+
+[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+
 [ApiController]
 [Route("api/products")]
 public class ProductController(ISender sender) : ControllerBase
 {
-
-
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

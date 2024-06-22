@@ -11,6 +11,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<ProductAuction> ProductAuctions => Set<ProductAuction>();
     public DbSet<ServiceAuction> ServiceAuctions => Set<ServiceAuction>();
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

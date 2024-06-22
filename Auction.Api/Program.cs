@@ -12,7 +12,7 @@ internal class Program
         builder.Services.AddSwaggerGen();
         builder.Services.AddHttpContextAccessor();
 
-        builder.Services.AddAuthentication().AddCookie("Cookie");
+        builder.Services.AddAuthentication().AddCookie("Cookies");
 
         builder.Services.AddDataAccessLayer(builder.Configuration);
         builder.Services.AddApplication();
@@ -24,7 +24,6 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
 
         app.UseAuthentication();
 

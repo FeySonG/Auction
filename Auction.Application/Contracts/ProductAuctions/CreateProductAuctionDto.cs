@@ -17,10 +17,12 @@ public class CreateProductAuctionDTO
     public required decimal StartingPrice { get; set; }
 
     [Required(ErrorMessage = Message.REQUIRED)]
-    [FutureDate(ErrorMessage = Message.CANT_BE_PAST)]
     [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy:HH:mm}", ApplyFormatInEditMode = true)]
     [DataType(DataType.DateTime)]
+    [Display(Name = "Start Time")]
+    [FutureDate(ErrorMessage = Message.CANT_BE_PAST)]
     public required DateTime StartTime { get; set; }
+
 	[Range(1, 3, ErrorMessage = Message.NON_NEGATIVE)]
 	public int Duration { get; set; }
 }
